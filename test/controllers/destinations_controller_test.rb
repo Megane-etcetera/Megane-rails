@@ -1,23 +1,28 @@
 require 'test_helper'
 
-class ReviewsControllerTest < ActionDispatch::IntegrationTest
+class DestinationsControllerTest < ActionDispatch::IntegrationTest
+  test "should get new" do
+    get destinations_new_url
+    assert_response :success
+  end
+
   test "should get create" do
-    get reviews_create_url
+    get destinations_create_url
     assert_response :success
   end
 
   test "should get edit" do
-    get reviews_edit_url
+    get destinations_edit_url
     assert_response :success
   end
 
   test "should get update" do
-    get reviews_update_url
+    get destinations_update_url
     assert_response :success
   end
 
   test "should get destroy" do
-    get reviews_destroy_url
+    get destinations_destroy_url
     assert_response :success
   end
 

@@ -1,4 +1,7 @@
-class ReviewsController < ApplicationController
+class DiscsController < ApplicationController
+  def new
+  end
+
   def create
   end
 

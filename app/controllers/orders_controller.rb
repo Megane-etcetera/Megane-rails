@@ -1,17 +1,16 @@
 class OrdersController < ApplicationController
+  def index
+  end
 
-	def index
-	end
+  def address
+  end
 
-	def address
-	end
+  def payment
+  end
 
-	def payment
-	end
+  def decision
+  end
 
-	def decision
-	end
-
-	def create
-	end
+  def create
+  end
 end
