@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   root 'tops#top'
-  get "admintops#top"
+  get "admintops/top"
 
   get 'products/search'
   get 'products/ranking'

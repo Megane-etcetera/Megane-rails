@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20180615083805) do
 
   create_table "labels", force: :cascade do |t|
     t.string "label"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "payment"
+    t.string "address"
+    t.integer "tax"
+    t.integer "delivery_price"
+    t.integer "payment_price"
+    t.integer "order_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,6 +65,16 @@ ActiveRecord::Schema.define(version: 20180615083805) do
     t.string "item_number"
     t.text "image_id"
     t.string "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.string "review_title"
+    t.text "review_message"
+    t.integer "star"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
