@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180615083805) do
+ActiveRecord::Schema.define(version: 20180615102723) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,40 @@ ActiveRecord::Schema.define(version: 20180615083805) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.integer "sub_total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "category"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "prefecture_id"
+    t.string "address"
+    t.string "post_nember"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "disc_type"
+    t.integer "disc_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre"
     t.datetime "created_at", null: false
@@ -40,6 +74,18 @@ ActiveRecord::Schema.define(version: 20180615083805) do
 
   create_table "labels", force: :cascade do |t|
     t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "prosuct_id"
+    t.integer "quantity"
+    t.integer "OrderProduct_price"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -50,6 +96,20 @@ ActiveRecord::Schema.define(version: 20180615083805) do
     t.integer "delivery_price"
     t.integer "payment_price"
     t.integer "order_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "payment"
+    t.integer "payment_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.integer "region_id"
+    t.string "prefecture_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,12 +129,30 @@ ActiveRecord::Schema.define(version: 20180615083805) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "regions", force: :cascade do |t|
+    t.string "region_name"
+    t.integer "delivery_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_id"
     t.string "review_title"
     t.text "review_message"
     t.integer "star"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.integer "disc_id"
+    t.string "track_title"
+    t.string "track_title_kana"
+    t.integer "track_number"
+    t.string "artist_name"
+    t.string "artist_name_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
