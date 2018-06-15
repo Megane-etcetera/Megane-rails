@@ -9,9 +9,37 @@
 }
 .admin_top{
 	width:100%;
-	background-color:whitesmoke;
+}
+.admin_log_out{
+	width:150px;
+	line-height:30px;
+	font-size:20px;
+	padding-bottom: 5px;
 }
 .admin_menu_box{
 	width:1000px;
-	margin: 0 auto;
+	margin: 50px auto;
+}
+.user_search_form{
+    background-color: black;
+    height: 30px;
+    width: 200px;
+    float:left;
+    margin-bottom:5px;
+}
+.user_search_box{
+    background-color: gray;
+    height: 30px;
+    width: 45px;
+    text-align: center;
+    float:left;
+}
+.admin_nav{
+    list-style-type: none;
+}
+.admin_nav_list{
+	width:100px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    line-height: 30px;
 }

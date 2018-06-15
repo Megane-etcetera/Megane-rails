@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" media="screen" href="admintops.scss" />
-</head>
-<body>
-    <div class="admin_top">
+	 <div class="admin_top">
         <div class="admin_menu_box clearfix">
-            <div class="user_search_box"></div>
-            <div class="user_search_icon"><button>検索</button></div>
-                <ul class="admin_menu">
-                <li class="admin_menu_list">商品登録</li>
-                <li class="admin_menu_list">在庫照会</li>
-                <li class="admin_menu_list">問い合わせ確認</li>
-                <li class="admin_menu_list"><レーベル一覧</li>
-                <li class="admin_menu_list">ジャンル一覧</li>
-                <li class="admin_menu_list">送料一覧</li>
-                <li class="admin_menu_list">支払い手数料一覧</li>
-            </ul>
+
+        	<div class="admin_log_out"><%= link_to "ログアウト" ,destroy_admin_session_path  ,method: :delete %></div>
+
+            <div class="user_search_form"></div>
+            <div><button class="user_search_box">検索</button></div>
+
+	            <nav>
+	                <ul class="admin_nav">
+	                <li class="admin_nav_list"><%= link_to "商品登録" ,new_product_path %></li>
+	                <li class="admin_nav_list"><%= link_to "CM登録" ,new_product_path %></li>
+	                <li class="admin_nav_list"><%= link_to "在庫一覧" ,products_path %></li>
+	                <li class="admin_nav_list"><%= link_to "在庫一覧" ,products_path %></li>
+	                <li class="admin_nav_list"><%= link_to "在庫一覧" ,products_path %></li>
+	                <li class="admin_nav_list"><%= link_to "在庫一覧" ,products_path %></li>
+	                <li class="admin_nav_list"><%= link_to "在庫一覧" ,products_path %></li>
+        			</ul>
+        		</nav>
+
         </div>
     </div>
-</body>
-</html>
