@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  
+
   get 'admintops/top'
 
   root 'tops#top'
 
   get 'products/search'
   get 'products/ranking'
-  namespace :admin do
+  scope :admins do
     resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
   end
+  resources :products, only: [:show]
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
