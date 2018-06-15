@@ -10,8 +10,6 @@ class GenresController < ApplicationController
   	redirect_to genres_path
   end
 
-  
-
   def destroy
   	genre = Genre.find(params[:id])
     genre.destroy
@@ -22,5 +20,5 @@ class GenresController < ApplicationController
  
     def genre_params
         params.require(:genre).permit(:genre, :priority)
-    end
+  end
 end

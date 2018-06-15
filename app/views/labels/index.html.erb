@@ -1,2 +1,32 @@
-<h1>Labels#index</h1>
-<p>Find me in app/views/labels/index.html.erb</p>
+
+<div class="label-index">
+	<br>
+	<section><h1>レーベル一覧追加</h1></section>
+
+	<div class="form-box">
+		<%= form_for(@label) do |f| %>
+	 		<p>ジャンル追加</p>
+	    	<%= f.text_field :label,class: "label-form" %>
+	    	<br>
+	    	<%= f.submit '追加',class: "label-submit" %>
+		<% end %>
+	</div>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>レーベル名</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @labels.each do |label| %>
+			<tr>
+				<td><%= label.label %></td>
+				<td><%= link_to "削除",label_path(label),method: :delete %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

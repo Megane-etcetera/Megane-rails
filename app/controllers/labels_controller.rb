@@ -1,19 +1,24 @@
 class LabelsController < ApplicationController
   def index
-  end
-
-  def new
+  	@label = Label.new
+  	@labels = Label.all
   end
 
   def create
-  end
-
-  def edit
-  end
-
-  def update
+  	label = Label.new(label_params)
+  	label.save
+  	redirect_to labels_path
   end
 
   def destroy
+  	label = Label.find(params[:id])
+    label.destroy
+    redirect_to labels_path
   end
+  private
+ 
+    def label_params
+        params.require(:label).permit(:label)
+    end
+
 end
