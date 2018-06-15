@@ -1,0 +1,13 @@
+<h1>ジャンル一覧追加</h1>
+
+	<%= form_for(@genre) do |f| %>
+ 		<h2>ジャンル</h2>
+    	<%= f.text_field :genre %>
+    	<%= f.submit '追加' %>
+	<% end %>
+
+
+	<% @genres.each do |genre| %>
+		<%= genre.genre %>
+	<% end %>
+

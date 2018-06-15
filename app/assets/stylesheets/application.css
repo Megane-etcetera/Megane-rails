@@ -1,15 +1,45 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+    margin: 0;
+    padding: 0;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.admin_top{
+	width:100%;
+}
+.admin_log_out{
+	width:150px;
+	line-height:30px;
+	font-size:20px;
+	padding-bottom: 5px;
+}
+.admin_menu_box{
+	width:1000px;
+	margin: 50px auto;
+}
+.user_search_form{
+    background-color: black;
+    height: 30px;
+    width: 200px;
+    float:left;
+    margin-bottom:5px;
+}
+.user_search_box{
+    background-color: gray;
+    height: 30px;
+    width: 45px;
+    text-align: center;
+    float:left;
+}
+.admin_nav{
+    list-style-type: none;
+}
+.admin_nav_list{
+	width:100px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    line-height: 30px;
+}
