@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'admintops/top'
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+  }
+  devise_for :users, controllers: {
+  sessions:      'users/sessions',
+  passwords:     'users/passwords',
+  registrations: 'users/registrations'
+  }
 
   root 'tops#top'
+  get "admintops/top"
 
   get 'products/search'
   get 'products/ranking'
@@ -11,14 +21,8 @@ Rails.application.routes.draw do
   end
   resources :products, only: [:show]
 
-  devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
-devise_for :users, controllers: {
-  sessions:      'users/sessions',
-  passwords:     'users/passwords',
-  registrations: 'users/registrations'
-}
+  scope :admins do
+    resources :genres, only: [:create,:destroy, :index]
+  end
+
 end
