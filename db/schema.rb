@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20180615083805) do
 
   create_table "labels", force: :cascade do |t|
     t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
