@@ -25,4 +25,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:create,:destroy, :index]
   end
 
+scope :admins do
+    resources :labels, only: [:create,:destroy, :index]
+  end
+
 end
