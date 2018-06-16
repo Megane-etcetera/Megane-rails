@@ -15,17 +15,23 @@ Rails.application.routes.draw do
 
   get 'products/search'
   get 'products/ranking'
+
   scope :admins do
     resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
   end
+
   resources :products, only: [:show]
 
   scope :admins do
     resources :genres, only: [:create,:destroy, :index]
   end
 
-scope :admins do
+  scope :admins do
     resources :labels, only: [:create,:destroy, :index]
   end
 
+  scope :admins do
+    resources :discs,only: [:new,:create,:edit,:update,:destroy]
+  end
+  
 end

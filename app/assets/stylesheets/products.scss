@@ -1,3 +1,24 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+    margin: 0;
+    padding: 0;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.product-touroku-box{
+    width: 80%;
+    margin:0 auto;
+}
+.product-form{
+	height: 25px;
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+.product-submit{
+	font-size: 21px;
+}
