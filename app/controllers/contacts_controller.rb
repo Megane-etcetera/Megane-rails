@@ -15,6 +15,7 @@ class ContactsController < ApplicationController
   end
 
   def finished
+      @contact = Contact.all
   end
 
   def show
@@ -22,10 +23,13 @@ class ContactsController < ApplicationController
   end
 
   def update
+      @contact = Contact.find(params[:id])
+      @contact.update(contact_params)
+      redirect_to contacts_path
   end
 
 private
     def contact_params
-      params.require(:contact).permit(:category,:message)
+      params.require(:contact).permit(:category,:message,:admin_comment,:status)
     end
 end

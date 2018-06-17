@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'products/search'
   get 'products/ranking'
+  get 'contacts/finished'
 
 
 
@@ -51,3 +52,4 @@ Rails.application.routes.draw do
   end
 
 end
+
