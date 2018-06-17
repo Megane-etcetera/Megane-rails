@@ -1,2 +1,61 @@
-<h1>Contacts#index</h1>
-<p>Find me in app/views/contacts/index.html.erb</p>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div class="contact_base">
+        <div class="open_contacts">
+            <h1>未対応</h1>
+                <table border="1">
+                    <tr>
+                        <th class="th_contact_user">ユーザー名</th>
+                        <th class="th_contact_category">カテゴリー</th>
+                        <th class="th_contact_date">問い合わせ日時</th>
+                        <th class="th_contact_text">内容</th>
+                        <th class="th_contact_view">詳細を開く</th>
+                    </tr>
+                <% @contact.each do |cont| %>
+                    <tr>
+                            <td class="th_contact_user">ユーザー名</td>
+                            <td class="th_contact_category"><%= cont.category %>
+                            </td>
+                            <td class="th_contact_date"><%= cont.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+                            <td class="th_contact_text"><%= cont.message %></td>
+                            <td class="th_contact_view"><%= link_to 'show', contact_path(cont.id)%></td>
+                    </tr>
+                <% end %>
+
+                    <tr>
+                            <td class="th_contact_user"><a href="http://">アンパンマン</a></td>
+                            <td class="th_contact_category">発送について</td>
+                            <td class="th_contact_date">2018年06月13日</td>
+                            <td class="th_contact_text">Anpanman is a Japanese picture book series written by Takashi Yanase</td>
+                            <td class="th_contact_view"><a href="http://">開く</a></td>
+                    </tr>
+                </table>
+        </div>
+            <div class="processing_contacts">
+                <h1>対応中</h1>
+                <table border="1">
+                    <tr>
+                        <th class="th_contact_user">ユーザー名</th>
+                        <th class="th_contact_category">カテゴリー</th>
+                        <th class="th_contact_date">問い合わせ日時</th>
+                        <th class="th_contact_text">内容</th>
+                        <th class="th_contact_view">詳細を開く</th>
+                    </tr>
+                    <tr>
+                        <td class="th_contact_user"><a href="http://">ウルトラマン</a></td>
+                        <td class="th_contact_category">発送について</td>
+                        <td class="th_contact_date">2018年06月10日</td>
+                        <td class="th_contact_text">ジュワ！</td>
+                        <td class="th_contact_view"><a href="http://">開く</a></td>
+                    </tr>
+                </table>
+            </div>
+    <p class="all_contacts"><a href="http://">対応済みの問い合わせ</a></p>
+    </div>
+</body>
+</html>

@@ -1,2 +1,24 @@
-<h1>Contacts#new</h1>
-<p>Find me in app/views/contacts/new.html.erb</p>
+<h1 class="page-title">お問い合わせフォーム</h1>
+
+<div class="contact_base">
+
+	<div class="contact-box">
+		<%= form_for @contact do |c| %>
+
+		<label>お問い合わせカテゴリー</label><br>
+		<br>
+		<%= c.select :category, [["カテゴリーを表示する", "nill"],["サイトについて","サイトについて"],["商品について","商品について"],["料金について","料金について"],["発送について","発送について"],["その他","その他"]], class: "contact-select" %><br><br>
+
+			<label>お問い合わせ内容</label><br>
+			<%= c.text_area :message, rows: 10, cols: 100 %><br>
+
+	    <div class="">
+
+	    	<%= c.submit '送信する', class: 'center-button' %>
+		<% end %>
+		</div>
+
+	</div>
+
+
+</div>
