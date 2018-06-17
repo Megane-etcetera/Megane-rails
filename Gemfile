@@ -58,4 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise"
 gem "kaminari"
+gem "jquery-rails", "~>4.3", ">= 4.3.1"
+gem 'nested_form_fields'
 gem "pry-rails"
