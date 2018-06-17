@@ -3,13 +3,110 @@
   <head>
     <title>Meganet</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="main.js"></script>
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.slider').bxSlider();
+    });
+  </script>
+</head>
 
   <body>
+<header>
+	<div class="lscn-box clearfix">
+		<div class="logo"><%= link_to image_tag("img/logo_toumei.png"), root_path %></div>
+		
+		<div class="s-box">
+			<input class="s-form">
+			<p>
+				<select class="s-op" name="example1">
+				<option value="サンプル1">OP1435522</option>
+				<option value="サンプル2">OP245224252</option>
+				<option value="サンプル3">OP33453242</option>
+				<option value="サンプル4">OP443242</option>
+				<option value="サンプル5">OP534232</option>
+				</select>
+			</p>
+			<button class="s-button">検索</button>
+		</div>
+
+		<div class="cart">
+			<a href="cart.html">
+				<div class="cart-left">
+					<div class="i-box">
+						<p>カート</p>
+						<i class="fas fa-shopping-cart carticon"></i>
+					</div>
+				</div>
+				<div class="cart-center">
+					<p>商品</p>
+					<br>
+					<p>金額</p>
+				</div>
+				<div class="cart-right">
+					<p>3点</p>
+					<br>
+					<p>3600円</p>
+				</div>
+			</a>
+		</div>
+
+		<nav>
+			<ul class="nav-list">
+				<li class="nav-list-item nav_list_genre">
+					ジャンル
+					<ul id="header_genres" class="notdisp">
+						<li name="header_nav-genre">J-pop</li>
+						<li name="header_nav-genre">歌謡曲</li>
+						<li name="header_nav-genre">演歌</li>
+						<li name="header_nav-genre">洋楽</li>
+						<li name="header_nav-genre">アニメ</li>
+					</ul>
+				</li>
+				<li class="nav-list-item">新商品</li>
+				<li class="nav-list-item">ランキング</li>
+				<li class="nav-list-item">ログイン</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
     <%= yield %>
+
+<footer>
+	<div class="sicn clearfix">
+	
+	<div class="f-nav">
+		<ul class="f-nav-list">
+			<li class="f-nav-list-item"><div><a href="top.html">TOP</a></li>
+			<li class="f-nav-list-item"><a href="user.html">マイページ</a></li>
+			<li class="f-nav-list-item"><a href="cart.html">カート</a></li>
+			<li class="f-nav-list-item">ランキング</li>
+			<li class="f-nav-list-item">適当何か</li>
+		</ul>
+	</div>
+	
+		<div class="kabusiki">
+			<p>株式会社 Smile eyes</p><br>
+			<p>TEL 000-0000-0000</p><br>
+			<p>住所　東京都　丸々区　丸々　1-11-11</p>
+		</div>
+	
+	<div class="f-icon-box">
+		<i class="fab fa-twitter f-icon1"></i>
+		<i class="fab fa-facebook-f f-icon2"></i>
+		<i class="fab fa-youtube f-icon3"></i>
+	</div>
+	<div class="footer_contact">
+		<h1><a href="http://">お問い合わせはこちら</a></h1>
+	</div>
+	<div class="aaa"><p>©️メガネ</p></div>
+	</div>
+</footer>
   </body>
 </html>

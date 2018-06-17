@@ -1,18 +1,15 @@
 // Place all the styles related to the discs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.product_name{
-    width: 80%;
-    margin: 0 auto;
-}
+/* product_touroku.html */
 .disc_track_touroku_base{
     width: 100%;
-    background-color: mintcream;
+    background-color: white;
     padding: 50px 0;
 }
 .disc_touroku{
     width: 80%;
-    background-color: lightgreen;
+    background-color: red;
     margin: 0 auto;
     border: 1px solid;
 }
@@ -31,7 +28,7 @@
 .track_touroku{
     width: 90%;
     margin: 0 auto;
-    background-color: mintcream;
+    background-color: blue;
     border: 1px solid;
 }
 .track_number{
