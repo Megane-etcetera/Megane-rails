@@ -1,2 +1,29 @@
-<h1>Products#new</h1>
-<p>Find me in app/views/products/new.html.erb</p>
+<div class="product-touroku-box">
+    <br>
+        <section><h1>商品追加</h1></section>
+
+    <div class="form-box">
+        <%= form_for(@product) do |f| %>
+            <p>ジャケット画像登録</p>
+            <%= f.attachment_field :image,class: "product-form" %>
+            <p>タイトル</p>
+            <%= f.text_field :product_title,class: "product-form" %>
+            <p>タイトルかな</p>
+            <%= f.text_field :product_title_kana,class: "product-form" %>
+            <p>価格</p>
+            <%= f.text_field :price,class: "product-form" %>
+            <p>ジャンル</p>
+            <%= f.collection_select :genre_id, Genre.all, :id, :genre, {} ,{:class => "product-form"} %>
+            <p>レーベル</p>
+            <%= f.collection_select :label_id, Label.all, :id, :label, {} ,{:class => "product-form"} %>
+            <p>入荷数</p>
+            <%= f.text_field :stock,class: "product-form" %>
+            <p>商品型番</p>
+            <%= f.text_field :item_number,class: "product-form" %>
+            <p>発売日</p>
+            <%= f.text_field :release_date,class: "product-form" %>
+                <br>
+            <%= f.submit '登録',:class => "product-submit" %>
+        <% end %>
+    </div>
+</div>

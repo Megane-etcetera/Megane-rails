@@ -1,6 +1,7 @@
         <div class="admin_menu_box clearfix">
 
-        	<div class="admin_log_out"><%= link_to "ログアウト" ,destroy_admin_session_path  ,method: :delete %></div>
+        	<div class="admin_log_inout"><%= link_to "ログイン" ,new_admin_session_path %></div>
+        	<div class="admin_log_inout"><%= link_to "ログアウト" ,destroy_admin_session_path  ,method: :delete %></div>
 
 
             <div class="user_search_form"></div>
