@@ -1,3 +1,117 @@
 // Place all the styles related to the contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.page-title{
+    text-align: center;
+}
+
+
+
+.center-button{
+    width: 200px;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: red;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px grey;
+    border-radius: 3px;
+    text-align: center;
+}
+
+
+
+.contact_base{
+    width: 100%;
+    background-color: honeydew;
+}
+.contact_base table{
+    width: 100%;
+    border-color: rgb(187, 187, 187);
+    table-layout: fixed;
+}
+.th_contact_user{
+    width: 12%;
+}
+.th_contact_category{
+    width: 12%;
+    text-align: center;
+}
+.th_contact_date{
+    width: 12%;
+    text-align: center;
+}
+.th_contact_text{
+    width: 54%;
+}
+.th_contact_view{
+    width: 10%;
+    text-align: center;
+}
+.open_contacts{
+    width: 80%;
+    margin: 0 auto;
+    background-color: navajowhite;
+}
+.processing_contacts{
+    width: 80%;
+    margin: 0 auto;
+    background-color: thistle;
+}
+.all_contacts{
+    font-size: 20px;
+    margin: 20px 0 0 20px;
+}
+
+
+
+CONTACT NEW
+
+
+
+.user-contact-text{
+    height:350px;
+    width:500px;
+}
+
+.contact-box{
+    
+    width: 100%;
+    text-align: center;
+}
+
+
+
+CONTACT SHOW
+
+
+
+.contact_show table{
+    margin: 0 auto;
+}
+
+.th_contact_show{
+    width: 20%;
+    padding: 10px 0;
+}
+
+
+.th_contact_show_content{
+    width: 80%;
+    padding: 10px 0;
+    
+}
+
+.td_contact_show{
+    padding: 10px 0;
+
+    vertical-align: middle;
+}
+
+.td_contact_show_content{
+    padding: 10px 0;
+
+}

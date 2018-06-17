@@ -15,6 +15,15 @@ Rails.application.routes.draw do
 
   get 'products/search'
   get 'products/ranking'
+
+
+
+  
+  
+  
+  resources :contacts
+
+
   scope :admins do
     resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
   end
@@ -24,8 +33,12 @@ Rails.application.routes.draw do
     resources :genres, only: [:create,:destroy, :index]
   end
 
-scope :admins do
+  scope :admins do
     resources :labels, only: [:create,:destroy, :index]
+  end
+
+  resources :products do 
+    resources :reviews
   end
 
 end
