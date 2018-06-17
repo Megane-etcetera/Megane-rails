@@ -1,3 +1,83 @@
 // Place all the styles related to the tops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* トップページ */
+.toppage{
+	width: 80%;
+	margin: 0 auto;
+}
+.top-cm{
+	height: 325px;
+	width: 100%;
+	margin-bottom: 40px;
+}
+.cm1{
+	height: 325px;
+	width: 80%;
+	background-image: url(img/live.jpg);
+	background-size: cover;
+}
+.cm2{
+	height: 325px;
+	width: 80%;
+	background-image: url(img/megane.png);
+	background-size: cover;
+}
+.cm3{
+	height: 325px;
+	width: 80%;
+	background-image: url(img/neko.jpg);
+	background-size: cover;
+}
+.cm4{
+	height: 325px;
+	width: 80%;
+	background-image: url(img/make.jpg);
+	background-size: cover;
+}
+.top-new{
+	height: 36px;
+	padding-left: 10px;
+}
+.new-box{
+	height: 335px;
+	width: 100%;
+}
+.product-box{
+	width: 25%;
+	float: left;
+	padding: 10px;
+}
+.product-box a{
+	text-decoration: none;
+}
+.product-box img{
+	/* 画像の縦横比をdivの幅に合わせる */
+	width:auto;
+	height:auto;
+	max-width:100%;
+	max-height:100%;
+	/* 画像の位置が中心になるように */
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+.product-box:hover{
+	background-color: rgb(164, 225, 250);
+}
+.p-image{
+	height: 235px;
+	width: 100%;
+	position: relative;
+}
+.p-stat{
+	width: 100%;
+	margin-top: 10px;
+}
+.discs_and_tracks{
+	margin: 5px 0;
+}

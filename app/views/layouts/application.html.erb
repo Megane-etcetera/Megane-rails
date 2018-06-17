@@ -6,13 +6,21 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all'%>
+    <%= javascript_include_tag 'application' %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.slider').bxSlider();
+    });
+  </script>
+</head>
 
   <body>
 <header>
 	<div class="lscn-box clearfix">
-		<div class="logo"><a href="top.html"><img src="/assets/img/logo_toumei.png" alt="logo_toumei"></a></div>
+		<div class="logo"><%= link_to image_tag("img/logo_toumei.png"), root_path %></div>
 		
 		<div class="s-box">
 			<input class="s-form">
