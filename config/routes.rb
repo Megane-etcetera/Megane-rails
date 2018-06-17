@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
 
   scope :admins do
-    resources :discs,only: [:new,:create,:edit,:update,:destroy]
+    resources :discs, only: [:new,:create,:edit,:update,:destroy]
   end
-  
 
+end
