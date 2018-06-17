@@ -38,7 +38,11 @@
 	                    </tr> 
 	                    <tr>
 	                    	<td class="td_contact_show">状況</td>
-	                    	<td class="td_contact_show_content"><%= c.select :status, [["未対応", "未対応"],["対応中","対応中"],["対応済み","対応済み"]], class: "contact-select" %></td>
+	                    	<td class="td_contact_show_content">
+	                    		<%= select :situationss,:name,Contact.situations.keys.to_a , :prompt => @contact.situations%>
+	                    		
+	                    			
+	                    	</td>
 	                    </tr> 
         		</table>
         	<%= c.submit '更新する', class: 'center-button' %>
