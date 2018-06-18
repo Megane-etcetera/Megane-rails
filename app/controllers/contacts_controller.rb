@@ -1,37 +1,47 @@
 class ContactsController < ApplicationController
   def new
+      @user = User.find(params[:user_id])
       @contact = Contact.new
+
   end
 
   def create
       @contact = Contact.new(contact_params)
+      @contact.user_id = current_user.id
       @contact.save
       redirect_to root_path
+      
   end
 
   def index 
-      @contact = Contact.all
+      @admin =Admin.find(params[:admin_id])
+      @contact = Contact.where(situations: params[:situations],situations: 0)
+      @contacts = Contact.where(situations: params[:situations],situations: 1)
+      
   end
 
   def finished
-      @contacts = Contact.where(situations: params[:situations],situations: "対応済み")
-      binding.pry
+      
+      @admin =Admin.find(params[:id])
+      
+      @contacts = Contact.where(situations: params[:situations],situations: 2)
+
   end
 
-  def show
+  def show  
+
       @contact = Contact.find(params[:id])
   end
 
   def update
       @contact = Contact.find(params[:id])
-      @contact.situations = params[:situationss][:name]
+      @contact.situations = params[:situations]
       @contact.update(contact_params)
-      # binding.pry
-      redirect_to contacts_path
+      redirect_to admin_contacts_path
   end
 
 private
     def contact_params
-      params.require(:contact).permit(:category,:message,:admin_comment,:situations)
+      params.require(:contact).permit(:category,:message,:admin_comment,:situations,:user_id)
     end
 end

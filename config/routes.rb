@@ -20,11 +20,21 @@ Rails.application.routes.draw do
 
 
 
+  resources :admin do
+    resources :contacts, only: [:index,:show,:update]
+  end
   
-  
-  
-  resources :contacts
+  resources :admin do
+    member do
+      get 'contacts_finished'=>'contacts#finished'
+    end
+  end
 
+
+
+   resources :users do
+     resources :contacts, only: [:new, :create]
+   end
 
 
   scope :admins do
