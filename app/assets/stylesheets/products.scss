@@ -22,7 +22,7 @@
 .product-submit{
 	font-size: 21px;
 }
-
+/* 商品在庫テーブル　*/
 .product_stock_base{
     width: 100%;
 }
@@ -48,4 +48,187 @@
 }
 .p_s_pagi{
     text-align: center;
+
+/* 商品詳細ページ */
+
+.product-show-box{
+	width: 80%;
+	margin:0 auto;
+}
+.p-inbc{
+	height: 406px;
+	width: 100%;
+	margin-bottom:40px;
+}
+.p-title{
+	width: 250px;
+	background-color: whitesmoke;
+	margin-bottom: 10px;
+}
+.top_products_line{
+	border: solid 1px lightskyblue;
+	margin: 30px 0;
+}
+.product-image{
+	width: 30%;
+	float: left;
+	padding-right: 20px;
+}
+.product-image img{
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+.p-nb{
+	height: 360px;
+	width: 45%;
+	padding-right: 20px;
+	float: left;
+}
+.p-nb h1, .p-nb h3, .p-nb p{
+	word-break: break-all;
+}
+.product-name{
+	height: 200px;
+	width: 100%;
+	background-color: whitesmoke;
+	margin-bottom: 10px;
+}
+.star-rating {
+	position: relative;
+	width: 5em;
+	font-size: 25px;
+}
+  .star-rating-front {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	color: #ffcc33;
+  }
+  .star-rating-back {
+	color: #ccc;
+  }
+.benefit{
+	height: 150px;
+	width: 100%;
+	background-color: whitesmoke;
+}
+.cart-box{
+	height: 360px;
+	width: 25%;
+	float: left;
+	background-color: lightcyan;
+	text-align: center;
+}
+.cart_error_message{
+	margin: 20px 0;
+	color: red;
+	font-style: initial;
+}
+.cart_buy p,.cart_buy input{
+	display: inline;
+}
+.cart_buy input{
+	width: 50px;
+}
+.add_cart_button{
+	margin: 10px auto;
+	display: block;
+	
+}
+.add_cart_button a{
+	text-decoration: none;
+	font-size: 20px;
+	display: block;
+}
+.p-info{
+	height: 160px;
+	width: 100%;
+}
+table , td, th {
+	border: 1px solid #595959;
+	border-collapse: collapse;
+}
+td, th {
+	padding: 4px;
+}
+th {
+	background: #f0e6cc;
+}
+.even {
+	background: #fbf8f0;
+}
+.odd {
+	background: #fefcf9;
+}
+.p-music{
+width: 100%;
+margin-bottom: 40px;
+}
+.p-music-table{
+	width:  100%;
+}
+.p-review-box{
+	width: 100%;
+	margin-bottom: 40px;
+}
+.post-review{
+	width: 100%;
+	background-color: whitesmoke;
+	border: outset;
+	margin-bottom: 20px;
+}
+.post-review p{
+	font-size: 16px;
+}
+.post-review input{
+	width: 20%;
+	height: 30px;
+	background-color: skyblue;
+	font-size: 20px;
+}
+.my_review_text{
+	resize: none;
+	width: 100%;
+	padding: 2px;
+	font-size: 16px;
+}
+/* 星マークでの評価機能 */
+.evaluation{
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+  }
+  .evaluation input[type='radio']{
+	display: none;
+  }
+  .evaluation label{
+	position: relative;
+	padding: 10px 5px 0;
+	color: gray;
+	cursor: pointer;
+	font-size: 24px;
+  }
+  .evaluation label .text{
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	text-align: center;
+	font-size: 12px;
+	color: gray;
+  }
+  .evaluation label:hover,
+  .evaluation label:hover ~ label,
+  .evaluation input[type='radio']:checked ~ label{
+	color: #ffcc00;
+  }
+  /* ここまで星マーク */
+
+.border-box{
+	float: left;
+	height: 50px;
+	border-left: 2px solid #000000;
+>>>>>>> a6f4a4c8b5075e52325cc5a62e2d52b42b9381b3
 }

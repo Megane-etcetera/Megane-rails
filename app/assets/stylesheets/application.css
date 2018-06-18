@@ -27,7 +27,22 @@
     display: none;
 }
 body{
-    background-color: whitesmoke;
+    background-color: mintcream;
+}
+/* deviseログインサインイン */
+.sign_in_base, .sign_up_base{
+	width: 300px;
+	margin: 0 auto;
+}
+.sign_in_base h2, .sign_up_base h2{
+	color: red;
+}
+.sign_up_base input[type="submit"]{
+	font-size: 24px;
+}
+.sign_up_base textarea{
+	resize: none;
+	width: 200px;
 }
 
 /* admin共用 */
@@ -148,7 +163,7 @@ header{
 	height: 40px;
 	width: 100%;
 	text-align: center;
-	margin: 5px 0
+	margin: 5px 0;
 }
 .nav-list-item{
 	height: 40px;
@@ -158,6 +173,11 @@ header{
   	line-height: 40px;
 	background-color: darkolivegreen;
 	color: white;
+}
+.nav-list-item a{
+	color: white;
+	text-decoration: none;
+	display: block;
 }
 .nav-list-item:hover{
 	background-color: olive;

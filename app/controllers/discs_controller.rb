@@ -1,6 +1,5 @@
 class DiscsController < ApplicationController
   def new
-    @product = Product.find(params[:product_id])
     @disc = Disc.new
     @disc.tracks.build
   end
@@ -8,7 +7,6 @@ class DiscsController < ApplicationController
   def create
     @disc = Disc.new(disc_params)
     @disc.save
-    redirect_to  new_product_path
   end
 
   def edit

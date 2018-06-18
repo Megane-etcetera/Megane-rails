@@ -18,16 +18,18 @@ Rails.application.routes.draw do
   get 'contacts/finished'
   get "/products/:id" => "products#show", as: "product"
 
+
+  
+  resources :users, only: [:edit, :update, :show, :destroy]
+
+
   resources :contacts, except:[:destroy]
 
 
 
   scope :admins do
-    resources :products, only: [:new, :create, :edit, :update, :destroy, :index] do
-       resources :discs, only: [:new,:create,:edit,:update,:destroy]
+    resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
   end
-  end
-  
 
 
   scope :admins do
@@ -39,8 +41,13 @@ Rails.application.routes.draw do
   end
 
 
-  scope :products do 
-    resources :reviews, only: [:create,:edit,:update,:destroy]
+  resources :products do 
+    resources :reviews
+  end
+
+
+  scope :admins do
+    resources :discs, only: [:new,:create,:edit,:update,:destroy]
   end
 
 end
