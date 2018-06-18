@@ -22,3 +22,30 @@
 .product-submit{
 	font-size: 21px;
 }
+
+.product_stock_base{
+    width: 100%;
+}
+.stock_table{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.stock_table table{
+    width: 100%;
+}
+.stock_table tr:hover{
+    background-color: white;
+}
+.t_product_stock_id, .t_product_stock_stock, .t_product_stock_sell{
+    width: 10%;
+    text-align: center;
+}
+.t_product_stock_name{
+    width: 70%;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.p_s_pagi{
+    text-align: center;
+}
