@@ -17,11 +17,31 @@ Rails.application.routes.draw do
   get 'products/ranking'
   get 'contacts/finished'
 
+<<<<<<< HEAD
+
+
+
+  resources :admin do
+    resources :contacts, only: [:index,:show,:update]
+  end
+  
+  resources :admin do
+    member do
+      get 'contacts_finished'=>'contacts#finished'
+    end
+  end
+
+
+=======
   
   resources :users, only: [:edit, :update, :show, :destroy]
 
   resources :contacts, except:[:destroy]
+>>>>>>> a6f4a4c8b5075e52325cc5a62e2d52b42b9381b3
 
+   resources :users do
+     resources :contacts, only: [:new, :create]
+   end
 
 
   scope :admins do

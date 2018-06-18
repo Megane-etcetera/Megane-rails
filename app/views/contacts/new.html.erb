@@ -3,7 +3,7 @@
 <div class="contact_base">
 
 	<div class="contact-box">
-		<%= form_for @contact do |c| %>
+		<%= form_for ([@user, @contact]) do |c| %>
 
 		<label>お問い合わせカテゴリー</label><br>
 		<br>
