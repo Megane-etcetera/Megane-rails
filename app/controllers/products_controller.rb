@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def new
@@ -15,8 +16,8 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.admin_id = current_admin.id
-    book.save
-    redirect_to new_disc_path
+    product.save
+    redirect_to new_product_disc_path(product)
   end
 
   def edit
@@ -33,6 +34,6 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.requier(:product).permit(:admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image_id, :release_date)
+      params.require(:product).permit(:admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date)
     end
 end

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'products/ranking'
   get 'contacts/finished'
 
+<<<<<<< HEAD
 
 
 
@@ -31,6 +32,12 @@ Rails.application.routes.draw do
   end
 
 
+=======
+  
+  resources :users, only: [:edit, :update, :show, :destroy]
+
+  resources :contacts, except:[:destroy]
+>>>>>>> a6f4a4c8b5075e52325cc5a62e2d52b42b9381b3
 
    resources :users do
      resources :contacts, only: [:new, :create]
