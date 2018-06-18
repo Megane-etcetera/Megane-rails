@@ -17,19 +17,19 @@ Rails.application.routes.draw do
   get 'products/ranking'
   get 'contacts/finished'
 
-
-
-
   
   resources :users, only: [:edit, :update, :show, :destroy]
-  
-  resources :contacts
+
+  resources :contacts, except:[:destroy]
 
 
 
   scope :admins do
-    resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
+    resources :products, only: [:new, :create, :edit, :update, :destroy, :index] do
+       resources :discs, only: [:new,:create,:edit,:update,:destroy]
   end
+  end
+  
 
   resources :products, only: [:show]
 
@@ -42,13 +42,8 @@ Rails.application.routes.draw do
   end
 
 
-  resources :products do 
-    resources :reviews
-  end
-
-
-  scope :admins do
-    resources :discs, only: [:new,:create,:edit,:update,:destroy]
+  scope :products do 
+    resources :reviews, only: [:create,:edit,:update,:destroy]
   end
 
 end
