@@ -1,235 +1,238 @@
 <div class="product-show-box clearfix">
-		<div class="p-inbc">
-			<section class="p-title">
-				<h2>商品詳細</h2>
-			</section>
-		
-			<div class="product-image"><img src="img/test.jpg" alt="ジャケット画像"></div>
-			<div class="p-nb">
-				<div class="product-name">
-					<h1>CDsample_newtitle</h1>
-					<h3>歌手名</h3>
-					<div class="star-rating">
-						<!-- star-rating-frontのwidthの値を変えると黄色い★が増減します -->
-						<div class="star-rating-front" style="width: 50%">★★★★★</div>
-						<div class="star-rating-back">★★★★★</div>
-					</div>
-				</div>
-				<div class="benefit">
-					<p>取り扱い<br>発送<br>aaaaaaaaaaaaa</p>
-				</div>
-			</div>
-			<div class="cart-box">
-				<div class="cart_error_message">
-					えらー　現在品切れ中
-				</div>
-				<div class="cart_buy">
-					<p>数量</p><input type="number" value="1" min="1" max="100"><p>個</p>
-					<button class="add_cart_button"><a href="cart.html">カートへ入れる</a></button>
-				</div>
-			</div>
-		</div>
-		<div class="p-stat">
-			<section class="p-title">
-				<h2>商品情報</h2>
-			</section>
-			<div class="p-info">
-				<table>
-					<tbody>
-						<tr>
-							<td>発売日</td>
-							<td>2018/06/15</td>
-						</tr>
-						<tr>
-							<td>フォーマット</td>
-							<td>CD</td>
-						</tr>
-						<tr>
-							<td>構成数</td>
-							<td>1</td>
-						</tr>
-						<tr>
-							<td>レーベル</td>
-							<td>abcmusic</td>
-						</tr>
-						<tr>
-							<td>規格品番</td>
-							<td>qwer-qwer</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
+    <div class="p-inbc">
+        <section class="p-title">
+            <h2>商品詳細</h2>
+        </section>
+    
+        <div class="product-image"><%= attachment_image_tag @product, :image, fallback: "img/no_image.jpg" %></div>
+        <div class="p-nb">
+            <div class="product-name">
+                <h1><%= @product.product_title %></h1>
+                <h3>歌手名</h3>
+                <div class="star-rating">
+                    <!-- star-rating-frontのwidthの値を変えると黄色い★が増減します -->
+                    <div class="star-rating-front" style="width: 50%">★★★★★</div>
+                    <div class="star-rating-back">★★★★★</div>
+                </div>
+            </div>
+            <div class="benefit">
+				<% if @product.stock < 1 %>
+					<p>現在品切れ中</p>
+				<% elsif @product.stock < 10 %>
+					<p>在庫残りわずか</p>
+				<% else %>
+					<p>在庫あり</p>
+				<% end %>
+            </div>
+        </div>
+        <div class="cart-box">
+            <div class="cart_error_message">
+                えらー　現在品切れ中
+            </div>
+            <div class="cart_buy">
+				<h3><%= @product.price %>円</h3>
+                <p>数量</p><input type="number" value="1" min="1" max="100"><p>個</p>
+                <button class="add_cart_button"><a href="cart.html">カートへ入れる</a></button>
+            </div>
+        </div>
+    </div>
+    <div class="p-stat">
+        <section class="p-title">
+            <h2>商品情報</h2>
+        </section>
+        <div class="p-info">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>発売日</td>
+                        <td><%= @product.release_date %></td>
+                    </tr>
+					<tr>
+                        <td>ジャンル</td>
+                        <td><%= @product.genre.genre %></td>
+                    </tr>
+                    <tr>
+                        <td>レーベル</td>
+                        <td><%= @product.label.label %></td>
+                    </tr>
+                    <tr>
+                        <td>規格品番</td>
+                        <td><%= @product.item_number %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-		<div class="p-music">
-			<section class="p-title">
-				<h2>曲目一覧</h2>
-			</section>
-			<div class="p-music-table clearfix">
-				<div class="discs_and_tracks">
-					<h3>Disc1</h3>
-					<table>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>aaaaa</td>
-								<td>山田太郎</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>bbbbbbb</td>
-								<td>杉並一郎</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>c</td>
-								<td>マイケルジャクソン</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ddddddddddd</td>
-								<td>ボンゴレビアンコ</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>eeeee</td>
-								<td>神奈川県民</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>aaaaa</td>
-								<td>ロックマン</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>bbbbbbb</td>
-								<td>大杉漣</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>c</td>
-								<td>三遊亭円楽</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ddddddddddd</td>
-								<td>黒柳徹子</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>eeeee</td>
-								<td>カビゴン</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="discs_and_tracks">
-					<h3>Disc2</h3>
-					<table>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>aaaaa</td>
-								<td>ウィーン少年合唱団とゆかいな仲間たち</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>bbbbbbb</td>
-								<td>杉並一郎</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>c</td>
-								<td>マイケルジャクソン</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ddddddddddd</td>
-								<td>ボンゴレビアンコ</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>eeeee</td>
-								<td>Brexitに投票した人たち</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>aaaaa</td>
-								<td>ロックマン</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>bbbbbbb</td>
-								<td>大杉漣</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>c</td>
-								<td>市川海老蔵</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ddddddddddd</td>
-								<td>黒柳徹子</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>eeeee</td>
-								<td>カビゴン</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+    <div class="p-music">
+        <section class="p-title">
+            <h2>曲目一覧</h2>
+        </section>
+        <div class="p-music-table clearfix">
+            <div class="discs_and_tracks">
+                <h3>Disc1</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>aaaaa</td>
+                            <td>山田太郎</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>bbbbbbb</td>
+                            <td>杉並一郎</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>c</td>
+                            <td>マイケルジャクソン</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ddddddddddd</td>
+                            <td>ボンゴレビアンコ</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>eeeee</td>
+                            <td>神奈川県民</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>aaaaa</td>
+                            <td>ロックマン</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>bbbbbbb</td>
+                            <td>大杉漣</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>c</td>
+                            <td>三遊亭円楽</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>ddddddddddd</td>
+                            <td>黒柳徹子</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>eeeee</td>
+                            <td>カビゴン</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="discs_and_tracks">
+                <h3>Disc2</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>aaaaa</td>
+                            <td>ウィーン少年合唱団とゆかいな仲間たち</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>bbbbbbb</td>
+                            <td>杉並一郎</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>c</td>
+                            <td>マイケルジャクソン</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ddddddddddd</td>
+                            <td>ボンゴレビアンコ</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>eeeee</td>
+                            <td>Brexitに投票した人たち</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>aaaaa</td>
+                            <td>ロックマン</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>bbbbbbb</td>
+                            <td>大杉漣</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>c</td>
+                            <td>市川海老蔵</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>ddddddddddd</td>
+                            <td>黒柳徹子</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>eeeee</td>
+                            <td>カビゴン</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-		<div class="p-review-box">
-			<div class="my_review">
-				<section class="p-title">
-					<h2>レビューを投稿する</h2>
-				</section>
-				<div class="evaluation">
-					<input id="star1" type="radio" name="star" value="5" />
-					<label for="star1"><span class="text">最高</span>★</label>
-					<input id="star2" type="radio" name="star" value="4" />
-					<label for="star2"><span class="text">良い</span>★</label>
-					<input id="star3" type="radio" name="star" value="3" />
-					<label for="star3"><span class="text">普通</span>★</label>
-					<input id="star4" type="radio" name="star" value="2" />
-					<label for="star4"><span class="text">悪い</span>★</label>
-					<input id="star5" type="radio" name="star" value="1" />
-					<label for="star5"><span class="text">最悪</span>★</label>
-				</div>
-				<div class="post-review">
-					<textarea class="my_review_text" rows="15" placeholder="感想を入力できます" type="text"></textarea>
-					<br>
-					<input type="button" value="投稿する">
-				</div>
-			</div>
+    <div class="p-review-box">
+        <div class="my_review">
+            <section class="p-title">
+                <h2>レビューを投稿する</h2>
+            </section>
+            <div class="evaluation">
+                <input id="star1" type="radio" name="star" value="5" />
+                <label for="star1"><span class="text">最高</span>★</label>
+                <input id="star2" type="radio" name="star" value="4" />
+                <label for="star2"><span class="text">良い</span>★</label>
+                <input id="star3" type="radio" name="star" value="3" />
+                <label for="star3"><span class="text">普通</span>★</label>
+                <input id="star4" type="radio" name="star" value="2" />
+                <label for="star4"><span class="text">悪い</span>★</label>
+                <input id="star5" type="radio" name="star" value="1" />
+                <label for="star5"><span class="text">最悪</span>★</label>
+            </div>
+            <div class="post-review">
+                <textarea class="my_review_text" rows="15" placeholder="感想を入力できます" type="text"></textarea>
+                <br>
+                <input type="button" value="投稿する">
+            </div>
+        </div>
 
-			<div class="other_review">
-				<section class="p-title">
-					<h2>他のユーザーレビュー</h2>
-				</section>
-				<div class="star-rating">
-					<!-- star-rating-frontのwidthの値を変えると黄色い★が増減します -->
-					<div class="star-rating-front" style="width: 80%">★★★★★</div>
-					<div class="star-rating-back">★★★★★</div>
-				</div>
-				<div class="post-review">
-					<p>東京都内で展開する人気立ち食い寿司、握り1貫75円からとハイコスパ＆リーズナブルさで話題のお店です<br>
-						中ノ島フェスティバル店に続く関西2号店に選んだのは、5/1にオープンした阪神梅田スナックパーク❤<br>
-						注文を受けてから目の前で職人が握る本格的な江戸前寿司、煮る・焼く・しめるといった江戸前の職人技とネタの鮮度を、スタンディングでサクッと堪能できます。酢を控えめにして、一肌の温度にふんわり握っているシャリも美味<br>
-						○魚がし握り800円<br>
-						イカ・サーモン・軍艦など9貫に玉子つまみ、赤だしがついて衝撃の800円<br>
-						コスパにびっくり( ; ゜Д゜)　<br>
-						○サーモン親子巻き680円<br>
-						サーモンとイクラでご飯が見えない。。。<br>
-						テイクアウト専用なので、スナックパークのスタンディングスペースに持っていって食べます。<br>
-						並んでますが、回転は早いですね。</p>
-				</div>
-			</div>
+        <div class="other_review">
+            <section class="p-title">
+                <h2>他のユーザーレビュー</h2>
+            </section>
+            <div class="star-rating">
+                <!-- star-rating-frontのwidthの値を変えると黄色い★が増減します -->
+                <div class="star-rating-front" style="width: 80%">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+            </div>
+            <div class="post-review">
+                <p>東京都内で展開する人気立ち食い寿司、握り1貫75円からとハイコスパ＆リーズナブルさで話題のお店です<br>
+                    中ノ島フェスティバル店に続く関西2号店に選んだのは、5/1にオープンした阪神梅田スナックパーク❤<br>
+                    注文を受けてから目の前で職人が握る本格的な江戸前寿司、煮る・焼く・しめるといった江戸前の職人技とネタの鮮度を、スタンディングでサクッと堪能できます。酢を控えめにして、一肌の温度にふんわり握っているシャリも美味<br>
+                    ○魚がし握り800円<br>
+                    イカ・サーモン・軍艦など9貫に玉子つまみ、赤だしがついて衝撃の800円<br>
+                    コスパにびっくり( ; ゜Д゜)　<br>
+                    ○サーモン親子巻き680円<br>
+                    サーモンとイクラでご飯が見えない。。。<br>
+                    テイクアウト専用なので、スナックパークのスタンディングスペースに持っていって食べます。<br>
+                    並んでますが、回転は早いですね。</p>
+            </div>
+        </div>
 
-		</div>
+    </div>
 
-	</div>
+</div>

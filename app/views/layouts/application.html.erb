@@ -69,6 +69,7 @@
 				</li>
 				<li class="nav-list-item">新商品</li>
 				<li class="nav-list-item">ランキング</li>
+				<%# userがログインしているかどうかで表示を変える %>
 <% if user_signed_in? %>
 				<li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 <% else %>
@@ -86,8 +87,13 @@
 	
 	<div class="f-nav">
 		<ul class="f-nav-list">
-			<li class="f-nav-list-item"><div><a href="top.html">TOP</a></li>
-			<li class="f-nav-list-item"><a href="user.html">マイページ</a></li>
+			<li class="f-nav-list-item"><%= link_to "TOP", root_path %></li>
+<% if user_signed_in? %>
+			<li class="f-nav-list-item"><%= link_to "マイページ", user_path(current_user.id) %></li>
+<% else %>
+			<%# ログインできていなければログイン画面へ飛ばす %>
+			<li class="f-nav-list-item"><%= link_to "マイページ", new_user_session_path %></li>
+<% end %>
 			<li class="f-nav-list-item"><a href="cart.html">カート</a></li>
 			<li class="f-nav-list-item">ランキング</li>
 			<li class="f-nav-list-item">適当何か</li>
@@ -97,7 +103,7 @@
 		<div class="kabusiki">
 			<p>株式会社 Smile eyes</p><br>
 			<p>TEL 000-0000-0000</p><br>
-			<p>住所　東京都　丸々区　丸々　1-11-11</p>
+			<p>住所　福井県鯖江市メガネ2丁目5-3</p>
 		</div>
 	
 	<div class="f-icon-box">
