@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'products/ranking'
   get 'contacts/finished'
 
+  
+  resources :users, only: [:edit, :update, :show, :destroy]
 
   resources :contacts, except:[:destroy]
 
