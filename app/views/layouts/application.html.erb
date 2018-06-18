@@ -61,16 +61,19 @@
 				<li class="nav-list-item nav_list_genre">
 					ジャンル
 					<ul id="header_genres" class="notdisp">
-						<li name="header_nav-genre">J-pop</li>
-						<li name="header_nav-genre">歌謡曲</li>
-						<li name="header_nav-genre">演歌</li>
-						<li name="header_nav-genre">洋楽</li>
-						<li name="header_nav-genre">アニメ</li>
+					<%# 登録されているジャンルを優先順にリスト表示 class="notdisp"が付いてるのでマウスのせるまでは見えない %>
+						<% Genre.all.order(:priority).each do |ge| %>
+							<li name="header_nav-genre"><%= ge.genre %></li>
+					<% end %>
 					</ul>
 				</li>
 				<li class="nav-list-item">新商品</li>
 				<li class="nav-list-item">ランキング</li>
+<% if user_signed_in? %>
+				<li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+<% else %>
 				<li class="nav-list-item"><%= link_to "ログイン", new_user_session_path %></li>
+<% end %>
 			</ul>
 		</nav>
 	</div>
