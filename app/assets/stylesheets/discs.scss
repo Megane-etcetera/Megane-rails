@@ -4,87 +4,52 @@
 /* product_touroku.html */
 .disc_track_touroku_base{
     width: 100%;
-}
-.disk_name{
-	width: 10%;
-	margin: 0 auto;
+    background-color: white;
+    padding: 50px 0;
 }
 .disc_touroku{
     width: 80%;
-    margin: 10px auto;
+    background-color: red;
+    margin: 0 auto;
     border: 1px solid;
 }
-.d_disc{
-	height: 25px;
-    font-size: 17px;
+.disc_touroku input, .disc_touroku select{
+    height: 24px;
+}
+.d_disc, .d_type{
+    display: inline;
+    margin-right: 10px;
+    font-size: 24px;
 }
 .d_type{
-    height: 25px;
-    font-size: 17px;
+    display: inline;
+    margin-right: 10px;
 }
 .track_touroku{
     width: 90%;
     margin: 0 auto;
+    background-color: blue;
     border: 1px solid;
 }
-.track_number_box{
+.track_number{
     float: left;
     width: 20%;
-}
-.track_number{
-	height: 25px;
-	font-size: 17px;
 }
 .track_name_box{
     float: left;
     width: 40%;
 }
-.track_name{
-	height: 25px;
-	font-size: 17px;
-	width:80%;
-	margin-bottom: 5px;
-}
 .artist_name_box{
     float: left;
     width: 40%;
-}
-.artist_name{
-	height: 25px;
-	font-size: 17px;
-	width:80%;
-	margin-bottom: 5px;
 }
 .disc_track_submit{
     margin-top: 30px;
     text-align: center;
 }
 .add_disc_button{
-    margin:0 auto;
-    font-size: 17px;
-    width: 100px;
-    border: outset;
+    margin-right: 30px;
 }
-.add_track_button{
-	font-size: 17px;
-	border: outset;
-	width: 130px;
-}
-.remove_track_button{
-	font-size: 17px;
-	border: outset;
-	width: 130px;
-	float: left;
-}
-.remove_disc_button{
-	font-size: 13px;
-	width: 80px;
-	float: left;
-	border: outset;
-	height: 25px;
-}
-.submit{
-	margin: 0 auto 40px;
-    font-size: 17px;
-    width: 50px;
+.disc_track_submit button{
+    font-size: 24px;
 }

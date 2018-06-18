@@ -27,7 +27,7 @@
     display: none;
 }
 body{
-    background-color: whitesmoke;
+    background-color: mintcream;
 }
 /* deviseログインサインイン */
 .sign_in_base, .sign_up_base{
@@ -164,6 +164,7 @@ header{
 	width: 100%;
 	text-align: center;
 	margin: 5px 0;
+	
 }
 .nav-list-item{
 	height: 40px;
