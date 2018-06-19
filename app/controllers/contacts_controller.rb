@@ -15,9 +15,10 @@ class ContactsController < ApplicationController
 
   def index 
       @admin =Admin.find(params[:admin_id])
+      
       @contact = Contact.where(situations: params[:situations],situations: 0)
       @contacts = Contact.where(situations: params[:situations],situations: 1)
-      # @user = User.find(params[:id])
+      
       
       
   end
@@ -42,7 +43,6 @@ class ContactsController < ApplicationController
       @admin =Admin.find(params[:admin_id])
       @contact.situations = params[:situations]
       @contact.update(contact_params)
-      binding.pry
       redirect_to admin_contacts_path(@admin)
 
      
