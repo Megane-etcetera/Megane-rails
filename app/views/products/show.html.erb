@@ -95,23 +95,25 @@
             <section class="p-title">
                 <h2>レビューを投稿する</h2>
             </section>
-            <div class="evaluation">
-                <input id="star1" type="radio" name="star" value="5" />
-                <label for="star1"><span class="text">最高</span>★</label>
-                <input id="star2" type="radio" name="star" value="4" />
-                <label for="star2"><span class="text">良い</span>★</label>
-                <input id="star3" type="radio" name="star" value="3" />
-                <label for="star3"><span class="text">普通</span>★</label>
-                <input id="star4" type="radio" name="star" value="2" />
-                <label for="star4"><span class="text">悪い</span>★</label>
-                <input id="star5" type="radio" name="star" value="1" />
-                <label for="star5"><span class="text">最悪</span>★</label>
-            </div>
-            <div class="post-review">
-                <textarea class="my_review_text" rows="15" placeholder="感想を入力できます" type="text"></textarea>
-                <br>
-                <input type="button" value="投稿する">
-            </div>
+            <%= form_for([@product, @review]) do |myr| %>  
+                <div class="evaluation">
+                    <%= myr.radio_button :star, "5" %>
+                    <label for="review_star_5"><span class="text">最高</span>★</label>
+                    <%= myr.radio_button :star, "4" %>
+                    <label for="review_star_4"><span class="text">良い</span>★</label>
+                    <%= myr.radio_button :star, "3" %>
+                    <label for="review_star_3"><span class="text">普通</span>★</label>
+                    <%= myr.radio_button :star, "2" %>
+                    <label for="review_star_2"><span class="text">悪い</span>★</label>
+                    <%= myr.radio_button :star, "1" %>
+                    <label for="review_star_1"><span class="text">最悪</span>★</label>
+                </div>
+                <div class="post-review">
+                    <%= myr.text_field :review_title, placeholder: "タイトルを入力" %><br>
+                    <%= myr.text_area :review_message, placeholder: "感想を入力できます" %>
+                    <button type="submit">投稿する</button>
+                </div>
+            <% end %>
         </div>
 
         <div class="other_review">

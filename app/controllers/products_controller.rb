@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @disc = @product.discs
     @track = Track.find(@disc)
+    @review = Review.new
   end
 
   def new
