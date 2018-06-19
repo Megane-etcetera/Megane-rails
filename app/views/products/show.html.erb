@@ -11,8 +11,29 @@
                 <h1><%= @product.product_title %></h1>
                 <h3>歌手名</h3>
                 <div class="star-rating">
-                    <!-- star-rating-frontのwidthの値を変えると黄色い★が増減します -->
+                    <%# 黄色い★ %>
+                <% if @average == nil %>
+                    <div class="star-rating-front" style="width: 0%">★★★★★</div>
+                <% elsif @average < 1.5 %>
+                    <div class="star-rating-front" style="width: 20%">★★★★★</div>
+                <% elsif @average < 2 %>
+                    <div class="star-rating-front" style="width: 30%">★★★★★</div>
+                <% elsif @average < 2.5 %>
+                    <div class="star-rating-front" style="width: 40%">★★★★★</div>
+                <% elsif @average < 3 %>
                     <div class="star-rating-front" style="width: 50%">★★★★★</div>
+                <% elsif @average < 3.5 %>
+                    <div class="star-rating-front" style="width: 60%">★★★★★</div>
+                <% elsif @average < 4 %>
+                    <div class="star-rating-front" style="width: 70%">★★★★★</div>
+                <% elsif @average < 4.5 %>
+                    <div class="star-rating-front" style="width: 80%">★★★★★</div>
+                <% elsif @average < 5 %>
+                    <div class="star-rating-front" style="width: 90%">★★★★★</div>
+                <% else %>
+                    <div class="star-rating-front">★★★★★</div>
+                <% end %>
+                    <%# 黒い★ %>
                     <div class="star-rating-back">★★★★★</div>
                 </div>
             </div>
