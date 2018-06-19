@@ -38,15 +38,14 @@
 	                    </tr> 
 	                    <tr>
 	                    	<td class="td_contact_show">状況</td>
-<<<<<<< HEAD
+
 	                    	<td class="td_contact_show_content">
 	                    		<%= c.select :situations,Contact.situations.keys.map {|k| [k,k]}%>
+
 	                    		
 	                    			
 	                    	</td>
-=======
-	                    	<td class="td_contact_show_content"><%= c.select :status, [["未対応", "未対応"],["対応中","対応中"],["対応済み","対応済み"]], class: "contact-select" %></td>
->>>>>>> a6f4a4c8b5075e52325cc5a62e2d52b42b9381b3
+
 	                    </tr> 
         		</table>
         	<%= c.submit '更新する', class: 'center-button' %>

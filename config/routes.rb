@@ -16,8 +16,18 @@ Rails.application.routes.draw do
   get 'products/search'
   get 'products/ranking'
   get 'contacts/finished'
+  get 'cart/show'
+  post 'cart/add_product'
 
-<<<<<<< HEAD
+
+
+resources :user do 
+   member do
+    get 'cart/show'  =>'cart#show'
+    post 'cart/add_product' =>'cart#add_product'
+  end
+end
+
 
 
 
@@ -32,12 +42,9 @@ Rails.application.routes.draw do
   end
 
 
-=======
-  
   resources :users, only: [:edit, :update, :show, :destroy]
 
   resources :contacts, except:[:destroy]
->>>>>>> a6f4a4c8b5075e52325cc5a62e2d52b42b9381b3
 
    resources :users do
      resources :contacts, only: [:new, :create]
