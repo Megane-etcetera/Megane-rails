@@ -16,6 +16,19 @@ Rails.application.routes.draw do
   get 'products/search'
   get 'products/ranking'
   get 'contacts/finished'
+
+  get 'cart/show'
+  post 'cart/add_product'
+
+
+
+resources :user do 
+   member do
+    get 'cart/show'  =>'cart#show'
+    post 'cart/add_product' =>'cart#add_product'
+  end
+end
+
   get "/products/:id" => "products#show", as: "product"
 
 
@@ -35,7 +48,6 @@ Rails.application.routes.draw do
 
 
 
-  
   resources :users, only: [:edit, :update, :show, :destroy]
 
 
