@@ -3,8 +3,9 @@
         <section class="p-title">
             <h2>商品詳細</h2>
         </section>
-    
+
         <div class="product-image"><%= attachment_image_tag @product, :image, fallback: "img/no_image.jpg" %></div>
+
         <div class="p-nb">
             <div class="product-name">
                 <h1><%= @product.product_title %></h1>
@@ -70,122 +71,25 @@
         </section>
         <div class="p-music-table clearfix">
             <div class="discs_and_tracks">
-                <h3>Disc1</h3>
+                
                 <table>
+                        <% @disc.each do |disc| %>
+                        <h3>Disc<%= disc.disc_number %></h3>
                     <tbody>
+                        <% @track.each do |track| %>
                         <tr>
-                            <td>1</td>
-                            <td>aaaaa</td>
-                            <td>山田太郎</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>bbbbbbb</td>
-                            <td>杉並一郎</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>c</td>
-                            <td>マイケルジャクソン</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>ddddddddddd</td>
-                            <td>ボンゴレビアンコ</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>eeeee</td>
-                            <td>神奈川県民</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>aaaaa</td>
-                            <td>ロックマン</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>bbbbbbb</td>
-                            <td>大杉漣</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>c</td>
-                            <td>三遊亭円楽</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>ddddddddddd</td>
-                            <td>黒柳徹子</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>eeeee</td>
-                            <td>カビゴン</td>
+                            <td><%= track.track_number %></td>
+                            <td><%= track.track_title %></td>
+                            <td><%= track.artist_name %></td>
                         </tr>
                     </tbody>
                 </table>
+                <% end %>
+                <% end %>
             </div>
-            <div class="discs_and_tracks">
-                <h3>Disc2</h3>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>aaaaa</td>
-                            <td>ウィーン少年合唱団とゆかいな仲間たち</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>bbbbbbb</td>
-                            <td>杉並一郎</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>c</td>
-                            <td>マイケルジャクソン</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>ddddddddddd</td>
-                            <td>ボンゴレビアンコ</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>eeeee</td>
-                            <td>Brexitに投票した人たち</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>aaaaa</td>
-                            <td>ロックマン</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>bbbbbbb</td>
-                            <td>大杉漣</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>c</td>
-                            <td>市川海老蔵</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>ddddddddddd</td>
-                            <td>黒柳徹子</td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>eeeee</td>
-                            <td>カビゴン</td>
-                        </tr>
-                    </tbody>
-                </table>
+            
             </div>
         </div>
-    </div>
-
     <div class="p-review-box">
         <div class="my_review">
             <section class="p-title">

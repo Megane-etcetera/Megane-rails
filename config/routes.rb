@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'products/search'
   get 'products/ranking'
   get 'contacts/finished'
+  get "/products/:id" => "products#show", as: "product"
+
 
 <<<<<<< HEAD
 
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:edit, :update, :show, :destroy]
 
+
   resources :contacts, except:[:destroy]
 >>>>>>> a6f4a4c8b5075e52325cc5a62e2d52b42b9381b3
 
@@ -48,7 +51,6 @@ Rails.application.routes.draw do
     resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
   end
 
-  resources :products, only: [:show]
 
   scope :admins do
     resources :genres, only: [:create,:destroy, :index]
