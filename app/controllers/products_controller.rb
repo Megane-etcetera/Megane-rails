@@ -9,8 +9,8 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @disc = @product.discs
-    @track = Track.find(@disc)
     @review = Review.new
+    @reviews = Review.where(product_id: @product.id)
   end
 
   def new
