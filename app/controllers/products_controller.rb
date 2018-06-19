@@ -8,6 +8,8 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @disc = @product.discs
+    @track = Track.find(@disc)
   end
 
   def new
@@ -18,7 +20,7 @@ class ProductsController < ApplicationController
     product = Product.new(product_params)
     product.admin_id = current_admin.id
     product.save
-    redirect_to new_product_disc_path(product)
+    redirect_to new_disc_path(product)
   end
 
   def edit
