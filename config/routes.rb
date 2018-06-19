@@ -61,6 +61,10 @@ Rails.application.routes.draw do
   end
 
 
+  scope :products do 
+    resources :reviews
+  end
+  
   resources :products do 
     resources :reviews
   end

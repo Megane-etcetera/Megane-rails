@@ -5,19 +5,29 @@ class ReviewsController < ApplicationController
     @review.product_id = params[:product_id]
     if @review.save
       # 保存できたら商品詳細ページに戻って欲しいが、パスがわからん
-      redirect_to root_path
+      redirect_to product_path(@review.product_id)
     else
       redirect_to root_path
     end
   end
 
   def edit
+    @review = Review.find(params[:id])
+    if @review.user != current_user
+      redirect_to product_path(@review.product_id), notice:'＜error＞投稿者以外は編集することができません'      
+    end
   end
 
   def update
-  end
+    review = Review.find(params[:id])
+    review.update(review_params)
+    redirect_to product_path(review.product_id)
+    end
 
   def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to product_path(review.product_id)
   end
 
   private
