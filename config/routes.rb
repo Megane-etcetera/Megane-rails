@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'products/search'
   get 'products/ranking'
   get 'contacts/finished'
+
   get 'cart/show'
   post 'cart/add_product'
 
@@ -28,7 +29,11 @@ resources :user do
   end
 end
 
+  get "/products/:id" => "products#show", as: "product"
 
+
+
+  
 
 
   resources :admin do
@@ -42,9 +47,12 @@ end
   end
 
 
+
   resources :users, only: [:edit, :update, :show, :destroy]
 
+
   resources :contacts, except:[:destroy]
+
 
    resources :users do
      resources :contacts, only: [:new, :create]
@@ -55,7 +63,6 @@ end
     resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
   end
 
-  resources :products, only: [:show]
 
   scope :admins do
     resources :genres, only: [:create,:destroy, :index]
