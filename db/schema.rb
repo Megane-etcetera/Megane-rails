@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180617051657) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.integer "situations" 
     t.text "admin_comment"
   end
 

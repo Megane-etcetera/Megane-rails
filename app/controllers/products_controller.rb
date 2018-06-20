@@ -8,8 +8,10 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @average = Review.where(product_id: @product.id).average(:star)
     @disc = @product.discs
     @review = Review.new
+    @reviews = Review.where(product_id: @product.id)
   end
 
   def new

@@ -1,2 +1,15 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<div class="edit_review_box"><h1>レビュー編集画面</h1>
+
+<%= form_for(@review) do |r| %>
+        <p>★の数</p>
+        <%= r.select :star, [["1", 1],["2", 2],["3", 3],["4", 4],["5", 5]] %>個
+
+        <p>タイトル</p> 
+        <%= r.text_field :review_title %>
+
+        <p>感想</p>
+        <%= r.text_area :review_message %>
+
+        <%= r.submit '編集完了' %>
+<% end %>
+</div>

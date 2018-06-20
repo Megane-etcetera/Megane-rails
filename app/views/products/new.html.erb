@@ -21,7 +21,7 @@
             <p>商品型番</p>
             <%= f.text_field :item_number,class: "product-form" %>
             <p>発売日</p>
-            <%= f.text_field :release_date,class: "product-form" %>
+            <%= f.text_field :release_date,class: "product-form", placeholder: "YYYY/MM/DD" %>
                 <br>
             <%= f.submit '登録',:class => "product-submit" %>
         <% end %>
