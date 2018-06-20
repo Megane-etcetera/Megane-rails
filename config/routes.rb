@@ -36,8 +36,8 @@ resources :users do
 end
 
   get "/products/:id" => "products#show", as: "product"
-
-
+  delete "/admins/products/:id" => "products#destroy",as: "destroy_product"
+  delete "/admins/products/:product_id/discs/:id" => "discs#destroy",as: "destroy_disc"
 
 
   
@@ -68,6 +68,7 @@ end
   scope :admins do
     resources :products, only: [:new, :create, :edit, :update, :index] do
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
+       resources :discs, only: [:new,:create,:edit,:update,:show] do
           resources :tracks, only: [:new,:create,:edit,:update,:destroy,:show]
   end
   end
@@ -81,7 +82,6 @@ end
   scope :admins do
     resources :labels, only: [:create,:destroy, :index]
   end
-
 
   resources :products do
     resources :reviews

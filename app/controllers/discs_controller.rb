@@ -20,8 +20,8 @@ class DiscsController < ApplicationController
   end
 
   def edit
-
-
+    @product = Product.find(params[:product_id])
+    @disc = Disc.find(@params[:id])
   end
 
   def update
@@ -32,6 +32,10 @@ class DiscsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:product_id])
+    @disc = Disc.find(params[:id])
+    @disc.destroy
+    redirect_to edit_product_path(@product)
   end
 
   private

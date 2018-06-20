@@ -1,2 +1,20 @@
-<h1>Discs#edit</h1>
-<p>Find me in app/views/discs/edit.html.erb</p>
+<h1>Disc選択</h1>
+<table border="1">
+		<thead>
+			<tr>
+				<th>Discナンバー</th> 
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @disc.each do |disc| %>
+			<tr>
+				<td><%= disc.discnumber %></td>
+				<td><%= link_to "編集", edit_product_disc_track_path(@product,@disc) %></td>
+				<td><%= link_to "削除", destroy_disc_path(@product,@disc),method: :delete %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>

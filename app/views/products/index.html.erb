@@ -7,13 +7,19 @@
                     <th class="t_product_stock_name">商品名</th>
                     <th class="t_product_stock_stock">在庫</th>
                     <th class="t_product_stock_sell">売上数</th>
+                    <th class="t_product_stock_e_d">編集削除</th>
                 </tr>
                 <% @product.each do |product| %>
                 <tr>
                     <td class="t_product_stock_id"><%= product.id %></td>
                     <td class="t_product_stock_name"><%= link_to product.product_title, product_path(product) %></td>
-                    <td class="t_product_stock_stock">product.stock</td>
+                    <td class="t_product_stock_stock"><%= product.stock %></td>
                     <td class="t_product_stock_sell">777</td>
+                    <td class="t_product_stock_e_d">
+                        <%= link_to "編集", edit_product_path(product) %>
+                        <%= link_to "削除", destroy_product_path(product) ,method: :delete %>
+
+                    </td>
                 </tr>
                <% end %>
             </table>
