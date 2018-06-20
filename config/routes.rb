@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -32,10 +33,6 @@ end
   get "/products/:id" => "products#show", as: "product"
 
 
-
-  
-
-
   resources :admin do
     resources :contacts, only: [:index,:show,:update]
   end
@@ -45,8 +42,6 @@ end
       get 'contacts_finished'=>'contacts#finished'
     end
   end
-
-
 
   resources :users, only: [:edit, :update, :show, :destroy]
 
@@ -59,8 +54,14 @@ end
    end
 
 
+
+
   scope :admins do
-    resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
+    resources :products, only: [:new, :create, :edit, :update, :destroy, :index] do
+       resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
+          resources :tracks, only: [:new,:create,:edit,:update,:destroy,:show]
+  end
+  end
   end
 
 
@@ -76,14 +77,9 @@ end
   scope :products do 
     resources :reviews
   end
-  
-  resources :products do 
+
+  resources :products do
     resources :reviews
-  end
-
-
-  scope :admins do
-    resources :discs, only: [:new,:create,:edit,:update,:destroy]
   end
 
 end

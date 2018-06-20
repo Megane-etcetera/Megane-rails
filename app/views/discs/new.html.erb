@@ -1,99 +1,13 @@
-<div  id="AddDisc" class="disc_touroku clearfix notdisp">
-		<div class="remove_disc_button">Discを削除</div>
-			<%= form_for @disc, url: product_discs_path do |f| %>
+<div class="disc_touroku_base">
+	<div class="disc_touroku">
+			<%= form_for @disc, url: product_discs_path(@product,@disc) do |f| %>
 		    	<%= f.label :"Disc" %>
 		    	<%= f.select :disc_number,[["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], {}, {class:  "d_disc"} %>
 		    	<%= f.select :disc_type,[["CD","CD"],["DVD","DVD"]], {}, {class:  "d_type"} %>
 
-
-		    <div class="track_touroku clearfix">
-		        <%= f.fields_for :tracks do |tracks_f| %>
-		        	<div class="track_number_box">
-		            	<%= tracks_f.label :track_number,"トラックナンバー" %>
-		            	<%= tracks_f.select :track_number,[["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]],{}, {class:  "track_number"} %>
-		        	</div>
-		        	<div class="track_name_box">
-		            		<%= tracks_f.label :track_title,"曲名",class: "track_name" %><br>
-		            		<%= tracks_f.text_field :track_title,class: "track_name" %><br>
-		            		<%= tracks_f.label :track_title_kana,"曲名かな",class: "track_name" %><br>
-		            		<%= tracks_f.text_field :track_title_kana,class: "track_name" %>
-		        	</div>
-		        	<div class="artist_name_box">
-		            		<%= tracks_f.label :artist_name,"アーティスト名",class: "artist_name" %><br>
-		            		<%= tracks_f.text_field :artist_name,class: "artist_name" %><br>
-		            		<%= tracks_f.label :artist_name_kana,"アーティスト名かな",class: "artist_name" %><br>
-		            		<%= tracks_f.text_field :artist_name_kana,class: "artist_name" %>
-		    		</div>
-		    	<% end %>
-		    </div>
-		    <div class="add_track_button">トラックを追加</div>
-		    	<% end %>
+		    <%= f.submit '登録',:class => "disc-submit" %>
+		    <% end %>
 	</div>
+</div>
 
-
-			 <div id="AddTrack" class="track_touroku notdisp clearfix">
-			 	<%= form_for @disc, url: product_discs_path do |f| %>
-		        <%= f.fields_for :tracks do |tracks_f| %>
-		        	<div class="track_number_box">
-		            	<%= tracks_f.label :track_number,"トラックナンバー" %>
-		            	<%= tracks_f.select :track_number,[["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]],{}, {class:  "track_number"} %>
-		        	</div>
-		        	<div class="track_name_box">
-		            		<%= tracks_f.label :track_title,"曲名",class: "track_name" %><br>
-		            		<%= tracks_f.text_field :track_title,class: "track_name" %><br>
-		            		<%= tracks_f.label :track_title_kana,"曲名かな",class: "track_name" %><br>
-		            		<%= tracks_f.text_field :track_title_kana,class: "track_name" %>
-		        	</div>
-		        	<div class="artist_name_box">
-		            		<%= tracks_f.label :artist_name,"アーティスト名",class: "artist_name" %><br>
-		            		<%= tracks_f.text_field :artist_name,class: "artist_name" %><br>
-		            		<%= tracks_f.label :artist_name_kana,"アーティスト名かな",class: "artist_name" %><br>
-		            		<%= tracks_f.text_field :artist_name_kana,class: "artist_name" %>
-		    		</div>
-		    	<% end %>
-		    	<% end %>
-		    	<div class="remove_track_button">トラックを削除</div>
-		    </div>
-
-
-
-	<div class="disc_track_touroku_base">
-		<section class="disk_name">
-			<%= @product.product_title %>
-		</section>
-
-		<div class="disc_touroku clearfix;">
-
-			<%= form_for @disc, url: product_discs_path do |f| %>
-		    	<%= f.label :"Disc" %>
-		    	<%= f.select :disc_number,[["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], {}, {class:  "d_disc"} %>
-		    	<%= f.select :disc_type,[["CD","CD"],["DVD","DVD"]], {}, {class:  "d_type"} %>
-
-		    <div class="track_touroku clearfix">
-		        <%= f.fields_for :tracks do |tracks_f| %>
-		        	<div class="track_number_box">
-		            	<%= tracks_f.label :track_number,"トラックナンバー" %>
-		            	<%= tracks_f.select :track_number,[["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]],{}, {class:  "track_number"} %>
-		        	</div>
-		        	<div class="track_name_box">
-		            		<%= tracks_f.label :track_title,"曲名",class: "track_name" %><br>
-		            		<%= tracks_f.text_field :track_title,class: "track_name" %><br>
-		            		<%= tracks_f.label :track_title_kana,"曲名かな",class: "track_name" %><br>
-		            		<%= tracks_f.text_field :track_title_kana,class: "track_name" %>
-		        	</div>
-		        	<div class="artist_name_box">
-		            		<%= tracks_f.label :artist_name,"アーティスト名",class: "artist_name" %><br>
-		            		<%= tracks_f.text_field :artist_name,class: "artist_name" %><br>
-		            		<%= tracks_f.label :artist_name_kana,"アーティスト名かな",class: "artist_name" %><br>
-		            		<%= tracks_f.text_field :artist_name_kana,class: "artist_name" %>
-		    		</div>
-		    	<% end %>
-		    </div>
-		    <div class="add_track_button">トラックを追加</div>
-		</div>
-		<div class="disc_track_submit"></div>
-		<div class="add_disc_button">Discを追加</div>
-		<%= f.submit "登録",class: "submit" %> <!--登録ボタンを移動する術が不明なので後回し-->
-		   	<% end %>
-
-	</div>
+		    
