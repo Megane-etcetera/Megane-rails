@@ -71,7 +71,13 @@
 				<li class="nav-list-item">ランキング</li>
 				<%# userがログインしているかどうかで表示を変える %>
 <% if user_signed_in? %>
-				<li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+				<li class="nav-list-item nav_list_user">
+					<p><%= current_user.name %> 様</p>
+					<ul id="header_user" class="notdisp">
+						<li><%= link_to "マイページ", user_path(current_user.id) %></li>
+						<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+					</ul>
+				</li>
 <% else %>
 				<li class="nav-list-item"><%= link_to "ログイン", new_user_session_path %></li>
 <% end %>
