@@ -25,6 +25,13 @@ $(document).ready(function () {
             $('#header_genres').addClass('notdisp');
         });
     
+        $('.nav_list_user').on('mouseenter', function () {
+            $('#header_user').removeClass('notdisp');
+        });
+        $('.nav_list_user').on('mouseleave', function () {
+            $('#header_user').addClass('notdisp');
+        });
+        
     // disc_track_touroku.htmlで使用
     // 
         var discNo = 1;
