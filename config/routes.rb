@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  
+
+  get 'users/search'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/show'
+
+  get 'users/destroy'
+
+
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -31,6 +42,12 @@ resources :user do
 end
 
   get "/products/:id" => "products#show", as: "product"
+
+
+
+
+  resources :user
+
 
 
   resources :admin do
