@@ -11,7 +11,7 @@
                 <h1><%= @product.product_title %></h1>
                 <h3>歌手名</h3>
                 <div class="star-rating">
-                    <%# 黄色い★ %>
+                    <%# 黄色い★ 0.5きざみ %>
                 <% if @average == nil %>
                     <div class="star-rating-front" style="width: 0%">★★★★★</div>
                 <% elsif @average < 1.5 %>

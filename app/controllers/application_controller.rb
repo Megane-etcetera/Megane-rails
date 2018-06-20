@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 	  case resource
       when User
-        root_path
+        new_destination_path
       when Admin
         admintops_top_path
       end

@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  
+
+  get 'users/search'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/show'
+
+  get 'users/destroy'
+
+
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -33,6 +44,12 @@ end
   get "/products/:id" => "products#show", as: "product"
   delete "/admins/products/:id" => "products#destroy",as: "destroy_product"
 
+
+
+  resources :user
+
+
+
   resources :admin do
     resources :contacts, only: [:index,:show,:update]
   end
@@ -45,6 +62,7 @@ end
 
   resources :users, only: [:edit, :update, :show, :destroy]
 
+  resources :destinations, only: [:new, :create,:edit, :update, :destroy]
 
   resources :contacts, except:[:destroy]
 

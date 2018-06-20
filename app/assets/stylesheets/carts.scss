@@ -10,6 +10,11 @@
 	width: 80%;
 	margin: 10 auto;
 }
+
+table{
+	border: solid 1px #000000;
+	border-collapse: collapse;
+
 // よそのページにも影響が出ているのでtable全体ではなくclass名を付けて指定してください
 // table{
 // 	border-collapse: collapse;
