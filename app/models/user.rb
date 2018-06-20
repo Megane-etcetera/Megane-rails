@@ -7,5 +7,8 @@ class User < ApplicationRecord
 
    has_many :reviews, dependent: :destroy 
    has_many :contacts
+   has_many :destinations
+  #  ネスト
+   accepts_nested_attributes_for :destinations
 
 end

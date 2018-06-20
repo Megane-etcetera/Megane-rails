@@ -5,18 +5,18 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <label>名前</label><br />
+      <label>名前（姓名）</label><br />
       <%= f.text_field :kana, autofocus: true, autocomplete: "kana" %>
     </div>
 
     <div class="field">
       <label>名前(カナ)</label><br />
-      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <%= f.text_field :name, autocomplete: "name" %>
     </div>
 
     <div class="field">
       <label>emailアドレス</label><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autocomplete: "email" %>
     </div>
 
     <div class="field">
@@ -31,6 +31,16 @@
       <label>パスワード（もう一度）</label><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
+
+    <div class="field">
+      <label>電話番号</label><br />
+      <%= f.text_field :tell, autocomplete: "tell" %>
+    </div>
+
+    <%# 本当はdeviseのuserモデルにdestinatonモデルをネストして一度に登録したい %>
+    <%# が、deviseのコントローラのいじり方がさっぱり分からないので会員登録ボタンを押すと %>
+    <%# 住所登録にredirectするようにします。無念 %>
+    
     <div class="field">
       <label>好きなメガネアーティスト</label><br>
       <textarea placeholder="空欄でもOK"></textarea>

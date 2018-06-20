@@ -62,6 +62,7 @@ end
 
   resources :users, only: [:edit, :update, :show, :destroy]
 
+  resources :destinations, only: [:new, :create,:edit, :update, :destroy]
 
   resources :contacts, except:[:destroy]
 

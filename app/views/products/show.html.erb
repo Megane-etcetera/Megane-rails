@@ -11,7 +11,7 @@
                 <h1><%= @product.product_title %></h1>
                 <h3>歌手名</h3>
                 <div class="star-rating">
-                    <%# 黄色い★ %>
+                    <%# 黄色い★ 0.5きざみ %>
                 <% if @average == nil %>
                     <div class="star-rating-front" style="width: 0%">★★★★★</div>
                 <% elsif @average < 1.5 %>
@@ -49,7 +49,7 @@
         </div>
         <div class="cart-box">
             <div class="cart_error_message">
-                えらー　現在品切れ中
+                えらー現在品切れ中
             </div>
             <div class="cart_buy">
 				<h3><%= @product.price %>円</h3>
@@ -92,25 +92,24 @@
         </section>
         <div class="p-music-table clearfix">
             <div class="discs_and_tracks">
-                
-                <table>
-                    <% @disc.each do |disc| %>
-                        <h3>Disc<%= disc.disc_number %></h3>
+
+                <% @disc.each do |disc| %>
+                    <h3>Disc<%= disc.disc_number %></h3>
+                    <table>
                         <tbody>
-                            <% disc.tracks.each do |track| %>
-                                <tr>
-                                    <td><%= track.track_number %></td>
-                                    <td><%= track.track_title %></td>
-                                    <td><%= track.artist_name %></td>
-                                </tr>
-
-
-                             <% end %>
-
-                            <% end %>
+                        <% disc.tracks.each do |track| %>
+                            <tr>
+                                <td><%= track.track_number %></td>
+                                <td><%= track.track_title %></td>
+                                <td><%= track.artist_name %></td>
+                            </tr>
+                
+                        <% end %>
                         </tbody>
-                    <% end %>
-                </table>
+                    </table>
+                    <br>
+                <% end %>
+                
             </div>
 
 
@@ -178,5 +177,3 @@
         </div>
 
     </div>
-
-</div>
