@@ -189,7 +189,15 @@ header{
 	position: absolute;
 	z-index: 10000;
 }
-#header_genres li:hover{
+#header_user{
+	list-style: none;
+	background-color: darkolivegreen;
+	position: absolute;
+	width: 20%;
+	z-index: 10000;
+
+}
+#header_genres li:hover, #header_user li:hover{
 	background-color: olivedrab;
 }
 

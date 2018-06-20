@@ -1,21 +1,21 @@
 <div class="destination_new_box">
-<%= form_for(@destination) do |f| %>
+  <%= form_for(@destination) do |f| %>
 
-<%# 発送先フォーム %>
-    <div class="field">
-      <label>郵便番号</label><br>
-      <%= f.text_field :post_nember, placeholder:   "000-0000" %>
-    </div>
+  <%# 発送先フォーム %>
+      <div class="field_1">
+        <label>郵便番号</label><br>
+        <%= f.text_field :post_nember, placeholder:   "000-0000" %>
+      </div>
 
-    <div class="field">
-      <label>住所</label><br>
-      <%= f.text_field :address, placeholder:   "葛飾区亀有公園前" %>
-    </div>
-<%# 都道府県は後回し %>
+      <div class="field_2">
+        <label>住所</label><br>
+        <%= f.text_field :address, placeholder:   "葛飾区亀有公園前" %>
+      </div>
+  <%# 都道府県は後回し %>
 
-    <div class="actions">
-      <%= f.submit "登録" %>
-    </div>
+      <div class="actions">
+        <%= f.submit "登録" %>
+      </div>
 
-<% end %>
+  <% end %>
 </div>
