@@ -1,0 +1,249 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.body{
+	width:80%;
+	margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+                  SHOW
+
+
+
+
+.user-info{
+	height: 350px;
+	margin: 10px 0;
+	/* background-color: blue; */
+	position: relative;
+}
+
+.user-info-box{
+	width: 60%;
+	height: 60%;
+	margin:30px auto 20px;
+	/*角丸の指定*/
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    background-color: #EEEEEE
+
+}
+
+.show-button{
+	height: 50px;
+	width: 100px;
+	text-align: center;
+	margin: 10px 0;
+	position: absolute;
+	right: 50%;
+	bottom: 0;
+	background-color: grey;
+	/*角丸の指定*/
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    background-color: #EEEEEE
+
+}
+.show-button a{
+	text-decoration: none;
+	display: block;
+	color: white;
+}
+
+
+
+
+
+
+
+.order-history{
+
+	height: 500px;
+	margin: 10px 0;
+	
+	position: relative;
+}
+
+.order-box{
+	height: 400px;
+	width: 100%;
+	margin: 0 auto;
+	
+	position: relative;
+}
+
+
+.order-history-box{
+	height: 500px;
+	width:90.1%;
+	margin:0 auto;
+}
+.order-show-box{
+	float: left;
+	height: 350px;
+	margin: 25px 0;
+	/*角丸の指定*/
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    background-color: #EEEEEE
+}
+.order-show-box a{
+	text-decoration: none;
+	color: black;
+}
+
+.mini-box{
+	height: 85px;
+	width:300px;
+	margin: 10px auto;
+	
+}
+
+.purchase-date{
+	margin: 10px;
+	font-size: 20px;
+	
+	text-align: center;
+}
+
+.item-mini{
+	float: left;
+	height: 65px;
+	width: 65px;
+	margin: 10px 5px;
+	background-color: pink;
+}
+
+.order-history-list{
+	margin-left: 10px;
+}
+.border-line{
+	float: left;
+	width: 3px;
+	height: 250px;
+	border-left: 3px solid #8fbac8 ;
+	margin: 85px 4px 0 4px;
+	
+}
+
+.review-history{
+	width: 100%;
+	height: 100%;
+	margin: 10px auto;
+	/* background-color: lime; */
+	position: relative;
+	padding: 30px;
+	
+}
+
+
+.item-middle{
+	float:left;
+	height: 190px;
+	width: 190px;
+	background-color: pink;
+	margin: 10px 10px;
+	
+}
+
+.item-date{
+	float: left;
+	height: 190px;
+	width: 220px;
+	/* background-color: fuchsia; */
+	margin: 10px 10px;
+	
+}
+
+
+.review-box{
+	
+	height: 210px;
+	width:92.4%;
+	margin: 0 auto 10px;
+	/*角丸の指定*/
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+	background-color: #EEEEEE;
+}
+
+.review-text{
+	float:left;
+	height: 190px;
+	width: 420px;
+	background-color: gray;
+	margin: 10px 10px;
+}
+
+.border-box{
+	height: 4px;
+	width: 50%;
+	border-top: 4px solid #8fbac8 ;
+	margin: 40px auto 80px;
+}
+
+
+.center-button{
+	width: 200px;
+    margin: 10px 60% 0 40%;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: red;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px grey;
+    border-radius: 3px;
+    text-align: center;
+}
+
+
+table{
+	width:100%;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+.review-th{
+	width:25%;
+	padding: 30px;
+
+}
+
+.review-td{
+	width:25%;
+	border-top: 3px solid #8fbac8 ;
+	padding: 30px;
+	border-right: mintcream;
+	border-left: mintcream;
+}
+
+.review-comment-td{
+	width:50%;
+	border-top: 3px solid #8fbac8 ;
+	padding: 30px;
+	border-right: mintcream;
+	border-left: mintcream;
+	
+}
+.quantity{
+	width: 32px;
+}
+.item-box{
+	height: 100%;
+	width: 100%;
+	
+}
