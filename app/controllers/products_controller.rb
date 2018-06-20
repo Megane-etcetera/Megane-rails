@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @average = Review.where(product_id: @product.id).average(:star)
     @disc = @product.discs
     @review = Review.new
     @reviews = Review.where(product_id: @product.id)
@@ -21,7 +22,7 @@ class ProductsController < ApplicationController
     product = Product.new(product_params)
     product.admin_id = current_admin.id
     product.save
-    redirect_to new_disc_path(product)
+    redirect_to new_product_disc_path(product)
   end
 
   def edit

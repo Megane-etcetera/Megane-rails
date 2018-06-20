@@ -2,54 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* product_touroku.html */
-.disc_track_touroku_base{
+.disc_touroku_base{
     width: 100%;
-    background-color: white;
-    padding: 50px 0;
 }
 .disc_touroku{
     width: 80%;
-    background-color: red;
+    margin: 10px auto;
     margin: 0 auto;
-    border: 1px solid;
 }
-.disc_touroku input, .disc_touroku select{
-    height: 24px;
-}
-.d_disc, .d_type{
-    display: inline;
-    margin-right: 10px;
-    font-size: 24px;
+.d_disc{
+    height: 25px;
+    font-size: 17px;
 }
 .d_type{
-    display: inline;
-    margin-right: 10px;
+    height: 25px;
+    font-size: 17px;
 }
-.track_touroku{
-    width: 90%;
+
+.disc-submit{
     margin: 0 auto;
-    background-color: blue;
-    border: 1px solid;
-}
-.track_number{
-    float: left;
-    width: 20%;
-}
-.track_name_box{
-    float: left;
-    width: 40%;
-}
-.artist_name_box{
-    float: left;
-    width: 40%;
-}
-.disc_track_submit{
-    margin-top: 30px;
-    text-align: center;
-}
-.add_disc_button{
-    margin-right: 30px;
-}
-.disc_track_submit button{
-    font-size: 24px;
+    font-size: 17px;
+    width: 50px;
+    margin-bottom: 20px;
 }

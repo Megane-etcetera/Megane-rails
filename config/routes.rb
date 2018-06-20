@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'users/search'
 
   get 'users/edit'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get 'users/show'
 
   get 'users/destroy'
+
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -43,7 +45,9 @@ end
 
 
 
+
   resources :user
+
 
 
   resources :admin do
@@ -56,8 +60,6 @@ end
     end
   end
 
-
-
   resources :users, only: [:edit, :update, :show, :destroy]
 
 
@@ -69,8 +71,14 @@ end
    end
 
 
+
+
   scope :admins do
-    resources :products, only: [:new, :create, :edit, :update, :destroy, :index]
+    resources :products, only: [:new, :create, :edit, :update, :destroy, :index] do
+       resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
+          resources :tracks, only: [:new,:create,:edit,:update,:destroy,:show]
+  end
+  end
   end
 
 
@@ -86,14 +94,9 @@ end
   scope :products do 
     resources :reviews
   end
-  
-  resources :products do 
+
+  resources :products do
     resources :reviews
-  end
-
-
-  scope :admins do
-    resources :discs, only: [:new,:create,:edit,:update,:destroy]
   end
 
 end
