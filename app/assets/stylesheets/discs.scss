@@ -25,3 +25,77 @@
     width: 50px;
     margin-bottom: 20px;
 }
+.track_touroku_base{
+    width: 100%;
+}
+.track_fields{
+    width: 100%;
+    padding-left: 20px;
+    padding-top: 5px;
+    border: 1px solid;
+}
+.track_touroku{
+    width: 90%;
+    margin: 0 auto;
+}
+.track_number_box{
+    float: left;
+    width: 20%;
+}
+.track_number{
+    height: 25px;
+    font-size: 17px;
+    width: 50%;
+}
+.track_name_box{
+    float: left;
+    width: 40%;
+}
+.track_name{
+    height: 25px;
+    font-size: 17px;
+    width:80%;
+    margin-bottom: 5px;
+}
+.artist_name_box{
+    float: left;
+    width: 40%;
+}
+.artist_name{
+    height: 25px;
+    font-size: 17px;
+    width:80%;
+    margin-bottom: 5px;
+}
+.disc_track_submit{
+    margin-top: 30px;
+    text-align: center;
+}
+.add_disc_button{
+    margin:0 auto;
+    font-size: 17px;
+    width: 100px;
+    border: outset;
+}
+.add_track_button{
+    font-size: 17px;
+    border: outset;
+    width: 130px;
+}
+.remove_track_button{
+    font-size: 17px;
+    border: outset;
+    width: 130px;
+    float: left;
+}
+.remove_disc_button{
+    font-size: 13px;
+    width: 80px;
+    float: left;
+    border: outset;
+    height: 25px;
+}
+.submit{
+    font-size: 17px;
+    width: 50px;
+}
