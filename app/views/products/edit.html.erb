@@ -2,7 +2,7 @@
     <br>
         <section><h1>商品情報編集ページ</h1></section>
 
-    <div class="form-box">
+    <div class="p-edit-box">
         <%= form_for(@product) do |f| %>
             <p>ジャケット画像登録</p>
             <%= f.attachment_field :image,class: "product-form" %>
@@ -22,9 +22,28 @@
             <%= f.text_field :item_number,class: "product-form" %>
             <p>発売日</p>
             <%= f.text_field :release_date,class: "product-form", placeholder: "YYYY/MM/DD" %>
-                <br>
+               <br>
             <%= f.submit '登録',:class => "product-submit" %>
         <% end %>
-    </div>
-    <%= link_to "曲目編集", edit_product_disc_path(@product) %>
+    </div><br>
+     <table border="1">
+        <thead>
+            <tr>
+                <th>Discナンバー</th> 
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @discs.each do |disc| %>
+            <tr>
+                <td><%= disc.disc_number %></td>
+                <td><%= link_to "編集", edit_product_disc_track_path(@product,disc) %></td>
+                <td><%= link_to "削除", destroy_disc_path(@product,disc),method: :delete %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table> 
+     <br><br>
 </div>

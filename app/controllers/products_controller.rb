@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @discs = @product.discs
   end
 
   def update
