@@ -68,7 +68,7 @@ end
   scope :admins do
     resources :products, only: [:new, :create, :edit, :update, :index] do
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
-       resources :discs, only: [:new,:create,:edit,:update,:show] do
+       
           resources :tracks, only: [:new,:create,:edit,:update,:destroy,:show]
   end
   end
