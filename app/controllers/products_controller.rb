@@ -34,12 +34,20 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:id])
+    @discs = @product.discs
   end
 
   def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to products_path
   end
 
   def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to products_path
   end
 
   def ranking
@@ -47,7 +55,7 @@ class ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date)
+      params.require(:product).permit( :admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date)
     end
 
     def search_params

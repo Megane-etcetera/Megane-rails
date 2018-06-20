@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'users/search'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/show'
-
-  get 'users/destroy'
+  
 
 
   devise_for :admins, controllers: {
@@ -34,19 +26,21 @@ Rails.application.routes.draw do
 
 
 
-resources :user do 
+resources :users do 
    member do
     get 'cart/show'  =>'cart#show'
     post 'cart/add_product' =>'cart#add_product'
   end
+  resources :contacts, only: [:new, :create]
+
 end
 
   get "/products/:id" => "products#show", as: "product"
+  delete "/admins/products/:id" => "products#destroy",as: "destroy_product"
+  delete "/admins/products/:product_id/discs/:id" => "discs#destroy",as: "destroy_disc"
 
 
-
-
-  resources :user
+  
 
 
 
@@ -60,23 +54,21 @@ end
     end
   end
 
-  resources :users, only: [:edit, :update, :show, :destroy]
-
+  
   resources :destinations, only: [:new, :create,:edit, :update, :destroy]
 
   resources :contacts, except:[:destroy]
 
 
-   resources :users do
-     resources :contacts, only: [:new, :create]
-   end
+   
 
 
 
 
   scope :admins do
-    resources :products, only: [:new, :create, :edit, :update, :destroy, :index] do
+    resources :products, only: [:new, :create, :edit, :update, :index] do
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
+       
           resources :tracks, only: [:new,:create,:edit,:update,:destroy,:show]
   end
   end
@@ -89,11 +81,6 @@ end
 
   scope :admins do
     resources :labels, only: [:create,:destroy, :index]
-  end
-
-
-  scope :products do 
-    resources :reviews
   end
 
   resources :products do

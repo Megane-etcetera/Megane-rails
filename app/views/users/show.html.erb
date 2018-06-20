@@ -4,13 +4,17 @@
                     <h1 class="box-title">ユーザー情報</h1>
                         <div class="user-info-box">
                             <br>
-                            <p>名前：山田　太郎</p><br>
-                            <p>郵便番号：123-4567</p><br>
-                            <p>住所：東京都渋谷区神南１−２−３</p><br>
-                            <p>電話番号：03-1234-5678</p><br>
+                            <p>名前：<%= @user.name %></p><br>
+                            <p>よみがな：<%= @user.kana %></p><br>
+                            <p>郵便番号：〒　<%= @user.post_number %></p><br>
+                            <p>住所：<%= @user.address %></p><br>
+                            <p>電話番号：<%= @user.tell %></p><br>
+                            <p>E-Mail：<%= @user.email %></p><br>
+
+
                         </div>
                     <div class="button-box">
-                    <div class="center-button">編集</div>
+                    <%= link_to '編集',edit_user_path,class: "center-button"%>
                     </div>
                 </div>
                 
@@ -130,17 +134,17 @@
                             </td>
                         </tr>
                         <tr>
-                          <td class="review-td" width="25%"><a href="product.html"><img src="img/no_image.jpg"  width="190" height="190"></a></td>
+                          <td class="review-td" width="25%"><div class="product-image"><%= attachment_image_tag @product, :image, fallback: "img/no_image.jpg" %></div></td>
                             <td class="review-td" style="word-wrap:break-word;" width="25%">
-                                <li>商品名</li>
+                                <p>商品名:<%= @product.product_title %></p>
                             
-                                <li>ジャンル</li>
+                                <li>ジャンル:<%= @product.genre.genre %></li>
                             
-                                <li>レーベル</li>
+                                <li>レーベル:<%= @product.label.label %></li>
 
                                 <li>レート</li>
 
-                                <li>価格：￥2160</li>
+                                <li>価格：<%= @product.price %>円</li>
                             </td>
 
                             <td class="review-comment-td" style="word-wrap:break-word;" width="50%">
