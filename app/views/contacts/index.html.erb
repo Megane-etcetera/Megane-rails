@@ -7,7 +7,7 @@
 <body>
     <div class="contact_base">
         <div class="open_contacts">
-            <h1>未対応</h1>
+            <h1 class="box-title">未対応</h1>
                 <table border="1">
                     <tr>
                         <th class="th_contact_user">ユーザー名</th>
@@ -18,12 +18,12 @@
                     </tr>
                 <% @contact.each do |cont| %>
                     <tr>
-                            <td class="th_contact_user">ユーザー名</td>
+                            <td class="th_contact_user">yu-zamei</td>
                             <td class="th_contact_category"><%= cont.category %>
                             </td>
                             <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
                             <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
-                            <td class="th_contact_view"><%= link_to 'show', contact_path(cont.id)%></td>
+                            <td class="th_contact_view"><%= link_to 'show', admin_contact_path(@admin,cont.id)%></td>
                     </tr>
                 <% end %>
 
@@ -39,16 +39,19 @@
                         <th class="th_contact_text">内容</th>
                         <th class="th_contact_view">詳細を開く</th>
                     </tr>
+                    <% @contacts.each do |cont| %>
                     <tr>
-                        <td class="th_contact_user"><a href="http://">ウルトラマン</a></td>
-                        <td class="th_contact_category">発送について</td>
-                        <td class="th_contact_date">2018年06月10日</td>
-                        <td class="th_contact_text">ジュワ！</td>
-                        <td class="th_contact_view"><a href="http://">開く</a></td>
+                            <td class="th_contact_user">ユーザー名</td>
+                            <td class="th_contact_category"><%= cont.category %>
+                            </td>
+                            <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
+                            <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
+                            <td class="th_contact_view"><%= link_to 'show', admin_contact_path(@admin,cont.id)%></td>
                     </tr>
+                <% end %>
                 </table>
             </div>
-    <p class="all_contacts"><a href="http://">対応済みの問い合わせ</a></p>
+    <%= link_to '対応済みお問い合わせ', contacts_finished_admin_path(@admin)%>
     </div>
 </body>
 </html>
