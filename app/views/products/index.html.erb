@@ -1,22 +1,22 @@
-<div class="product_stock_base">
-        <%= link_to "管理者メニュー画面へ", admintops_top_path %>
-        <div class="stock_table">
-            <table border="1">
-                <tr>
-                    <th class="t_product_stock_id">商品ID</th>
-                    <th class="t_product_stock_name">商品名</th>
-                    <th class="t_product_stock_stock">在庫</th>
-                    <th class="t_product_stock_sell">売上数</th>
-                </tr>
-                <% @product.each do |product| %>
-                <tr>
-                    <td class="t_product_stock_id"><%= product.id %></td>
-                    <td class="t_product_stock_name"><%= link_to product.product_title, product_path(product) %></td>
-                    <td class="t_product_stock_stock">product.stock</td>
-                    <td class="t_product_stock_sell">777</td>
-                </tr>
-               <% end %>
-            </table>
-        </div>
-        <p class="p_s_pagi">＜　　page　　＞</p>
-    </div>
+
+
+<div class="top_products_line">
+	<section class="top-new">
+		<h2>検索結果</h2>
+	</section>
+	<div class="new-box clearfix">
+	
+		<% @products.each do |searched| %>
+			<div class="product-box">
+				<a href="product.html">
+					<div class="p-image"><%= attachment_image_tag searched, :image, fallback: "img/no_image.jpg" %></div>
+					<div class="p-stat">
+						<%= searched.product_title %>
+						<%= searched.price %>
+					</div>
+				</a>
+			</div>
+		<% end %>
+	
+	</div>
+</div>

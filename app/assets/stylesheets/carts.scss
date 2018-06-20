@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-             SHOW
+            //  SHOW
 
 .item{
 	height: 250%;
@@ -20,7 +20,7 @@ table{
 // 	border-collapse: collapse;
 	
 // 	margin: 0 auto;
-// }
+}
 .cart-th{
 	padding: 30px;
 }
@@ -104,11 +104,11 @@ table{
 	line-height: 44px;
 }
 
-.right-button:active {/*ボタンを押したとき*/
+.right-button:active { /*ボタンを押したとき*/
     -ms-transform: translateY(4px);
     -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    border-bottom: none;/*線を消す*/
+    transform: translateY(4px); /*下に動く*/
+    border-bottom: none; /*線を消す*/
 }
 
 .button-box{
