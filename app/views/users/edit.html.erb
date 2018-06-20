@@ -1,2 +1,24 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+
+<div class="contact-box">
+		<%= form_for @user do |u| %>
+
+
+			
+			<label>名前</label>
+			<%= u.text_field :name %><br>
+			<label>よみがな</label>
+			<%= u.text_field :kana %><br>
+			<label>郵便番号</label>
+			<%= u.text_field :post_number %><br>
+			<label>住所</label>
+			<%= u.text_field :address %><br>
+			<label>電話番号</label>
+			<%= u.text_field :tell %><br>
+			<label>E-Mail</label>
+			<%= u.text_field :email %><br />
+
+			<div class="">
+
+	    	<%= u.submit '送信する', class: 'center-button' %>
+
+		<% end %>
