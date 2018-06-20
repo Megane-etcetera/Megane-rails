@@ -1,2 +1,23 @@
-<h1>Products#search</h1>
-<p>Find me in app/views/products/search.html.erb</p>
+
+
+<div class="top_products_line">
+	<section class="top-new">
+		<h2>検索結果</h2>
+	</section>
+	<div class="new-box clearfix">
+	
+		<% @products.each do |searched| %>
+			<div class="product-box">
+				<a href="product.html">
+					<div class="p-image"><%= attachment_image_tag searched, :image, fallback: "img/no_image.jpg" %></div>
+					<div class="p-stat">
+						<%= searched.product_title %>
+						<%= searched.price %>
+					</div>
+				</a>
+			</div>
+		<% end %>
+	
+
+	</div>
+</div>

@@ -1,9 +1,17 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :search, :show]
   def search
+    @q = Product.search(search_params)
+    @products = @q.result(distinct: true)
   end
 
   def index
-    @product = Product.all
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+  end
+
+  def stock
+    @products = Product.all
   end
 
   def show
@@ -48,5 +56,9 @@ class ProductsController < ApplicationController
   private
     def product_params
       params.require(:product).permit( :admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date)
+    end
+
+    def search_params
+      params.require(:q).permit!
     end
 end

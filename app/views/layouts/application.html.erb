@@ -22,8 +22,12 @@
 		<div class="logo"><%= link_to image_tag("img/logo_toumei.png"), root_path %></div>
 		
 		<div class="s-box">
-			<input class="s-form">
-			<p>
+			
+	<%= search_form_for @q do |f| %>
+		<%= f.search_field :product_title_cont %>
+		<%= f.submit %>
+	<% end %>
+			<%# <p>
 				<select class="s-op" name="example1">
 				<option value="サンプル1">OP1435522</option>
 				<option value="サンプル2">OP245224252</option>
@@ -32,7 +36,7 @@
 				<option value="サンプル5">OP534232</option>
 				</select>
 			</p>
-			<button class="s-button">検索</button>
+			<button class="s-button">検索</button> %>
 		</div>
 
 		<div class="cart">

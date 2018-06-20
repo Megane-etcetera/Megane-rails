@@ -62,3 +62,6 @@ gem "jquery-rails", "~>4.3", ">= 4.3.1"
 gem 'nested_form_fields'
 gem "pry-rails"
 gem "nested_form"
+
+# 検索用
+gem 'ransack'
