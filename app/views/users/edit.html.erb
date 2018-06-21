@@ -1,24 +1,29 @@
+<div class="user_edit_base">
+<div class="user_edit_box">
+	<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p><%= flash[:alert] %></p><% end %>
+<section><h1>必ず正しい情報を入力してください</h1></section>
+ 	<%= form_for @user do |u| %>
+ 	<br>
+			<label>名前</label><br>
+			<%= u.text_field :name, class: 'user_edit_form' %><br>
+			<label>よみがな</label><br>
+			<%= u.text_field :kana, class: 'user_edit_form' %><br>
+			<label>郵便番号</label><br>
+			<%= u.text_field :post_number, class: 'user_edit_form' %><br>
+			<label>住所</label><br>
+			<%= u.text_field :address, class: 'user_edit_form' %><br>
+			<label>電話番号</label><br>
+			<%= u.text_field :tell, class: 'user_edit_form' %><br>
+			<label>E-Mail</label><br>
+			<%= u.text_field :email, class: 'user_edit_form' %><br />
 
-<div class="contact-box">
-		<%= form_for @user do |u| %>
+	    	
 
-
-			
-			<label>名前</label>
-			<%= u.text_field :name %><br>
-			<label>よみがな</label>
-			<%= u.text_field :kana %><br>
-			<label>郵便番号</label>
-			<%= u.text_field :post_number %><br>
-			<label>住所</label>
-			<%= u.text_field :address %><br>
-			<label>電話番号</label>
-			<%= u.text_field :tell %><br>
-			<label>E-Mail</label>
-			<%= u.text_field :email %><br />
-
-			<div class="">
-
-	    	<%= u.submit '送信する', class: 'center-button' %>
-
+	</div>
+	<%= u.submit '送信する', class: 'center-button' %><br>
 		<% end %>
+</div>
