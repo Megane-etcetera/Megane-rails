@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  def search
+  def index
+    @u_search = User.search(params[:q])
+    @users = @u_search.result(distinct: true)
   end
+  
 
   def edit
       @user = User.find(params[:id])
@@ -34,5 +37,9 @@ class UsersController < ApplicationController
 
       params.require(:user).permit(:name,:kana,:post_number,:address,:tell,:email)
 
+    end
+    
+    def search_params
+      params.require(:q).permit!
     end
 end

@@ -12,17 +12,6 @@
 
 
 
-
-
-
-
-
-
-                  SHOW
-
-
-
-
 .user-info{
 	height: 350px;
 	margin: 10px 0;
@@ -259,4 +248,34 @@ table{
 }
 .user_edit_form{
 	margin-bottom: 5px;
+}
+
+/* user_ichiran.html */
+.user_ichiran_base{
+    background-color: mintcream;
+    width: 100%;
+}
+.users_table{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+.users_table table{
+    width: 100%;
+}
+.users_table tr:hover{
+    background-color: lightgreen;
+}
+.t_user_ichiran_id, .t_user_ichiran_show, .t_user_ichiran_edit, .t_user_ichiran_destroy{
+    width: 12%;
+    text-align: center;
+}
+.t_user_ichiran_name{
+    width: 52%;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.t_user_ichiran_name a{
+    text-decoration: none;
+    display: block;
 }
