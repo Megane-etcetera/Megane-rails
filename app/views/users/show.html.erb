@@ -1,4 +1,10 @@
-         <div class="body">            
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p><%= flash[:alert] %></p>
+<% end %>
+         <div class="body">
             <div class="main-box">
                 <div class="user-info">
                     <h1 class="box-title">ユーザー情報</h1>
@@ -106,64 +112,4 @@
                 </div>
                 </div>
 
-                 <!-- <div class="border-box"></div> -->
-                
-                <!-- <div class="review-history">
-                     <h1 class="box-title">コメント履歴</h1>
-                    
-                    
-                <table class="table table-hover table-inverse">
-                    
-                    <tbody>
-                        <tr>
-                          <td class="review-td" ><a href="product.html"><img src=img/no_image.jpg  width="190" height="190"></a></td>
-                            <td class="review-td" style="word-wrap:break-word;" width="25%">
-                                <li>商品名</li>
-                            
-                                <li>ジャンル</li>
-                            
-                                <li>レーベル</li>
-
-                                <li>レート</li>
-
-                                <li>価格：￥2160</li>
-                            </td>
-
-                            <td class="review-comment-td" width="50%">
-                                コメント
-                            </td>
-                        </tr>
-                        <tr>
-                          <td class="review-td" ><div class="product-image-user-page"><%= link_to product_path(@product),target: "_blank" do %>
-                            <%= attachment_image_tag @product, :image, fallback: 'img/no_image.jpg'  %>
-                                <% end %>
-                            </div></td>
-                            <td class="review-td" style="word-wrap:break-word;" width="25%">
-                                <p>商品名:<%= @product.product_title %></p>
-                            
-                                <li>ジャンル:<%= @product.genre.genre %></li>
-                            
-                                <li>レーベル:<%= @product.label.label %></li>
-
-                                <li>レート</li>
-
-                                <li>価格：<%= @product.price %>円</li>
-                            </td>
-
-                            <td class="review-comment-td" style="word-wrap:break-word;" width="50%">
-                                コメント
-                            </td>
-                        </tr>
-                    </tbody>
-
-                </table> 
-            <div class="button-box">
-                    <div class="center-button">more</div>
-                    </div>
-                </div>
-                <div class="button-box">
-                    <div class="center-button">退会</div>
-                </div>              
-        </div>
-    	</div>
- -->
+                 
