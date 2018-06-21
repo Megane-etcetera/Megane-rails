@@ -39,11 +39,12 @@
             <% @discs.each do |disc| %>
             <tr>
                 <td><%= disc.disc_number %></td>
-                <td><%= link_to "編集", edit_product_disc_track_path(@product,disc) %></td>
+                <td><%= link_to "編集", edit_product_disc_path(@product,disc) %></td>
                 <td><%= link_to "削除", destroy_disc_path(@product,disc),method: :delete %></td>
             </tr>
             <% end %>
         </tbody>
-    </table> 
+    </table>
+    <%= link_to "Discの追加はこちらから", new_product_disc_path(@product,@disc) %>
      <br><br>
 </div>
