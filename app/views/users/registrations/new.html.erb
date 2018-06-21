@@ -36,6 +36,14 @@
       <label>電話番号</label><br />
       <%= f.text_field :tell, autocomplete: "tell" %>
     </div>
+    <div class="field">
+      <label>郵便番号</label><br />
+      <%= f.text_field :post_number, autocomplete: "off" %>
+    </div>
+    <div class="field">
+      <label>住所</label><br />
+      <%= f.text_field :address, autocomplete: "off" %>
+    </div>
 
     <%# 本当はdeviseのuserモデルにdestinatonモデルをネストして一度に登録したい %>
     <%# が、deviseのコントローラのいじり方がさっぱり分からないので会員登録ボタンを押すと %>

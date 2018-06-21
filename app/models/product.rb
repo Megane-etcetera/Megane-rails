@@ -7,8 +7,9 @@ class Product < ApplicationRecord
 	belongs_to :genre
 
 	has_many :discs
-	
+
 	has_many :reviews, dependent: :destroy
+	has_many :users, :through => :reviews
 
 end
 
