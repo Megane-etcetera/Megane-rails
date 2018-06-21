@@ -1,0 +1,23 @@
+<div class="user_ichiran_base">
+        <div class="admin_back_to_menu"><%= link_to "管理者メニュー画面へ", admintops_top_path %></div>
+        <div class="users_table">
+            <table border="1">
+                <tr>
+                    <th>ユーザーID</th>
+                    <th>名前</th>
+                    <th colspan="3">ユーザーページ</th>
+                </tr>
+
+<% @users.each do |searched| %>
+                <tr>
+                    <td class="t_user_ichiran_id"><%= searched.id %></td>
+                    <td class="t_user_ichiran_name"><%= link_to searched.name, user_path(searched.id) %></td>
+                    <td class="t_user_ichiran_show"><%= link_to "show", user_path(searched.id) %></td>
+                    <td class="t_user_ichiran_edit"><%= link_to "edit", edit_user_path(searched.id) %></td>
+                    <td class="t_user_ichiran_destroy"><%= link_to "destroy", user_path(searched.id), method: :delete %></td>
+                </tr>
+<% end %>
+            </table>
+        </div>
+        <p class="p_s_pagi">＜　　page　　＞</p>
+    </div>

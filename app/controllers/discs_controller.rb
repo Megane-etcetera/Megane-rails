@@ -23,6 +23,7 @@ class DiscsController < ApplicationController
     @product = Product.find(params[:product_id])
     @disc = Disc.find(params[:id])
     @track = @disc.tracks.build
+
   end
 
   def update
