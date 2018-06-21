@@ -6,13 +6,13 @@
 	
 		<% @products.each do |searched| %>
 			<div class="product-box">
-				<a href="product.html">
+				<%= link_to "/products/#{searched.id}" do %>
 					<div class="p-image"><%= attachment_image_tag searched, :image, fallback: "img/no_image.jpg" %></div>
 					<div class="p-stat">
-						<%= searched.product_title %>
+						<%= searched.product_title %><br>
 						<%= searched.price %>
 					</div>
-				</a>
+				<% end %>
 			</div>
 		<% end %>
 	

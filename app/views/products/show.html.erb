@@ -9,7 +9,11 @@
         <div class="p-nb">
             <div class="product-name">
                 <h1><%= @product.product_title %></h1>
-                <h3>歌手名</h3>
+                <h3>
+                    <%# 歌手名一覧 %>
+                    <%= @artists %>
+                </h3>
+
                 <div class="star-rating">
                     <%# 黄色い★ 0.5きざみ %>
                 <% if @average == nil %>
@@ -93,7 +97,7 @@
         <div class="p-music-table clearfix">
             <div class="discs_and_tracks">
 
-                <% @disc.each do |disc| %>
+                <% @discs.each do |disc| %>
                     <h3>Disc<%= disc.disc_number %></h3>
                     <table>
                         <tbody>

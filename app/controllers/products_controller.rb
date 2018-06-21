@@ -17,7 +17,12 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @average = Review.where(product_id: @product.id).average(:star)
-    @disc = @product.discs
+    @discs = @product.discs
+    @artists = @discs.joins(:tracks).pluck(:artist_name).uniq
+    # 備忘録
+    # .joins(:tracks)　⇒　Discテーブル（今回は@discs）とTrackテーブルでidが重なってる物を合体
+    # .pluck(:artist_name)　⇒　artist_nameというカラムを配列にする
+    # .uniq ⇒　配列内の重複している要素を一つにする
     @review = Review.new
     @reviews = Review.where(product_id: @product.id)
   end
