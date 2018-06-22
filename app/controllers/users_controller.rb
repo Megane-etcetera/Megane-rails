@@ -34,7 +34,28 @@ class UsersController < ApplicationController
       @product = @user.products
   end
 
+  def unsubsc
+    if admin_signed_in?
+        @user = User.find(params[:id])
+      else
+        @user = User.find(params[:id])
+        if @user == nil
+          redirect_to user_path(current_user), alert:"存在しないユーザーです"
+        elsif @user != current_user
+          redirect_to user_path(@user), alert:"他のユーザーを退会する事はできません"
+        end
+      end
+
+  end
+
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    if admin_signed_in?
+       redirect_to users_path
+    else
+       redirect_to root_path
+    end
   end
 
   private
