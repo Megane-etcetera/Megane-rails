@@ -1,3 +1,34 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// show.html.erb
+
+.order_show_base{
+    width: 80%;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+.order_total_price_tr{
+    background-color: bisque;
+}
+
+// index.html.erb
+
+.orders_index_base{
+    width: 80%;
+    padding: 10px 0;
+    margin: 0 auto;
+}
+.orders_index_base a{
+    text-decoration: none;
+    color: black;
+}
+.order_index_box{
+    padding: 10px 0;
+    border: 1px solid olivedrab;
+}
+.order_index_box:hover{
+    background-color: aquamarine;
+}

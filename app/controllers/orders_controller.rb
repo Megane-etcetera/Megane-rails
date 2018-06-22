@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def index
+    @orders = Order.where(user_id: current_user.id)
   end
 
   def address
@@ -10,6 +11,11 @@ class OrdersController < ApplicationController
 
   def decision
   end
+
+  def show
+    @order = Order.find(params[:id])
+    @orderproducts = @order.order_products
+  end  
 
   def create
   end
