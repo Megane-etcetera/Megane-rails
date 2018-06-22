@@ -1,14 +1,12 @@
-<h1>Carts#show</h1>
+
 <body>
-    	<div class="header">
-    		<h1>header</h1>
-    	</div>
+    	
         
         <div class="body">
             <h1 class="page-title"> shopping cart</h1>
             <div class="main-box">
                 <div class= "item-box">
-                    <table class="table table-hover table-inverse">
+                    <table class="cart-table">
                         <thead>
                           <tr>
                               <th class="cart-th"></th>
@@ -16,52 +14,31 @@
                               <th class="cart-th">価格/数量</th>
                            </tr>
                         </thead>
+                        <% @cart.each do |cart| %>
+                        
                         <tbody>
                             <tr>
-                              <td class="cart-td"><a href="product.html"><img src="img./test.jpg"  width="190" height="190"></a></td>
+                              <td class="cart-td"><%= attachment_image_tag cart.product, :image, fallback: "img/no_image.jpg" %></div></td>
                                 <td class="cart-td" style="word-wrap:break-word;">
-                                    <li>title : プライド ［CD+DVD］＜期間生産限定盤＞</li><br>
-                                    <li>artist : 高橋　優</li><br>
-                                    <li>在庫　あり/なし </li><br>
+                                    <li>title : <%= cart.product.product_title %></li><br>
+                                        
+                                        
+                                    <% @discs = cart.product.discs %>
+                                    <% @artists = @discs.joins(:tracks).pluck(:artist_name).uniq %>
+                                    <li>artist : <%= @artists %> </li><br>
+                                   
+                                    <li>在庫　<%= cart.product.stock %> </li><br>
                                 </td>
                                 <td class="cart-td">
-                                    <p>価格：￥2160</p><br>
+                                    <p>価格：<%= cart.product.price %>円</p><br>
+                                    
                                     <p><label for="number-field">個数</label>
                                         <input class="quantity" type="number" name="number" id="number-field" min="1" max="99" value="1">個</p><br>
-                                    <p>削除</p><br>
+                                        
+                                    <p><%= link_to '削除',root_path,class:"delete-button"%></p>
                                 </td>
                             </tr>
-                            
-                            <tr>
-                              <td class="cart-td"><a href="product.html"><img src="img./test2.jpg"  width="190" height="190"></a></td>    
-                                <td class="cart-td">
-                                    <li>title : ２兆円</li><br>
-                                    <li>artist : 東郷　清丸</li><br>
-                                    <li>在庫　あり/なし </li><br>
-                                </td>
-                                <td class="cart-td">
-                                    <p>価格：￥2160</p><br>
-                                    <p><label for="number-field">個数</label>
-                                        <input class="quantity" type="number" name="number" id="number-field" min="1" max="99" value="1">個</p><br>
-                                    <p>削除</p><br>
-                                </td>
-                            </tr>
-
-                             <tr>
-                              <td class="cart-td"><a href="product.html"><img src="img./test3.jpg"  width="190" height="190"></a></td>    
-                                <td class="cart-td">
-                                    <li>title : ありえないくらい奇跡</li><br>
-                                    <li>artist : BEAT CRUSADERS, つじあやのとBEAT CRUSADERS</li><br>
-                                    <li>在庫　あり/なし </li><br>
-                                </td>
-                                <td class="cart-td">
-                                    <p>価格：￥1234</p><br>
-                                    <p><label for="number-field">個数</label>
-                                        <input class="quantity" type="number" name="number" id="number-field" min="1" max="99" value="1">個</p><br>
-                                    <p>削除</p><br>
-                                </td>
-                                
-                            </tr>
+                        <% end %>
                             
                             <tr>
                               <td class="cart-td"></td>    
@@ -74,6 +51,13 @@
                             </tr>
                         </tbody>
                     </table> 
+
+
+
+                    
+               
+                
+            </div>
                 
                     
             <div class="button-box">
@@ -83,7 +67,5 @@
             </div>
         </div>
     	
-        <div class="footer">
-    		<h1>footer</h1>
-    	</div>
+        
     </body>
