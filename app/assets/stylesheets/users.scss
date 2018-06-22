@@ -232,6 +232,19 @@ table{
 	
 }
 
+/* cart */
+.delete-button{
+	width: 30%;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: red;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px grey;
+    border-radius: 3px;
+    text-align: center;
+}
+
 /* edit */
 .user_edit_base{
 	width: 100%;

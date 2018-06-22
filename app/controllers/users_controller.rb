@@ -6,11 +6,15 @@ class UsersController < ApplicationController
   
 
   def edit
-      @user = User.find(params[:id])
-      if @user == nil
-        redirect_to user_path(current_user), alert:"存在しないユーザーです"
-      elsif @user != current_user
-        redirect_to user_path(@user), alert:"他のユーザー情報を編集する事はできません"
+      if admin_signed_in?
+        @user = User.find(params[:id])
+      else
+        @user = User.find(params[:id])
+        if @user == nil
+          redirect_to user_path(current_user), alert:"存在しないユーザーです"
+        elsif @user != current_user
+          redirect_to user_path(@user), alert:"他のユーザー情報を編集する事はできません"
+        end
       end
   end
 

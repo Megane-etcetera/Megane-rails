@@ -8,7 +8,11 @@ class User < ApplicationRecord
    has_many :products, :through => :reviews
    has_many :contacts
    has_many :destinations
+<<<<<<< HEAD
    has_many :orders
+=======
+   has_many :carts
+>>>>>>> 14c71d8f98808d94d61be7883a03431299e04a1f
 
    [:name, :kana, :post_number,:address,:tell ].each do |v|
    validates v, presence: true

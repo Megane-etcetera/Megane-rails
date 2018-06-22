@@ -1,9 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :search, :show]
-  def search
-    @q = Product.search(search_params)
-    @products = @q.result(distinct: true)
-  end
+ 
 
   def index
     @q = Product.ransack(params[:q])

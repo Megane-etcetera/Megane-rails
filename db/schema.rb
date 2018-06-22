@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180622074608) do
+=======
+ActiveRecord::Schema.define(version: 20180622065135) do
+>>>>>>> 14c71d8f98808d94d61be7883a03431299e04a1f
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180622074608) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.string "situations", default: "0"
     t.text "admin_comment"
   end
 
