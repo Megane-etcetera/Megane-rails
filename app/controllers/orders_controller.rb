@@ -10,6 +10,11 @@ class OrdersController < ApplicationController
   end
 
   def decision
+    # @carts =  Cart.where(current_user.carts)
+    # @products = Product.where(@carts)
+    # @orderproduct = @products.orderproduct.build
+    #こんな記述になるのではないかな？（あとはカートを消す記述）
+
   end
 
   def show
