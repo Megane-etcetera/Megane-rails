@@ -34,7 +34,7 @@ resources :users do
   resources :contacts, only: [:new, :create]
 
 end
-
+  get "admins/products/stocks" =>"products#stock" ,as: "admins_product_stocks"
   get "/products/:id" => "products#show", as: "product"
   delete "/admins/products/:id" => "products#destroy",as: "destroy_product"
   delete "/admins/products/:product_id/discs/:id" => "discs#destroy",as: "destroy_disc"
