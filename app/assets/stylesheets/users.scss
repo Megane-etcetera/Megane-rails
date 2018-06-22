@@ -70,13 +70,13 @@
 
 
 .order-history-box{
-	height: 500px;
-	width:80.1%;
+	width: 100%;
 	margin:0 auto;
+	overflow-x: auto;
 }
 .order-show-box{
 	float: left;
-	height: 350px;
+	width: 32%;
 	margin: 25px 0;
 	/*角丸の指定*/
 	-moz-border-radius: 5px;
@@ -90,10 +90,8 @@
 }
 
 .mini-box{
-	height: 85px;
-	width:300px;
 	margin: 10px auto;
-	
+	overflow: auto;	
 }
 
 .purchase-date{
@@ -183,7 +181,10 @@
 
 .center-button{
 	width: 200px;
-    margin: 10px 60% 0 40%;
+	// マージンがなんか良くわからん指定だったので一旦コメントアウトします。
+	// 不都合があれば菊地まで
+	// margin: 10px 60% 0 40%;
+	margin: 5px auto;
     display: block;
     padding: 0.5em 1em;
     text-decoration: none;
@@ -191,7 +192,7 @@
     color: #FFF;
     border-bottom: solid 4px grey;
     border-radius: 3px;
-    text-align: center;
+	text-align: center;
 }
 
 

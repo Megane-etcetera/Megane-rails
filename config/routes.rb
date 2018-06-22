@@ -32,7 +32,7 @@ resources :users do
     post 'cart/add_product' =>'cart#add_product'
   end
   resources :contacts, only: [:new, :create]
-
+  resources :orders, only: [:index, :show]
 end
 
   get "/products/:id" => "products#show", as: "product"
