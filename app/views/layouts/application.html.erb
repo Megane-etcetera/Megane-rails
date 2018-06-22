@@ -83,7 +83,12 @@
 					</ul>
 				</li>
 <% else %>
-				<li class="nav-list-item"><%= link_to "ログイン", new_user_session_path %></li>
+				<li class="nav-list-item nav_list_user">
+					<p><%= link_to "ログイン", new_user_session_path %></p>
+					<ul id="header_user" class="notdisp">
+					<li><%= link_to "会員登録はこちら", new_user_registration_path %></li>
+					</ul>
+				</li>
 <% end %>
 			</ul>
 		</nav>

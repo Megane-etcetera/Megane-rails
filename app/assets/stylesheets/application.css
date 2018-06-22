@@ -197,7 +197,7 @@ header{
 	z-index: 10000;
 
 }
-#header_genres li:hover, #header_user li:hover{
+#header_genres li:hover, #header_user li:hover, #header_user_2 li:hover{
 	background-color: olivedrab;
 }
 
