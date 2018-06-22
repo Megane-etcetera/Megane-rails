@@ -29,8 +29,8 @@ Rails.application.routes.draw do
 
 resources :users do 
    member do
-    get 'cart/show'  =>'cart#show'
-    post 'cart/add_product' =>'cart#add_product'
+    get 'cart'  =>'carts#show'
+    post 'cart/add_product' =>'carts#add_product'
   end
   resources :contacts, only: [:new, :create]
 

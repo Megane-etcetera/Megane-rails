@@ -111,6 +111,8 @@
                 </div>
                 </div>
 
-                <%= link_to "退会はこちら", users_unsubsc_path(@user) %>
+                <% if @user.id == current_user.id %>
+                      <%= link_to "退会はこちら", users_unsubsc_path(@user) %>
+                       <% end %>
 
         </div>
