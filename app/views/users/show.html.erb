@@ -5,7 +5,6 @@
   <p><%= flash[:alert] %></p>
 <% end %>
          <div class="body">
-            <div class="main-box">
                 <div class="user-info">
                     <h1 class="box-title">ユーザー情報</h1>
                         <div class="user-info-box">
@@ -112,4 +111,6 @@
                 </div>
                 </div>
 
-                 
+                <%= link_to "退会はこちら", users_unsubsc_path(@user) %>
+
+        </div>
