@@ -27,13 +27,14 @@ Rails.application.routes.draw do
 
 
 
+
 resources :users do 
    member do
     get 'cart'  =>'carts#show'
     post 'cart/add_product' =>'carts#add_product'
   end
   resources :contacts, only: [:new, :create]
-
+  resources :orders, only: [:index, :show]
 end
   get "admins/products/stocks" =>"products#stock" ,as: "admins_product_stocks"
   get "/products/:id" => "products#show", as: "product"
