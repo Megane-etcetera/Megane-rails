@@ -21,7 +21,11 @@ Rails.application.routes.draw do
   get 'products/ranking'
   get 'contacts/finished'
 
-  
+  get 'cart/show'
+  post 'cart/add_product'
+  get "/users/:id/unsubsc" => "users#unsubsc", as: "users_unsubsc"
+
+ 
 
 
 
@@ -31,7 +35,7 @@ resources :users do
     post 'cart/add_product' =>'carts#add_product'
   end
   resources :contacts, only: [:new, :create]
-
+  resources :orders, only: [:index, :show]
 end
   get "admins/products/stocks" =>"products#stock" ,as: "admins_product_stocks"
   get "/products/:id" => "products#show", as: "product"

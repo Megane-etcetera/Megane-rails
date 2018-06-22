@@ -43,7 +43,7 @@
             </div>
             <div class="benefit">
 				<% if @product.stock < 1 %>
-					<p>現在品切れ中</p>
+					<h2>現在品切れ中</h2>
 				<% elsif @product.stock < 10 %>
 					<p>在庫残りわずか</p>
 				<% else %>
