@@ -33,6 +33,7 @@ resources :users do
    member do
     get 'cart'  =>'carts#show'
     post 'cart/add_product' =>'carts#add_product'
+    post 'cart/update' => 'carts#update'
   end
   resources :contacts, only: [:new, :create]
   resources :orders, only: [:index, :show]
