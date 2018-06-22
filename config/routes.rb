@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   get 'cart/show'
   post 'cart/add_product'
+  get "/users/:id/unsubsc" => "users#unsubsc", as: "users_unsubsc"
 
 
 

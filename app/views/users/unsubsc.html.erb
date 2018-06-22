@@ -1,0 +1,8 @@
+<h1>本当に退会してもよろしいですか？</h1>
+<h2><%= link_to "はい", user_path(@user),method: :delete %></h2>
+<h2><%= if admin_signed_in? 
+		   link_to "いいえ", users_path
+		else
+		   link_to "いいえ", user_path(@user)
+		end %>
+	</h2>

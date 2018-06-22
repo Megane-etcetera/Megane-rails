@@ -14,7 +14,7 @@
                     <td class="t_user_ichiran_name"><%= link_to searched.name, user_path(searched.id) %></td>
                     <td class="t_user_ichiran_show"><%= link_to "show", user_path(searched.id) %></td>
                     <td class="t_user_ichiran_edit"><%= link_to "edit", edit_user_path(searched.id) %></td>
-                    <td class="t_user_ichiran_destroy"><%= link_to "destroy", user_path(searched.id), method: :delete %></td>
+                    <td class="t_user_ichiran_destroy"><%= link_to "destroy", users_unsubsc_path(searched.id) %></td>
                 </tr>
 <% end %>
             </table>
