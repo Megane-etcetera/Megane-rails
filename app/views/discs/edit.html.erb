@@ -1,20 +1,34 @@
-<h1>Disc選択</h1>
-<table border="1">
-		<thead>
-			<tr>
-				<th>Discナンバー</th> 
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
+<h1>Disc編集</h1>
+<div class="track_touroku_base">
+<div class="track_touroku clearfix">
+	<%= nested_form_for([@product,@disc]) do |f| %>
+				<%= f.label :"Disc" %>
+		    	<%= f.select :disc_number,[["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]], {}, {class:  "d_disc"} %>
+		    	<%= f.select :disc_type,[["CD","CD"],["DVD","DVD"]], {}, {class:  "d_type"} %>
 
-		<tbody>
-			<% @disc.each do |disc| %>
-			<tr>
-				<td><%= disc.discnumber %></td>
-				<td><%= link_to "編集", edit_product_disc_track_path(@product,@disc) %></td>
-				<td><%= link_to "削除", destroy_disc_path(@product,@disc),method: :delete %></td>
-			</tr>
+			<%= f.fields_for :tracks do |track_f| %>
+			<div class="track_fields">
+				<div class="track_number_box">
+			    	<%= track_f.label :track_number,"トラックナンバー",class: "track_number" %>
+			    	<%= track_f.number_field :track_number,class: "track_number" %>
+				</div>
+				<div class="track_name_box">
+			    	<%= track_f.label :track_title,"曲名",class: "track_name" %><br>
+			    	<%= track_f.text_field :track_title,class: "track_name" %><br>
+			    	<%= track_f.label :track_title_kana,"曲名かな",class: "track_name" %><br>
+			    	<%= track_f.text_field :track_title_kana,class: "track_name" %>
+				</div>
+				<div class="artist_name_box">
+			    	<%= track_f.label :artist_name,"アーティスト名",class: "artist_name" %><br>
+			    	<%= track_f.text_field :artist_name,class: "artist_name" %><br>
+			    	<%= track_f.label :artist_name_kana,"アーティスト名かな",class: "artist_name" %><br>
+			    	<%= track_f.text_field :artist_name_kana,class: "artist_name" %>
+				</div>
+				<%= track_f.link_to_remove "Remove this" %>
 			<% end %>
-		</tbody>
-	</table>
+			</div>
+		<%= f.link_to_add "Addtrack", :tracks %>
+		<%= f.submit "登録",class: "submit" %>
+	<% end %>
+</div>
+</div>

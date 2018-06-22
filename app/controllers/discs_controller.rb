@@ -9,7 +9,7 @@ class DiscsController < ApplicationController
     @disc = Disc.new(disc_params)
     @disc.product_id = @product.id
     @disc.save
-    redirect_to  product_disc_path(@product ,@disc)
+    redirect_to  edit_product_disc_path(@product ,@disc)
   end
 
   def show
@@ -21,14 +21,16 @@ class DiscsController < ApplicationController
 
   def edit
     @product = Product.find(params[:product_id])
-    @disc = Disc.find(@params[:id])
+    @disc = Disc.find(params[:id])
+    @track = @disc.tracks.build
+
   end
 
   def update
     product = Product.find(params[:product_id])
     disc = Disc.find(params[:id])
     disc.update(disc_params)
-    redirect_to new_product_disc_path(product)
+    redirect_to edit_product_path(product)
   end
 
   def destroy
