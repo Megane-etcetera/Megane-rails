@@ -1,10 +1,14 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin!, except: [:index, :search, :show]
+  before_action :authenticate_admin!, except: [:index, :search, :show, :genre]
  
 
   def index
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
+  end
+
+  def genre
+    @products = Product.where(genre_id: params[:id])
   end
 
   def stock
