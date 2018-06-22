@@ -1,8 +1,10 @@
 class CartsController < ApplicationController
   def show
-  	@product = Product.find(params[:id])
-    @disc = @product.discs
-    
+  	@cart = current_user.carts
+  	# @product = Product.find(params[:id])
+    # @discs = @product.discs
+     # @artists = @discs.joins(:tracks).pluck(:artist_name).uniq
+    # binding.pry
   end
 
   def add_product
