@@ -22,21 +22,10 @@
 		<div class="logo"><%= link_to image_tag("img/logo_toumei.png"), root_path %></div>
 		
 		<div class="s-box">
-			
-	<%= search_form_for @q do |f| %>
-		<%= f.search_field :product_title_cont %>
-		<%= f.submit %>
-	<% end %>
-			<%# <p>
-				<select class="s-op" name="example1">
-				<option value="サンプル1">OP1435522</option>
-				<option value="サンプル2">OP245224252</option>
-				<option value="サンプル3">OP33453242</option>
-				<option value="サンプル4">OP443242</option>
-				<option value="サンプル5">OP534232</option>
-				</select>
-			</p>
-			<button class="s-button">検索</button> %>
+			<%= search_form_for @q do |f| %>
+				<%= f.search_field :product_title_cont %>
+				<%= f.submit "商品名検索" %>
+			<% end %>
 		</div>
 
 		<div class="cart">
@@ -67,7 +56,9 @@
 					<ul id="header_genres" class="notdisp">
 					<%# 登録されているジャンルを優先順にリスト表示 class="notdisp"が付いてるのでマウスのせるまでは見えない %>
 						<% Genre.all.order(:priority).each do |ge| %>
-							<li name="header_nav-genre"><%= ge.genre %></li>
+							<%= link_to products_genre_path(ge.id) do %>
+								<li name="header_nav-genre"><%= ge.genre %></li>
+							<% end %>
 					<% end %>
 					</ul>
 				</li>
@@ -83,7 +74,12 @@
 					</ul>
 				</li>
 <% else %>
-				<li class="nav-list-item"><%= link_to "ログイン", new_user_session_path %></li>
+				<li class="nav-list-item nav_list_user">
+					<p><%= link_to "ログイン", new_user_session_path %></p>
+					<ul id="header_user" class="notdisp">
+					<li><%= link_to "会員登録はこちら", new_user_registration_path %></li>
+					</ul>
+				</li>
 <% end %>
 			</ul>
 		</nav>

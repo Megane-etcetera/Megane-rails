@@ -60,13 +60,15 @@
                             </div>
                         </div>
 
-                <%= link_to user_orders_path(@user.id) do  %>
-                    <div class="button-box">
+                <div class="button-box">
+                    <%= link_to user_orders_path(@user.id) do  %>
                         <div class="center-button">more</div>
-                    </div>
-                <% end %>
+                    <% end %>
+                </div>
             </div>
 
-                <%= link_to "退会はこちら", users_unsubsc_path(@user) %>
+                <% if @user.id == current_user.id %>
+                      <%= link_to "退会はこちら", users_unsubsc_path(@user) %>
+                       <% end %>
 
         </div>
