@@ -2,6 +2,7 @@ class Product < ApplicationRecord
 	attachment :image
 
 	belongs_to :admin
+	has_many :carts
 
 	belongs_to :label
 	belongs_to :genre

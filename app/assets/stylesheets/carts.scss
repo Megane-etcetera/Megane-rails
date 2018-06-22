@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-            //  SHOW
+            /* SHOW  */
 
 .item{
 	height: 250%;
@@ -11,16 +11,11 @@
 	margin: 10 auto;
 }
 
-table{
-	border: solid 1px #000000;
-	border-collapse: collapse;
-
-// よそのページにも影響が出ているのでtable全体ではなくclass名を付けて指定してください
-// table{
-// 	border-collapse: collapse;
+.cart-table{ 	border-collapse: collapse;
 	
-// 	margin: 0 auto;
+margin: 0 auto;
 }
+
 .cart-th{
 	padding: 30px;
 }
@@ -56,6 +51,18 @@ table{
 	position: absolute;
 	top: 25px;
 	right: 25px;
+}
+
+.delete-button{
+	width: 50px;
+    display: block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: red;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px grey;
+    border-radius: 3px;
+    text-align: center;
 }
 
 .left-button{
