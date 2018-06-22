@@ -57,7 +57,7 @@ end
   
   resources :destinations, only: [:new, :create,:edit, :update, :destroy]
 
-  resources :contacts, except:[:destroy]
+  
 
 
    
