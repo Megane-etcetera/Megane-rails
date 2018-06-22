@@ -20,12 +20,16 @@
                             <tr>
                               <td class="cart-td"><a href="product.html"><img src="img./test.jpg"  width="190" height="190"></a></td>
                                 <td class="cart-td" style="word-wrap:break-word;">
-                                    <li>title : プライド ［CD+DVD］＜期間生産限定盤＞</li><br>
-                                    <li>artist : 高橋　優</li><br>
-                                    <li>在庫　あり/なし </li><br>
+                                    <li>title : <%= @product.product_title %></li><br>
+                                        
+                                        
+                                             
+                                    <li>artist :  </li><br>
+                                   
+                                    <li>在庫　<%= @product.stock %> </li><br>
                                 </td>
                                 <td class="cart-td">
-                                    <p>価格：￥2160</p><br>
+                                    <p>価格：<%= @product.price %></p><br>
                                     <p><label for="number-field">個数</label>
                                         <input class="quantity" type="number" name="number" id="number-field" min="1" max="99" value="1">個</p><br>
                                     <p>削除</p><br>
@@ -74,6 +78,21 @@
                             </tr>
                         </tbody>
                     </table> 
+
+
+
+                    <% @disc.each do |disc| %>
+                  
+            
+                      
+                        <% disc.tracks.each do |track| %>
+                           
+                                
+                                <p><%= track.artist_name %></p>
+                        <% end %>
+                <% end %>
+                
+            </div>
                 
                     
             <div class="button-box">
