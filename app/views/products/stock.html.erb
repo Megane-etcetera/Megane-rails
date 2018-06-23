@@ -11,12 +11,14 @@
             <% @products.each do |product| %>
             <tr>
                 <td class="t_product_stock_id"><%= product.id %></td>
-                <td class="t_product_stock_name"><%= link_to product.product_title, product_path(product) %></td>
+                <td class="t_product_stock_name"><%= link_to product.product_title, edit_product_path(product) %></td>
                 <td class="t_product_stock_stock"><%= product.stock %></td>
                 <td class="t_product_stock_sell">777</td>
             </tr>
            <% end %>
         </table>
     </div>
-    <p class="p_s_pagi">＜　　page　　＞</p>
+		<div class="kaminarin_no_div">
+			<%= paginate @products, class: "pagenate" %>
+		</div>
 </div>

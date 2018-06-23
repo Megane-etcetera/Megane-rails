@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true)
+    @products = @q.result(distinct: true).page(params[:page])
   end
 
   def genre
@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def stock
-    @products = Product.all
+    @products = Product.page(params[:page])
   end
 
   def show

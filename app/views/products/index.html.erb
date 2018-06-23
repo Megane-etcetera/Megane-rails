@@ -3,18 +3,21 @@
 		<section class="top-new">
 			<h2>検索結果</h2>
 		</section>
-			<div class="product_index_box clearfix">
-				<% @products.each do |searched| %>
-					<div class="product-box">
-						<%= link_to "/products/#{searched.id}" do %>
-							<div class="p-image"><%= attachment_image_tag searched, :image, fallback: "img/no_image.jpg" %></div>
-							<div class="p-stat">
-								<%= searched.product_title %><br>
-								<%= searched.price %>円
-							</div>
-						<% end %>
-					</div>
-				<% end %>
-			</div>
+		<div class="product_index_box clearfix">
+			<% @products.each do |searched| %>
+				<div class="product-box">
+					<%= link_to "/products/#{searched.id}" do %>
+						<div class="p-image"><%= attachment_image_tag searched, :image, fallback: "img/no_image.jpg" %></div>
+						<div class="p-stat">
+							<%= searched.product_title %><br>
+							<%= searched.price %>円
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div class="kaminarin_no_div">
+			<%= paginate @products, class: "pagenate" %>
+		</div>
 	</div>
 </div>
