@@ -3,7 +3,6 @@ class CartsController < ApplicationController
   	@user = current_user.id
   	@cart = current_user.carts
 
-  	
   	# @product = Product.find(params[:id]) =(cart.product)
     # @discs = @product.discs
      # @artists = @discs.joins(:tracks).pluck(:artist_name).uniq
@@ -11,10 +10,11 @@ class CartsController < ApplicationController
   end
 
   def create
+
   		@cart = Cart.new(cart_params)
   		@cart.user_id = current_user.id
   		@cart.save
-  		redirect_to cart_user_path(@user)
+  		redirect_to root_path
   end
 
   def update
@@ -25,7 +25,7 @@ class CartsController < ApplicationController
 
   private
   	def cart_params
-  		params.require(:carts).parmit(:quantity,:user_id,:product_id,:sub_total)
+  		params.require(:cart).permit(:quantity,:user_id,:product_id,:sub_total)
   	end
 
 end

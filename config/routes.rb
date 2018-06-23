@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   get 'products/ranking'
   get 'contacts/finished'
 
-  get 'carts/show'
-  post 'carts/create'
   get "/users/:id/unsubsc" => "users#unsubsc", as: "users_unsubsc"
 
 
@@ -30,9 +28,7 @@ Rails.application.routes.draw do
 
 resources :users do 
    member do
-    get 'cart'  =>'carts#show'
-    post 'cart/create' =>'carts#create'
-    patch 'cart/update' => 'carts#update'
+    resources :carts , only: [:create, :show, :update, :destroy]
   end
   resources :contacts, only: [:new, :create]
   resources :orders, only: [:index, :show]
