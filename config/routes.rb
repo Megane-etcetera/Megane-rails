@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
 resources :users do 
    member do
+
     resources :carts , only: [:create, :show, :update, :destroy]
   end
   resources :contacts, only: [:new, :create]
