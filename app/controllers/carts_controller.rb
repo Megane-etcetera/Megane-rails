@@ -1,7 +1,7 @@
 class CartsController < ApplicationController
-  def show
-  		@user = current_user.id
-  		@cart = current_user.carts
+  def index
+  	@user = current_user.id
+  	@cart = current_user.carts
 
   	# @product = Product.find(params[:id]) =(cart.product)
     # @discs = @product.discs

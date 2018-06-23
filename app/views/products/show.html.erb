@@ -60,11 +60,12 @@
                
 <% if user_signed_in? %>
                 <%= form_for(@cart) do |f| %>
-                    <%= f.hidden_field :user_id, :value => @user.id %>
-                    <%= f.hidden_field :product_id, :value => @product.id %>
-                    <%= f.hidden_field :sub_total,:value => @product.price  %>
-                    <%= f.hidden_field :quantity,:value => 1 %>
-                    <%= f.submit "カートに入れる" %>
+                <%= f.hidden_field :user_id, :value => @user.id %>
+                <%= f.hidden_field :product_id, :value => @product.id %>
+                <%= f.hidden_field :sub_total,:value => @product.price  %>
+                <%= f.label :quantity,"数量" %>
+                <%= f.number_field :quantity %>
+                <%= f.submit "カートに入れる" %>
                 <% end %>
 <% else %>
                 <%= link_to new_user_session_path do  %>
