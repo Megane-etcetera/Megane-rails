@@ -44,6 +44,21 @@
 	height: 335px;
 	width: 100%;
 }
+.star-rating {
+	position: relative;
+	width: 5em;
+	font-size: 25px;
+}
+  .star-rating-front {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	color: #ffcc33;
+  }
+  .star-rating-back {
+	color: #ccc;
+  }
 .product-box{
 	width: 25%;
 	float: left;
