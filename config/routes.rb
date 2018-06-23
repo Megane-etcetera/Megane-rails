@@ -32,7 +32,7 @@ resources :users do
    member do
     get 'cart'  =>'carts#show'
     post 'cart/create' =>'carts#create'
-    patch 'cart/update' => 'carts#update'
+    patch 'cart/:cart_id/update' => 'carts#update', as: "cart_update"
   end
   resources :contacts, only: [:new, :create]
   resources :orders, only: [:index, :show]
