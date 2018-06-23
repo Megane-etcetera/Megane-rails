@@ -8,9 +8,6 @@
 
 require "csv"
 
-CSV.foreach('db/genre.csv') do |row|
-  Genre.create(:genre => row[0], :priority => row[1])
-end
 
 CSV.foreach('db/label.csv') do |row|
   Label.create(:label => row[0])

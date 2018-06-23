@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @u_search = User.search(params[:q])
-    @users = @u_search.result(distinct: true)
+    @users = @u_search.result(distinct: true).page(params[:page])
   end
   
 
