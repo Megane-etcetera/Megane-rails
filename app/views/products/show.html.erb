@@ -57,8 +57,9 @@
             </div>
             <div class="cart_buy">
 
-				<h3><%= @product.price %>円</h3>
 
+				<h3><%= @product.price %>円</h3>
+               
 <% if user_signed_in? %>
                 <%= form_for(@cart) do |f| %>
                 <%= f.hidden_field :user_id, :value => @user.id %>

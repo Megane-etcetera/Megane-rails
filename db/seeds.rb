@@ -8,6 +8,7 @@
 
 require "csv"
 
+
 CSV.foreach('db/label.csv') do |row|
   Label.create(:label => row[0])
 end
