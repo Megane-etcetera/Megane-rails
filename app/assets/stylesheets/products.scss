@@ -139,17 +139,13 @@
 .cart_buy p,.cart_buy input{
 	display: inline;
 }
-.cart_buy input{
-	width: 50px;
+.cart_buy a{
+	text-decoration: none;
+	font-size: 20px;
+	display: block;
 }
 .add_cart_button{
 	margin: 10px auto;
-	display: block;
-	
-}
-.add_cart_button a{
-	text-decoration: none;
-	font-size: 20px;
 	display: block;
 }
 .p-info{
