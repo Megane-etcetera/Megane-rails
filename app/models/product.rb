@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+	default_scope -> { order(release_date: :desc) }
+
 	attachment :image
 
 	belongs_to :admin
