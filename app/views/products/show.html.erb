@@ -56,8 +56,9 @@
                 えらー現在品切れ中
             </div>
             <div class="cart_buy">
-			
+				<h3><%= @product.price %>円</h3>
                
+<% if user_signed_in? %>
                 <%= form_for(@cart) do |f| %>
                 <%= f.hidden_field :user_id, :value => @user.id %>
                 <%= f.hidden_field :product_id, :value => @product.id %>
@@ -66,6 +67,11 @@
                 <%= f.number_field :quantity %>
                 <%= f.submit "カートに入れる" %>
                 <% end %>
+<% else %>
+                <%= link_to new_user_session_path do  %>
+                    <button class="add_cart_button">カートへ入れる</button>
+                <% end %>
+<% end %>
             </div>
         </div>
     </div>
