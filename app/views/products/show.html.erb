@@ -58,7 +58,14 @@
             <div class="cart_buy">
 				<h3><%= @product.price %>円</h3>
                 <p>数量</p><input type="number" value="1" min="1" max="100"><p>個</p>
-                <button class="add_cart_button"><a href="cart.html">カートへ入れる</a></button>
+               
+                <%= form_for(@cart) do |f| %>
+                <%= f.hidden_field :user_id, :value => @user.id %>
+                <%= f.hidden_field :product_id, :value => @product.id %>
+                <%= f.hidden_field :sub_total,:value => @product.price  %>
+                <%= f.hidden_field :quantity,:value => 1 %>
+                <%= f.submit "カートに入れる" %>
+                <% end %>
             </div>
         </div>
     </div>

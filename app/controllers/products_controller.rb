@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin!, except: [:index, :search, :show]
+  before_action :authenticate_admin!, except: [:index, :search, :show, :genre]
  
 
   def index
@@ -7,11 +7,16 @@ class ProductsController < ApplicationController
     @products = @q.result(distinct: true)
   end
 
+  def genre
+    @products = Product.where(genre_id: params[:id])
+  end
+
   def stock
     @products = Product.all
   end
 
   def show
+    @user = User.find(current_user.id)
     @product = Product.find(params[:id])
     @average = Review.where(product_id: @product.id).average(:star)
     @discs = @product.discs
@@ -22,6 +27,7 @@ class ProductsController < ApplicationController
     # .uniq ⇒　配列内の重複している要素を一つにする
     @review = Review.new
     @reviews = Review.where(product_id: @product.id)
+    @cart = Cart.new
   end
 
   def new
