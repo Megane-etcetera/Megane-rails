@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
     # .uniq ⇒　配列内の重複している要素を一つにする
     @review = Review.new
     @reviews = Review.where(product_id: @product.id)
+    @cart = Cart.new
   end
 
   def new
