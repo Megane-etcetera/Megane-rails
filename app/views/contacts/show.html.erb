@@ -1,10 +1,3 @@
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    
-</head>
-<body>	
 	<div class="contact_base">
 		<div class="open_contacts">
 			<h1 class="page-title">問い合わせ詳細</h1>
@@ -16,7 +9,7 @@
                      <tr>
 
 	                    	<td class="td_contact_show">ユーザー名</td>
-	                    	<td class="td_contact_show_content"><%= @contact.user.name %></td>
+	                    	<td class="td_contact_show_content"><%= @contact.user_id %></td>
 	                    </tr>
 	                    <tr>
 	                    	<td class="td_contact_show">問い合わせ日時</td>
@@ -52,5 +45,3 @@
         	<% end %>       
         </div>
     </div>
-</body>
-</html>

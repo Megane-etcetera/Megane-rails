@@ -1,6 +1,10 @@
 <div class="admin_menu_box clearfix">
-	<div class="admin_log_inout"><%= link_to "ログイン" ,new_admin_session_path %></div>
-	<div class="admin_log_inout"><%= link_to "ログアウト" ,destroy_admin_session_path  ,method: :delete %></div>
+
+	<% if admin_signed_in? %>
+		<div class="admin_log_inout"><%= link_to "ログアウト" ,destroy_admin_session_path  ,method: :delete %></div>
+	<% else %>
+		<div class="admin_log_inout"><%= link_to "ログイン" ,new_admin_session_path %></div>
+	<% end %>
 
 	<div class="search_box_kakkokari">
 		<p>ユーザー検索</p>
