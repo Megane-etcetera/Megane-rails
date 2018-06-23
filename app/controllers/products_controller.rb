@@ -16,7 +16,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    end
     @product = Product.find(params[:id])
     @average = Review.where(product_id: @product.id).average(:star)
     @discs = @product.discs
