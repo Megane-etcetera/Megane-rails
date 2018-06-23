@@ -33,6 +33,7 @@ resources :users do
     get 'cart'  =>'carts#show'
     post 'cart/create' =>'carts#create'
     patch 'cart/:cart_id/update' => 'carts#update', as: "cart_update"
+    delete 'cart/:cart_id/destroy' => 'carts#destroy'
   end
   resources :contacts, only: [:new, :create]
   resources :orders, only: [:index, :show]

@@ -36,9 +36,9 @@
                                     <p><label for="number-field">個数</label>
                                         <!-- <input  class="quantity" type="number" name="number" id="number-field" min="1" max="99" value="1">個 --><%= c.number_field :quantity %></p><br> 
                                    
-                                    <p><%= link_to '削除',root_path, method: :patch, class:"delete-button" %></p>
+                                    <p><%= c.submit '削除',method: :delete, class:"delete-button" %></p>
                                     
-                                    <p><%= c.submit '変更',method: :patch, class:"cart-edit-button"%></p>
+                                    <p><%= c.submit '変更',method: :patch, class:"cart-edit-button" %></p>
 
                                 </td>
                                 <% end %>
