@@ -72,6 +72,8 @@ end
   resources :products do
     resources :reviews
   end
-
+  scope :admins do
+  resources :order_products, only: [:create,:edit,:update,:destroy,:show,:index]
+  end
 end
 

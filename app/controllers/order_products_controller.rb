@@ -1,4 +1,7 @@
 class OrderProductsController < ApplicationController
+  def create
+  end
+
   def index
     @orders = OrderProduct.all
   end
@@ -12,7 +15,6 @@ class OrderProductsController < ApplicationController
     @order.update(order_product_params)
     redirect_to order_products_path
   end
-
 
   private
     def order_product_params

@@ -33,6 +33,9 @@ class ProductsController < ApplicationController
   end
 
   def new
+    if admin_signed_in?
+    else redirect_to root_path
+    end
     @product = Product.new
   end
 
