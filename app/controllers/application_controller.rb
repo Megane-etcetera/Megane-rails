@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+	protect_from_forgery with: :exception
 	before_action :set_search
 	# ヘッダーに検索フォームを置くために、何をするにも検索フォーム用の変数を持つように
 	
 	before_action :set_carts_view
+	
 	
 
 
@@ -20,7 +22,7 @@ class ApplicationController < ActionController::Base
 	def after_sign_out_path_for(resource)
 	 	root_path
 	end
-		protect_from_forgery with: :exception
+		
 		
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
