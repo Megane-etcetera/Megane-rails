@@ -1,8 +1,12 @@
 class CartsController < ApplicationController
   def index
+  	
   	@user = current_user.id
   	@cart = current_user.carts
 
+
+    
+  	
   	# @product = Product.find(params[:id]) =(cart.product)
     # @discs = @product.discs
     # @artists = @discs.joins(:tracks).pluck(:artist_name).uniq
@@ -19,17 +23,19 @@ class CartsController < ApplicationController
 
   def update
   		
-  		@cart = Cart.find(params[:cart_id])
+  		@cart = Cart.find(params[:id])
+
   	 	@cart.user_id = current_user.id
      	@cart.update(cart_params)
-     	redirect_to cart_user_path(current_user.id)
+     	redirect_to carts_path(current_user.id)
   end
 
   def destroy
-  		@cart = Cart.find(params[:cart_id])
+  		
+  		@cart = Cart.find(params[:id])
   	 	@cart.user_id = current_user.id
      	@cart.destroy
-     	redirect_to cart_user_path(current_user.id)
+     	redirect_to carts_path(current_user.id)
   end
 
   private

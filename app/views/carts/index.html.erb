@@ -14,6 +14,9 @@
                               <th class="cart-th">価格/数量</th>
                            </tr>
                         </thead>
+
+                        <% sum = 0 %>
+                        <% products_sum = 0 %>
                         <% @cart.each do |cart| %>
                         
                         <tbody>
@@ -29,16 +32,17 @@
                                    
                                     <li>在庫　<%= cart.product.stock %> </li><br>
                                 </td>
+                                
                                 <td class="cart-td">
                                     <p>価格：<%= cart.product.price %>円</p><br>
                                     
-                                    <%= form_for cart, url:cart_path do |c| %>
+                                    <%= form_for cart, url:cart_path(@user,cart) do |c| %>
             
 
                                     <p><label for="number-field">個数</label>
                                         <!-- <input  class="quantity" type="number" name="number" id="number-field" min="1" max="99" value="1">個 --><%= c.number_field :quantity %></p><br> 
                                    
-                                    <p><%= link_to  '削除',cart_destroy_user_path(@user, cart), method: :delete, class:"delete-button" %></p>
+                                    <p><%= link_to  '削除',cart_path(@user, cart), method: :delete, class:"delete-button" %></p>
 
                                     <p><%= c.submit '変更',method: :patch, class:"cart-edit-button" %></p>
 
@@ -46,16 +50,20 @@
                                 </td>
                                 <% end %>
                             </tr>
-                        <% end %>
-                            
                             <tr>
-                              <td class="cart-td"></td>    
-                                <td class="cart-td">
+                                        <% sub_total = cart.product.price.to_i * cart.quantity.to_i %>
+                                        <% sub_total %>
+                                        <% sum += sub_total %>
+                                        <% products_sum += cart.quantity.to_i %>
+                                <% end %> 
+                                <td>
+                                </td>
+                                <td>
                                 </td>
                                 <td class="cart-td">
-                                    <p>小計（3点）￥5554</p>
+                              
+                                    合計 <%= products_sum %>点￥<%= sum %>
                                 </td>
-                                
                             </tr>
                         </tbody>
                     </table> 
