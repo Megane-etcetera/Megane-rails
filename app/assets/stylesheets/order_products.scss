@@ -1,3 +1,23 @@
 // Place all the styles related to the OrderProducts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order_products_index_base{
+    width: 80%;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+.order_products_table table{
+    width: 100%;
+}
+.order_products_table a{
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+.edit_order_product_form h3, .edit_order_product_form p{
+    margin: 20px 0;
+}
+.order_products_table tr:hover{
+    background-color: aquamarine;
+}
