@@ -24,7 +24,7 @@
 	                    	<td class="td_contact_show_content" style="word-wrap:break-word;"><%=@contact.message %></td>
 	                    </tr> 
 
-	                <%= form_for @contact, url: admin_contact_path do |c| %>
+	                <%= form_for @contact do |c| %>
 	                    <tr>
 	                    	<td class="td_contact_show">管理人テキスト</td>
 	                    	<td class="td_contact_show_content" style="word-wrap:break-word;"><%= c.text_area :admin_comment, rows: 10, cols: 100 %></td>

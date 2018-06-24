@@ -199,8 +199,8 @@
                     <%= link_to "投稿を削除する", product_review_path(r.product_id,r), method: :delete, "data-confirm" => "本当に削除しますか？" %>
                 <% end %>
             <div class="post-review">
-                <h3>投稿者<br><%= User.find(r.user_id).name %></h3>
                 <h3><%= r.review_title %></h3>
+                <h4>投稿者  <%= User.find(r.user_id).name %></h4>
                 <p><%= simple_format(r.review_message) %></p>
             </div>
             <% end %>

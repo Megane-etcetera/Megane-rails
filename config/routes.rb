@@ -46,7 +46,7 @@ end
   delete "/admins/products/:id" => "products#destroy",as: "destroy_product"
   delete "/admins/products/:product_id/discs/:id" => "discs#destroy",as: "destroy_disc"
 
-
+ resources :order_products, only: [:index, :edit, :update]
 
 
   scope :admins do
