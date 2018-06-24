@@ -2,9 +2,6 @@
 
 	<% if admin_signed_in? %>
 		<div class="admin_log_inout"><%= link_to "ログアウト" ,destroy_admin_session_path  ,method: :delete %></div>
-	<% else %>
-		<div class="admin_log_inout"><%= link_to "ログイン" ,new_admin_session_path %></div>
-	<% end %>
 
 	<div class="search_box_kakkokari">
 		<p>ユーザー検索</p>
@@ -25,4 +22,7 @@
             <li class="admin_nav_list"><%= link_to "機能追加する場合用のリンク" ,root_path %></li>
 			</ul>
 		</nav>
+	<% else %>
+		<div class="admin_log_inout"><%= link_to "ログイン" ,new_admin_session_path %></div>
+	<% end %>
 </div>

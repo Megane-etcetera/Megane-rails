@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
 	before_action :set_search
 	# ヘッダーに検索フォームを置くために、何をするにも検索フォーム用の変数を持つように
+	
+	before_action :set_carts_view
+	
+
 
 	def after_sign_in_path_for(resource)
 
@@ -37,4 +41,17 @@ class ApplicationController < ActionController::Base
     @q = Product.search(params[:q])
 		@products = @q.result(distinct: true)
 	end
+
+	def set_carts_view
+		if user_signed_in?
+			@mycarts = current_user.carts.all
+			@carts_total_quantity = @mycarts.sum(:quantity)
+			@carts_total_price = 0
+			@mycarts.each do |cart|
+				cartprice = cart.quantity * cart.sub_total
+				@carts_total_price += cartprice
+			end
+		end
+	end
+
 end

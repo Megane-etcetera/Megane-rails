@@ -3,129 +3,159 @@
   <head>
     <title>Meganet</title>
     <%= csrf_meta_tags %>
-  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application' %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('.slider').bxSlider();
-    });
-  </script>
-</head>
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	 	<script>
+    	$(document).ready(function(){
+      	$('.slider').bxSlider();
+    	});
+  	</script>
+	</head>
 
   <body>
-<header>
-	<div class="lscn-box clearfix">
-		<div class="logo"><%= link_to image_tag("img/logo_toumei.png"), root_path %></div>
-		
-		<div class="s-box">
-			<%= search_form_for @q do |f| %>
-				<%= f.search_field :product_title_or_product_title_kana_cont %>
-				<%= f.submit "商品名検索" %>
-			<% end %>
-		</div>
+		<header>
+			<div class="lscn-box clearfix">
+				<div class="logo"><%= link_to image_tag("img/logo_toumei.png"), root_path %></div>
 
-		<div class="cart">
-			<a href="cart.html">
-				<div class="cart-left">
-					<div class="i-box">
-						<p>カート</p>
-						<i class="fas fa-shopping-cart carticon"></i>
-					</div>
-				</div>
-				<div class="cart-center">
-					<p>商品</p>
-					<br>
-					<p>金額</p>
-				</div>
-				<div class="cart-right">
-					<p>3点</p>
-					<br>
-					<p>3600円</p>
-				</div>
-			</a>
-		</div>
-
-		<nav>
-			<ul class="nav-list">
-				<li class="nav-list-item nav_list_genre">
-					ジャンル
-					<ul id="header_genres" class="notdisp">
-					<%# 登録されているジャンルを優先順にリスト表示 class="notdisp"が付いてるのでマウスのせるまでは見えない %>
-						<% Genre.all.order(:priority).each do |ge| %>
-							<%= link_to products_genre_path(ge.id) do %>
-								<li name="header_nav-genre"><%= ge.genre %></li>
-							<% end %>
+				<div class="s-box">
+					<%= search_form_for @q do |f| %>
+						<%= f.search_field :product_title_or_product_title_kana_cont %>
+						<%= f.submit "商品名検索" %>
 					<% end %>
-					</ul>
-				</li>
-				<li class="nav-list-item">新商品</li>
-				<li class="nav-list-item">ランキング</li>
-				<%# userがログインしているかどうかで表示を変える %>
-<% if user_signed_in? %>
-				<li class="nav-list-item nav_list_user">
-					<p><%= current_user.name %> 様</p>
-					<ul id="header_user" class="notdisp">
-						<li><%= link_to "マイページ", user_path(current_user.id) %></li>
-						<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-					</ul>
-				</li>
-<% else %>
-				<li class="nav-list-item nav_list_user">
-					<p><%= link_to "ログイン", new_user_session_path %></p>
-					<ul id="header_user" class="notdisp">
-					<li><%= link_to "会員登録はこちら", new_user_registration_path %></li>
-					</ul>
-				</li>
-<% end %>
-			</ul>
-		</nav>
-	</div>
-</header>
+				</div>
 
-    <%= yield %>
+				<div class="cart">
+					<% if user_signed_in? %>
+						<%= link_to carts_path(current_user.id) do %>
+							<div class="cart-left">
+								<div class="i-box">
+									<p>カート</p>
+									<i class="fas fa-shopping-cart carticon"></i>
+								</div>
+							</div>
+							<div class="cart-center">
+								<p>商品</p>
+								<br>
+								<p>金額</p>
+							</div>
+							<div class="cart-right">
+							<%# サインイン中かつカートに何か入っていれば、カート内の商品の数、金額を表示しcartsへのリンクとする %>
+								<% if current_user.carts.nil?  %>
+									<p>0点</p>
+									<br>
+									<p>0円</p>
+								<% else %>
+									<p><%= @carts_total_quantity %> 点</p>
+									<br>
+									<p><%= @carts_total_price %> 円</p>
+								<% end %>
+							</div>
+						<% end %>
+					<% else %>
+						<%= link_to new_user_session_path do %>
+						<%# サインインしていなければ0点0円と表示し、ログイン画面へのリンクとする %>
+							<div class="cart-left">
+								<div class="i-box">
+									<p>カート</p>
+									<i class="fas fa-shopping-cart carticon"></i>
+								</div>
+							</div>
+							<div class="cart-center">
+								<p>商品</p>
+								<br>
+								<p>金額</p>
+							</div>
+							<div class="cart-right">
+								<p>0点</p>
+								<br>
+								<p>0円</p>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
 
-<footer>
-	<div class="sicn clearfix">
+				<nav>
+					<ul class="nav-list">
+						<li class="nav-list-item nav_list_genre">
+							ジャンル
+							<ul id="header_genres" class="notdisp">
+							<%# 登録されているジャンルを優先順にリスト表示 class="notdisp"が付いてるのでマウスのせるまでは見えない %>
+								<% Genre.all.order(:priority).each do |ge| %>
+									<%= link_to products_genre_path(ge.id) do %>
+										<li name="header_nav-genre"><%= ge.genre %></li>
+									<% end %>
+							<% end %>
+							</ul>
+						</li>
+						<li class="nav-list-item">新商品</li>
+						<li class="nav-list-item">ランキング</li>
+						<%# userがログインしているかどうかで表示を変える %>
+						<% if user_signed_in? %>
+						<li class="nav-list-item nav_list_user">
+							<p><%= current_user.name %> 様</p>
+							<ul id="header_user" class="notdisp">
+								<li><%= link_to "マイページ", user_path(current_user.id) %></li>
+								<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+							</ul>
+						</li>
+						<% else %>
+						<li class="nav-list-item nav_list_user">
+							<p><%= link_to "ログイン", new_user_session_path %></p>
+							<ul id="header_user" class="notdisp">
+							<li><%= link_to "会員登録はこちら", new_user_registration_path %></li>
+							</ul>
+						</li>
+						<% end %>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		    <%= yield %>
+
+		<footer>
+			<div class="sicn clearfix">
 	
-	<div class="f-nav">
-		<ul class="f-nav-list">
-			<li class="f-nav-list-item"><%= link_to "TOP", root_path %></li>
-<% if user_signed_in? %>
-			<li class="f-nav-list-item"><%= link_to "マイページ", user_path(current_user.id) %></li>
-<% else %>
-			<%# ログインできていなければログイン画面へ飛ばす %>
-			<li class="f-nav-list-item"><%= link_to "マイページ", new_user_session_path %></li>
-<% end %>
-			<li class="f-nav-list-item"><a href="cart.html">カート</a></li>
-			<li class="f-nav-list-item">ランキング</li>
-			<li class="f-nav-list-item">適当何か</li>
-		</ul>
-	</div>
-	
-		<div class="kabusiki">
-			<p>株式会社 Smile eyes</p><br>
-			<p>TEL 000-0000-0000</p><br>
-			<p>住所　福井県鯖江市メガネ2丁目5-3</p>
-		</div>
-	
-	<div class="f-icon-box">
-		<i class="fab fa-twitter f-icon1"></i>
-		<i class="fab fa-facebook-f f-icon2"></i>
-		<i class="fab fa-youtube f-icon3"></i>
-	</div>
-	<div class="footer_contact">
-	<% if user_signed_in?  %>
-		<%= link_to "お問い合わせ",new_user_contact_path(current_user.id) %>
-	<% else %>
-		<%= link_to "お問い合わせ", new_user_session_path %>
-	<% end %>
-	</div>
-	<div class="aaa"><p>©️メガネ</p></div>
-	</div>
-</footer>
+				<div class="f-nav">
+					<ul class="f-nav-list">
+						<li class="f-nav-list-item"><%= link_to "TOP", root_path %></li>
+							<% if user_signed_in? %>
+						<li class="f-nav-list-item"><%= link_to "マイページ", user_path(current_user.id) %></li>
+						<li class="f-nav-list-item"><%= link_to "カート", carts_path(current_user.id) %></li>
+							<% else %>
+					<%# ログインできていなければログイン画面へ飛ばす %>
+						<li class="f-nav-list-item"><%= link_to "マイページ", new_user_session_path %></li>
+						<li class="f-nav-list-item"><%= link_to "カート", new_user_session_path %></li>
+							<% end %>
+						<li class="f-nav-list-item">ランキング</li>
+						<li class="f-nav-list-item">適当何か</li>
+					</ul>
+				</div>
+
+				<div class="kabusiki">
+					<p>株式会社 Smile eyes</p><br>
+					<p>TEL 000-0000-0000</p><br>
+					<p>住所　福井県鯖江市メガネ2丁目5-3</p>
+				</div>
+
+				<div class="f-icon-box">
+					<i class="fab fa-twitter f-icon1"></i>
+					<i class="fab fa-facebook-f f-icon2"></i>
+					<i class="fab fa-youtube f-icon3"></i>
+				</div>
+				<div class="footer_contact">
+					<% if user_signed_in?  %>
+						<%= link_to "お問い合わせ",new_user_contact_path(current_user.id) %>
+					<% else %>
+						<%= link_to "お問い合わせ", new_user_session_path %>
+					<% end %>
+				</div>
+				<div class="aaa"><p>©️メガネ</p></div>
+			</div>
+		</footer>
   </body>
 </html>
