@@ -29,9 +29,12 @@ Rails.application.routes.draw do
 resources :users do 
    member do
     resources :carts , only: [:create, :index, :update, :destroy]
+
+
   end
   resources :contacts, only: [:new, :create]
   resources :orders, only: [:index, :show]
+  get '/decision' => "order#decision"
 end
 
   get "admins/products/stocks" =>"products#stock" ,as: "admins_product_stocks"
@@ -45,15 +48,9 @@ end
 
 
 
-  resources :admin do
-    resources :contacts, only: [:index,:show,:update]
-  end
   
-  resources :admin do
-    member do
-      get 'contacts_finished'=>'contacts#finished'
-    end
-  end
+  
+  
 
   
   resources :destinations, only: [:new, :create,:edit, :update, :destroy]
@@ -67,6 +64,8 @@ end
 
 
   scope :admins do
+    resources :contacts, only: [:index,:show,:update]
+    get 'contacts_finished'=>'contacts#finished'
     resources :products, only: [:new, :create, :edit, :update, :index] do
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
        
