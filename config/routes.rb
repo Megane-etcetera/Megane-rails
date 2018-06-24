@@ -25,8 +25,7 @@ Rails.application.routes.draw do
   get 'contacts/finished'
 
   get "/users/:id/unsubsc" => "users#unsubsc", as: "users_unsubsc"
-
-
+  
 
 
 resources :users do 
@@ -35,10 +34,10 @@ resources :users do
     
   end
   resources :contacts, only: [:new, :create]
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show,:new,:create]
   get '/decision' => "order#decision"
-  resources :destinations, only: [:new, :create,:edit, :update, :destroy]
-  resources :order_products
+
+
 end
 
   get "admins/products/stocks" =>"products#stock" ,as: "admins_product_stocks"

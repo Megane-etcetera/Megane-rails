@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     if @review.user != current_user
       redirect_to product_path(@review.product_id), notice:'＜error＞投稿者以外は編集することができません'      

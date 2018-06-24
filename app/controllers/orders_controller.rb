@@ -3,18 +3,21 @@ class OrdersController < ApplicationController
     @orders = Order.where(user_id: current_user.id)
   end
 
-  def address
+  def new
+      @user = User.find(current_user.id)
+      @cart = current_user.carts
+      @order = Order.new 
   end
 
-  def payment
-  end
-
+  
   def decision
     @user = current_user.id
-    @cart = current_user.carts
+    @carts = current_user.carts
+    @oreder = Order.new
 
     # @carts =  Cart.where(current_user.carts)
     # @products = Product.where(@carts)
+    # @oderproduct = Oderproduct.new(@order.id)
     # @orderproduct = @products.orderproduct.build
     #こんな記述になるのではないかな？（あとはカートを消す記述）
 
@@ -26,5 +29,13 @@ class OrdersController < ApplicationController
   end  
 
   def create
+
   end
+
+  def address
+  end
+
+  def payment
+  end
+
 end
