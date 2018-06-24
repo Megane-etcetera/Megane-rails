@@ -35,22 +35,17 @@
                                     <div class="order-show-box">
                                         <p class="purchase-date"><%= order.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
                                         <div class="mini-box">
-                                            <div class="item-mini">
-                                                <img src="img./mini.jpg"  width="65" height="65">
-                                            </div>
-                                            <div class="item-mini">
-                                                <img src="img./mini2.jpg"  width="65" height="65">
-                                            </div>
-                                            <div class="item-mini">
-                                                <img src="img./mini3.jpg"  width="65" height="65">
-                                            </div>
-                                            <div class="item-mini"></div>
+                                            <% order.order_products.first(3).each do |item| %>
+                                                <div class="item-mini">
+                                                    <%= attachment_image_tag item.product, :image, fallback: "img/no_image.jpg" %>
+                                                </div>
+                                            <% end %>
+                                                <div class="item-mini"></div>
                                         </div>
                                         <div class="order-history-list">
                                                 <br>
-                                                <p>状態：発送済み</p><br>
-                                                <p>注文番号：1234567890</p><br>
-                                                <p>合計：￥6000</p><br>
+                                                <p>注文番号：<%= order.id %></p><br>
+                                                <p>合計：<%= order.order_price %></p><br>
                                         </div>
                                     </div>
                                     <div class="border-line"></div>
