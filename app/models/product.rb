@@ -13,6 +13,7 @@ class Product < ApplicationRecord
 
 	has_many :reviews, dependent: :destroy
 	has_many :users, :through => :reviews
+	has_many :order_products
 
 
 [:product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :release_date].each do |v|
