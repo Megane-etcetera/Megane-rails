@@ -1,5 +1,4 @@
-<h1>Orders#decision</h1>
-<p>Find me in app/views/orders/decision.html.erb</p>
+
 <body>
             <div class="main-box">
                     <div class="oder-cart-box">
@@ -12,48 +11,41 @@
                                       <th class="settlement-th">商品</th>
                                       <th>アーティスト</th>
                                       <th>数量</th>
-                                      <th>小計</th>
+                                      <th>価格</th>
                                    </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                      <td class="settlement-td"><img src="img./test.jpg"  width="65" height="65"></td>    
-                                        <td class="settlement-td">
-                                            プライド ［CD+DVD］＜期間生産限定盤＞
-                                        </td>
-
-                                        <td class="settlement-td">高橋　優</td>
-                                        <td class="settlement-td">1点</td>
+                                <% sum = 0 %>
+                                <% product_sum = 0 %>
+                                <% @carts.each do |cart| %>
+                                <% sub_total = cart.product.price.to_i * cart.quantity.to_i %>
                                         
-                                        <td class="settlement-td">￥2160</td>
-                                    </tr>
-                                </tbody>
+                                        <% sum += sub_total %>
+                                        <% product_sum += cart.quantity.to_i%>
+                                        
                                 <tbody>
                                     <tr>
-                                      <td class="settlement-td"><img src="img./test.jpg"  width="65" height="65"></td>    
-                                        <td class="settlement-td">プライド ［CD+DVD］＜期間生産限定盤＞</td>
-
-                                        <td class="settlement-td">高橋　優</td>
-                                        <td class="settlement-td">１点</td>
-                                        <td class="settlement-td">￥2160</td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                      <td class="settlement-td"><img src="img./test.jpg"  width="65" height="65"></td>    
+                                      <td class="settlement-td"><%= attachment_image_tag cart.product, :image, fallback: "img/no_image.jpg" %></td>    
                                         <td class="settlement-td">
-                                            プライド ［CD+DVD］＜期間生産限定盤＞</td>
-                                        <td class="settlement-td">高橋　優</td>
-                                        <td class="settlement-td">１点</td>
-                                        <td class="settlement-td">￥2160</td>
+                                           title : <%= cart.product.product_title %>
+                                        </td><% @discs = cart.product.discs %>
+                                    <% @artists = @discs.joins(:tracks).pluck(:artist_name).uniq %>
+
+                                        <td class="settlement-td"><%= @artists %></td>
+                                        <td class="settlement-td"><%= cart.quantity %>点</td>
+                                        
+                                        <td class="settlement-td">￥<%= cart.product.price %></td>
                                     </tr>
+                                    
+                                    <% end %>
+                                </tbody>
+                                
                                     <tr>
                                         <td class="cart-td"></td>    
                                         <td class="cart-td"></td>
                                         <td class="settlement-td"></td>
-                                        <td class="settlement-td"></td>
+                                        <td class="settlement-td"><%= product_sum %>点</td>
                                         <td class="cart-td">
-                                            <p>小計（3点）￥5554</p>
+                                            <p>小計￥<%= sum %></p>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -66,8 +58,10 @@
                             <div class="Addressee-inbox">
                         
                                 <br>
-                                <p class="address-text">123-4567</p><br>
-                                <p class="address-text" style="word-wrap:break-word;">東京都渋谷区神南１−２−３-5-6-7-8-9</p><br>
+                                <p class="address-text">郵便番号</p><br>
+                                	<p>〒<%= @user.post_number %></p><br>
+                                <p class="address-text" style="word-wrap:break-word;">住所</p><br>
+                                <p><%= @order.address %></p><br>
                             </div>
                     </div>
 
@@ -76,14 +70,15 @@
                             <div class="payment-info-box">
                                 <br>
 
-                                <p>小計：¥****</p><br>
-                                <p>代引き：¥****</p><br>
-                                <p>合計：¥****</p><br>
+                              	<p>小計：¥<%= sum%></p><br>
+                                <p>手数料：¥500</p><br>
+                                <p>合計：¥<%= sum + 500%></p><br>
                             </div>
                     </div>
                 </div>
+
                 <div class="button-box">
-                    <div class="center-button"><a href="thanks.html">注文する</a></div>
+                    <div class="center-button"><%= link_to "注文する" ,class:"center-button" %></a></div>
                 </div>
             </div>
     	

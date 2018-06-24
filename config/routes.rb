@@ -35,7 +35,7 @@ resources :users do
 
   end
   resources :contacts, only: [:new, :create]
-  resources :orders, only: [:index, :show,:new,]
+  resources :orders, only: [:index, :show,:new,:create]
   get 'order/decision' => "orders#decision"
 
 end

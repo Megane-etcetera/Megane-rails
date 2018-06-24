@@ -4,17 +4,22 @@ class OrdersController < ApplicationController
   end
 
   def new
+      @order = Order.new
       @user = User.find(current_user.id)
       @cart = current_user.carts
-      binding.pry
-      @order = Order.new 
+
+    
+       
+      
   end
 
   
   def decision
-    @user = current_user.id
+    @user = User.find(current_user.id)
     @carts = current_user.carts
-    @oreder = Order.new
+    @orders = @user.orders
+    @order = @orders.last
+    # @oreder = Order.where(user_id: current_user.id)
 
     # @carts =  Cart.where(current_user.carts)
     # @products = Product.where(@carts)
@@ -30,6 +35,11 @@ class OrdersController < ApplicationController
   end  
 
   def create
+      order = Order.new(order_params)
+      order.user_id = current_user.id
+      # binding.pry
+      order.save
+      redirect_to user_order_decision_path(current_user.id)
 
   end
 
@@ -38,5 +48,10 @@ class OrdersController < ApplicationController
 
   def payment
   end
+
+  private
+    def order_params
+      params.require(:order).permit(:user_id,:address,:order_price)
+    end
 
 end
