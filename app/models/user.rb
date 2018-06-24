@@ -10,6 +10,7 @@ class User < ApplicationRecord
    has_many :destinations
    has_many :orders
    has_many :carts
+   has_many :products, :through => :carts
 
    [:name, :kana, :post_number,:address,:tell ].each do |v|
    validates v, presence: true
