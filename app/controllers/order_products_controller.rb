@@ -1,3 +1,4 @@
+  class OrderProductsController < ApplicationController
   def create
   end
 
@@ -20,7 +21,7 @@
 
   def destroy
   end
-end
+
 
 
 private
@@ -28,4 +29,5 @@ def order_product_params
 
   params.require(:order_product).permit(:order_id,:quantity,:product_id, :status,:order_product_price)
 
+end
 end
