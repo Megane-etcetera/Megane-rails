@@ -7,16 +7,7 @@ class OrdersController < ApplicationController
       @order = Order.new
       @user = User.find(current_user.id)
       @cart = current_user.carts
-<<<<<<< HEAD
-
-    
-       
-      
-=======
-      @order = Order.new 
->>>>>>> 01d078e2c833aeb33588f97d7e91601a1298ce9f
   end
-
   
   def decision
     @user = User.find(current_user.id)
