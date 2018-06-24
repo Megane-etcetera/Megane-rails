@@ -7,14 +7,15 @@
                 <p>送り先住所</p>
                 <%= o.text_area :address,rows: 5, cols: 100 %>
 
-               <% @sum = 0 %>
+               <% sum = 0 %>
                 <% @cart.each do |cart| %>
                     <% sub_total = cart.product.price.to_i * cart.quantity.to_i %>
                      <% sub_total %>
 
-                     <% @sum += sub_total %>
+                     <% sum += sub_total %>
                  <% end %>
-                <% @sum %>
+                <% @sum = sum + 500 %>
+                <%= @sum %>
                 <%= o.hidden_field :order_price, :value => @sum %>
                 <%= o.submit "登録" %>
          <% end %>
