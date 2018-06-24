@@ -1,23 +1,19 @@
-			<%= form_for(@order) do |o| %>
+		
+
+		<%= form_for @order ,url:user_orders_path(@user) do |o| %>
                 <%= o.hidden_field :user_id, :value => @user.id %>
-                <%= o.hidden_field :product_id, :value => @product.id %>
-                <%= o.hidden_field :sub_total,:value => @product.price  %>
-                <%= o.label :quantity,"数量" %>
-                <%= o.number_field :quantity %>
-                <%= o.submit "カートに入れる" %>
-                <% end %>
-			<label>名前</label><br>
-			<p><%= @user.name%></p><br>
-				>
-			
-			<label>よみがな</label>
-			<p><%= @user.kana %></p><br>
-			
-			<label>郵便番号</label>
-			<p><%= @user.post_number %>
-			
-			<label>住所</label>
-			<p><%= @user.address %></p><br>
-			
-			<label>電話番号</label>
-			<p><%= @user.tell %></p><br>
+                <p>送り先住所</p>
+                <%= o.text_area :address,rows: 5, cols: 100 %>
+
+               <% @sum = 0 %>
+                <% @cart.each do |cart| %>
+                    <% sub_total = cart.product.price.to_i * cart.quantity.to_i %>
+                     <% sub_total %>
+
+                     <% @sum += sub_total %>
+                 <% end %>
+                <% @sum %>
+                <%= o.hidden_field :order_price, :value => @sum %>
+                <%= o.submit "登録" %>
+         <% end %>
+

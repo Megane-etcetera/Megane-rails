@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :abc, only:[:create]
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
@@ -12,6 +13,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
     if @review.user != current_user
       redirect_to product_path(@review.product_id), notice:'＜error＞投稿者以外は編集することができません'      
@@ -34,6 +36,11 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:user_id, :product_id, :review_title, :review_message, :star)
     end
-
-
+    #同一ユーザーによる同一商品に対する複数レビュー投稿禁止の為のbeforeaction#
+    def abc
+      if Review.find_by(user_id: current_user.id,product_id: params[:product_id]).nil?
+      else
+        redirect_to product_path(params[:product_id])
+      end
+    end
 end

@@ -31,11 +31,11 @@ Rails.application.routes.draw do
 resources :users do 
    member do
     resources :carts , only: [:create, :index, :update, :destroy]
-
-
+    
   end
   resources :contacts, only: [:new, :create]
-  resources :orders, only: [:index, :show,:new,]
+  resources :orders, only: [:index, :show,:new,:create]
+
   get 'order/decision' => "orders#decision"
 
 end
@@ -45,23 +45,6 @@ end
   get "/genre/:id" => "products#genre", as: "products_genre"
   delete "/admins/products/:id" => "products#destroy",as: "destroy_product"
   delete "/admins/products/:product_id/discs/:id" => "discs#destroy",as: "destroy_disc"
-
-
-  
-
-
-
-  
-  
-  
-
-  
-  resources :destinations, only: [:new, :create,:edit, :update, :destroy]
-
-  
-
-
-  resources :order_products
 
 
 
