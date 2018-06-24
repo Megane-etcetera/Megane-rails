@@ -5,6 +5,7 @@ class Product < ApplicationRecord
 
 	belongs_to :admin
 	has_many :carts
+	has_many :users, :through => :carts
 
 	belongs_to :label
 	belongs_to :genre
