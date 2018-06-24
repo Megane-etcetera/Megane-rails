@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
   def new
       @user = User.find(current_user.id)
       @cart = current_user.carts
-      binding.pry
       @order = Order.new 
   end
 
