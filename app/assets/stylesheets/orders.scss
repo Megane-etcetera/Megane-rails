@@ -32,3 +32,205 @@
 .order_index_box:hover{
     background-color: aquamarine;
 }
+
+
+
+ /*  最終画面*/
+
+ center-button{
+    width: 200px;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: red;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px grey;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.addressee-payment-box{
+    height: 410px;
+}
+
+.Addressee-last{
+    float: left;
+    width: 40%;
+
+    /*background-color:red;*/
+}
+
+.payment-info{
+    float: right;
+    width: 40%;
+}
+
+.payment-info-box{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+    background-color: #EEEEEE;
+
+}
+
+.box-title-last{
+    width: 250px;
+    font-size: 40px;
+    text-align: center;
+    margin: 0 auto 20px;
+    border-bottom: 3px solid #8fbac8 ;
+}
+
+.order-cart-box{
+    height: 550px;
+    width: 100%;
+    /* background-color: blue; */
+}
+
+.settlement-cart{
+    margin-top: 10px;
+}
+
+.settlement-td{
+    border-top: 3px solid #8fbac8 ;
+    padding: 10px 15px 10px ;
+    text-align: center; ;
+}
+
+.settlement-product-td{
+    padding: 0 15px;
+}
+
+.shipping-address-box{
+    height: 400px;
+    width: 100%;
+    /*background-color: green;*/
+}
+
+.shipping-box{
+    
+    width: 870px;
+    margin: 0 auto;
+}
+.address-box{
+    float: left;
+    height: 270px;
+    width: 270px;
+    margin: 0 10px;
+    /*角丸の指定*/
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+}
+
+.address{
+    text-align: center;
+}
+.address-text{
+    margin:0 10px 0 ; 
+}
+
+.address-action-button{
+    height: 50px;
+    width: 210px;
+    margin: 10px auto 0;
+}
+
+.address-edit-btn{
+    float: left;
+    width: 95px;
+    /* display: inline-block; */
+    margin: 5px 5px 0 0;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #004400;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    text-align: center;
+}
+.address-edit-:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
+.address-delete-btn{
+    
+    width: 95px;
+    display: inline-block;
+    margin: 5px 0 0 5px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background:#FF0000  ;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    text-align: center;
+}
+.address-delete-btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+    }
+
+.new-shipping-address-box{
+    height: 350px;
+    width: 100%;
+    margin: 0 auto;
+    /*background-color: lime;*/
+
+}
+
+.new-address-form{
+    height: 250px;
+    width: 550px;
+    margin: 10px auto 10px;
+
+    /*角丸の指定*/
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 10px;
+    background-color: #EEEEEE;
+}
+
+
+
+.new-name{
+    width: 462px;
+}
+
+.new-post-number{
+    width: 91px;
+}
+
+.new-address{
+    width: 462px;
+}
+
+.new-address-button{
+    height: 50px;
+    width: 200px;
+    margin: 10px auto 0;
+}
+.square_btn{
+    width: 200px;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    text-align: center;
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
