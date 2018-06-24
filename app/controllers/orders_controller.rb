@@ -10,6 +10,9 @@ class OrdersController < ApplicationController
   end
 
   def decision
+    @user = current_user.id
+    @cart = current_user.carts
+
     # @carts =  Cart.where(current_user.carts)
     # @products = Product.where(@carts)
     # @orderproduct = @products.orderproduct.build

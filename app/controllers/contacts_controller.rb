@@ -43,6 +43,7 @@ class ContactsController < ApplicationController
       @admin =Admin.find(params[:admin_id])
       @contact.situations = params[:situations]
       @contact.update(contact_params)
+      binding.pry
       redirect_to admin_contacts_path(@admin)
 
      

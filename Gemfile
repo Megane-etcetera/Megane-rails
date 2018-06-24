@@ -65,3 +65,4 @@ gem "nested_form"
 
 # 検索用
 gem 'ransack'
+gem 'enum_help'
