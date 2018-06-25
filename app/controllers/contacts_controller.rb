@@ -14,22 +14,17 @@ class ContactsController < ApplicationController
   end
 
   def index 
-      
+
       
       @contact = Contact.where(situations: params[:situations],situations: 0)
       @contacts = Contact.where(situations: params[:situations],situations: 1)
       
-      
-      
   end
 
   def finished
-      
+
       @contact = Contact.where(situations: params[:situations],situations: 2)
-
-
       
-
   end
 
   def edit
@@ -44,7 +39,6 @@ class ContactsController < ApplicationController
       @contact.update(contact_params)
       redirect_to contacts_path
 
-     
 
   end
 

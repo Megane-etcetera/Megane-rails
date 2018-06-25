@@ -14,12 +14,12 @@ class OrdersController < ApplicationController
     @carts = current_user.carts
     @orders = @user.orders
     @order = @orders.last
-    # @oreder = Order.where(user_id: current_user.id)
+    
 
-    # @carts =  Cart.where(current_user.carts)
-    # @products = Product.where(@carts)
-    # @oderproduct = Oderproduct.new(@order.id)
-    # @orderproduct = @products.orderproduct.build
+   # @carts =  Cart.where(current_user.carts)
+    #@products = Product.where(@carts)
+    #@oderproduct = Oderproduct.new(@order.id)
+    #@orderproduct = @products.orderproduct.build
     #こんな記述になるのではないかな？（あとはカートを消す記述）
 
   end
@@ -35,7 +35,19 @@ class OrdersController < ApplicationController
       # binding.pry
       order.save
       redirect_to user_order_decision_path(current_user.id)
+      carts = current_user.carts
+      
+       carts.each do |c|
+         order_product = OrderProduct.new
+         order_product.order_id = order.id 
+         order_product.quantity = c.quantity 
+         order_product.product_id = c.product_id
+         order_product.order_product_price = order.order_price
+         order_product.save
+       end
+        
 
+        
   end
 
   def address
@@ -49,4 +61,7 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:post_num,:user_id,:address,:order_price)
     end
 
+    def order_product_params
+      params.require(:order_product).permit(:user_id,:product_id,:order_id,:quantity,:status)
+    end
 end
