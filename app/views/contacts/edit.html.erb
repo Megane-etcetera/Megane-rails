@@ -1,3 +1,4 @@
+<div class="admin_back_to_menu"><%= link_to "管理者メニュー画面へ", admintops_top_path %></div>
 	<div class="contact_base">
 		<div class="open_contacts">
 			<h1 class="page-title">問い合わせ詳細</h1>
@@ -33,10 +34,9 @@
 	                    	<td class="td_contact_show">状況</td>
 
 	                    	<td class="td_contact_show_content">
-	                    		<%= c.select :situations,Contact.situations.keys.map {|k| [k,k]}%>
-
+	                    		<%= c.select :situations,Contact.situations.keys.map {|k| [k,k]}
 	                    		
-	                    			
+	                    			%>
 	                    	</td>
 
 	                    </tr> 

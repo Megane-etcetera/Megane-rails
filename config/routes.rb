@@ -28,10 +28,10 @@ Rails.application.routes.draw do
   
 
 
-resources :users do 
+resources :users do
    member do
     resources :carts , only: [:create, :index, :update, :destroy]
-    
+
   end
   resources :contacts, only: [:new, :create]
   resources :orders, only: [:index, :show,:new,:create]
@@ -50,11 +50,11 @@ end
 
 
   scope :admins do
-    resources :contacts, only: [:index,:show,:update]
+    resources :contacts, only: [:index,:edit,:update]
     get 'contacts_finished'=>'contacts#finished'
     resources :products, only: [:new, :create, :edit, :update, :index] do
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
-       
+  
           resources :tracks, only: [:new,:create,:edit,:update,:destroy,:show]
   end
   end

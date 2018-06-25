@@ -1,3 +1,4 @@
+<div class="admin_back_to_menu"><%= link_to "管理者メニュー画面へ", admintops_top_path %></div>
     <div class="contact_base">
         <div class="open_contacts">
             <h1 class="box-title">未対応</h1>
@@ -18,7 +19,8 @@
                             </td>
                             <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
                             <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
-                            <td class="th_contact_view"><%= link_to 'show', contact_path(cont.id)%></td>
+                            <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont.id)%></td>
+
                     </tr>
                 <% end %>
 
@@ -41,7 +43,8 @@
                             </td>
                             <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
                             <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
-                            <td class="th_contact_view"><%= link_to 'show', contact_path(cont.id)%></td>
+                            <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont) %></td>
+
                     </tr>
                 <% end %>
                 </table>

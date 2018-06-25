@@ -102,10 +102,9 @@
 	word-break: break-all;
 }
 .product-name{
-	height: 200px;
 	width: 100%;
 	background-color: whitesmoke;
-	margin-bottom: 10px;
+	height: 360px;
 }
 .star-rating {
 	position: relative;
@@ -122,11 +121,7 @@
   .star-rating-back {
 	color: #ccc;
   }
-.benefit{
-	height: 150px;
-	width: 100%;
-	background-color: whitesmoke;
-}
+
 .cart-box{
 	height: 360px;
 	width: 25%;
@@ -164,6 +159,16 @@ td, th {
 }
 th {
 	background: #f0e6cc;
+}
+.p-track-table1{
+	width: 50px;
+
+}
+.p-track-table2{
+	width: 200px;
+}
+.p-track-table3{
+	width: 350px;
 }
 .even {
 	background: #fbf8f0;

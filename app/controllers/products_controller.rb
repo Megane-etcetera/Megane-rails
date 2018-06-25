@@ -47,6 +47,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if admin_signed_in?
+    else redirect_to root_path
+    end
     @product = Product.find(params[:id])
     @discs = @product.discs
   end
