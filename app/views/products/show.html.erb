@@ -41,22 +41,18 @@
                     <div class="star-rating-back">★★★★★</div>
                 </div>
             </div>
-            <div class="benefit">
-				<% if @product.stock < 1 %>
-					<h2>現在品切れ中</h2>
-				<% elsif @product.stock < 10 %>
-					<p>在庫残りわずか</p>
-				<% else %>
-					<p>在庫あり</p>
-				<% end %>
-            </div>
+            
         </div>
         <div class="cart-box">
-            <div class="cart_error_message">
-                えらー現在品切れ中
-            </div>
+            
             <div class="cart_buy">
-
+                <% if @product.stock < 1 %>
+                    <h2>現在品切れ中</h2>
+                <% elsif @product.stock < 10 %>
+                    <p>在庫残りわずか</p>
+                <% else %>
+                    <p>在庫あり</p>
+                <% end %>
 
 				<h3><%= @product.price %>円</h3>
                
@@ -118,9 +114,9 @@
                         <tbody>
                         <% disc.tracks.each do |track| %>
                             <tr>
-                                <td><%= track.track_number %></td>
-                                <td><%= track.track_title %></td>
-                                <td><%= track.artist_name %></td>
+                                <td class="p-track-table1"><%= track.track_number %></td>
+                                <td class="p-track-table2"><%= track.track_title %></td>
+                                <td class="p-track-table3"><%= track.artist_name %></td>
                             </tr>
                 
                         <% end %>

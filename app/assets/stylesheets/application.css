@@ -105,8 +105,9 @@ header{
 	margin-top: 10px;
 }
 .s-form{
-	height: 28px;
-	width: 90%;
+	font-size: 35px;
+	width: 80%;
+
 }
 .s-op{
 	float: left;

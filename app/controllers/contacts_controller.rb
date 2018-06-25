@@ -14,6 +14,7 @@ class ContactsController < ApplicationController
   end
 
   def index 
+
       
       @contact = Contact.where(situations: params[:situations],situations: 0)
       @contacts = Contact.where(situations: params[:situations],situations: 1)
@@ -21,11 +22,12 @@ class ContactsController < ApplicationController
   end
 
   def finished
+
       @contact = Contact.where(situations: params[:situations],situations: 2)
       
   end
 
-  def show  
+  def edit
 
       @contact = Contact.find(params[:id])
      
@@ -36,6 +38,7 @@ class ContactsController < ApplicationController
       @contact.situations = params[:situations]
       @contact.update(contact_params)
       redirect_to contacts_path
+
 
   end
 
