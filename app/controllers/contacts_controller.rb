@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
 
   def finished
 
-      @contact = Contact.where(situations: params[:situations],situations: 2)
+      @contact = Contact.where(situations: params[:situations],situations: 2).page(params[:page])
       
   end
 

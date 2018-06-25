@@ -30,7 +30,7 @@
                         <div class="order-box">
                             <div class="order-history-box clearfix">
                             
-                            <% @orders.first(3).reverse_each do |order| %>
+                            <% @orders.last(3).reverse_each do |order| %>
                                 <%= link_to user_order_path(@user.id, order.id) do  %>
                                     <div class="order-show-box">
                                         <p class="purchase-date"><%= order.created_at.strftime('%Y年%m月%d日 %H:%M') %></p>
@@ -61,8 +61,42 @@
                     <% end %>
                 </div>
             </div>
+            <!-- 投稿したレビュー一覧 -->
+<div class="other_review">
+            <section>
+                <h2>投稿したレビューの一覧</h2>
+            </section>
+    
 
-                <% if @user.id == current_user.id %>
+            <% @reviews.each do |r| %>
+            <div class="star-rating">
+                <%# 黄色い★ %>
+                <% if r.star == 5 %>
+                <div class="star-rating-front">★★★★★</div>
+                <% elsif r.star == 4 %>
+                <div class="star-rating-front" style="width: 80%">★★★★★</div>
+                <% elsif r.star == 3 %>
+                <div class="star-rating-front" style="width: 60%">★★★★★</div>
+                <% elsif r.star == 2 %>
+                <div class="star-rating-front" style="width: 40%">★★★★★</div>
+                <% else %>
+                <div class="star-rating-front" style="width: 20%">★★★★★</div>
+                <% end %>
+                <%# 黒い★ %>
+                <div class="star-rating-back">★★★★★</div>
+            </div>
+                <% if r.user == current_user %>
+                    <%= link_to "編集する", edit_product_review_path(r.product_id,r) %>
+                    <%= link_to "投稿を削除する", product_review_path(r.product_id,r), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                <% end %>
+            <div class="post-review">
+                <h3>商品名 <%= Product.find(r.product_id).product_title %></h3>
+                <h3>レビュータイトル<%= r.review_title %></h3>
+                <p><%= simple_format(r.review_message) %></p>
+            </div>
+            <% end %>
+        </div>
+        <% if @user.id == current_user.id %>
                       <%= link_to "退会はこちら", users_unsubsc_path(@user) %>
                        <% end %>
 

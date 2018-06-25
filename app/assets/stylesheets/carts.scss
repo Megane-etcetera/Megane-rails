@@ -90,7 +90,7 @@ margin: 0 auto;
 	background-color: grey;
 	text-align: center;
 }
-.left-button a{
+.left-button {
 	text-decoration: none;
 	line-height: 50px;
 	display: block;
@@ -99,6 +99,7 @@ margin: 0 auto;
 
 .right-button{
 	width: 200px;
+	height: 50px;
     display: inline-block;
     margin: 0 auto;
     /* padding: 0.5em 1em; リンクを張るのにちょっと邪魔なので一旦コメントアウト */
@@ -112,7 +113,7 @@ margin: 0 auto;
 	right: 0;
 	bottom: 0px;
 }
-.right-button a{
+.right-button {
 	text-decoration: none;
 	display: block;
 	color: white;

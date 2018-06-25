@@ -56,20 +56,26 @@
 
 				<h3><%= @product.price %>円</h3>
                
-<% if user_signed_in? %>
-                <%= form_for(@cart) do |f| %>
-                <%= f.hidden_field :user_id, :value => @user.id %>
-                <%= f.hidden_field :product_id, :value => @product.id %>
-                <%= f.hidden_field :sub_total,:value => @product.price  %>
-                <%= f.label :quantity,"数量" %>
-                <%= f.number_field :quantity %>
-                <%= f.submit "カートに入れる" %>
+               <% if @product.stock != 0 %>
+                    <% if user_signed_in? %>
+                        <%= form_for(@cart) do |f| %>
+                            <%= f.hidden_field :user_id, :value => @user.id %>
+                            <%= f.hidden_field :product_id, :value => @product.id %>
+                            <%= f.hidden_field :sub_total,:value => @product.price  %>
+                            <%= f.label :quantity,"数量" %>
+                            <%= f.number_field :quantity, :value => 1 %>
+                            <%= f.submit "カートに入れる" %>
+                        <% end %>
+                        <%= notice %>
+                    <% else %>
+                        <%= link_to new_user_session_path do  %>
+                            <button class="add_cart_button">カートへ入れる</button>
+                        <% end %>
+                    <% end %>
+                <% else %>
+                    <button class="add_cart_button">欠品中</button>
+                    <h3>申し訳ありません、入荷予定はページ下部のリンクよりお問合せ下さい</h3>
                 <% end %>
-<% else %>
-                <%= link_to new_user_session_path do  %>
-                    <button class="add_cart_button">カートへ入れる</button>
-                <% end %>
-<% end %>
             </div>
         </div>
     </div>
@@ -196,7 +202,7 @@
                 <% end %>
             <div class="post-review">
                 <h3><%= r.review_title %></h3>
-                <h4>投稿者  <%= User.find(r.user_id).name %></h4>
+                <h3>投稿者  <%= User.find(r.user_id).name %></h3>
                 <p><%= simple_format(r.review_message) %></p>
             </div>
             <% end %>
