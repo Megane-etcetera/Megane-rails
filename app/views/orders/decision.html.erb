@@ -54,30 +54,51 @@
                     </div>
                 <div class="addressee-payment-box">
                     <div class="Addressee-last">
-                        <h1 class="box-title-last">お届け先</h1>
-                            <div class="Addressee-inbox">
-                        
-                                <br>
-                                <p class="address-text">郵便番号</p><br>
-                                	<p>〒<%= @order.post_num %></p><br>
-                                <p class="address-text" style="word-wrap:break-word;">住所</p><br>
-                                <p><%= @order.address %></p><br>
-                            </div>
-                    </div>
 
-                    <div class="payment-info">
+                    	<div class="payment-info">
                         <h1 class="box-title-last">お支払い</h1>
                             <div class="payment-info-box">
                                 <br>
 
-                              	<p>小計：¥<%= @order.order_price%></p><br>
+                              	<p>小計：¥<%= sum %></p><br>
                                 <p>手数料：¥500</p><br>
-                                <p>合計：¥<%= sum + 500%></p><br>
+                                <p>合計：¥<%= sum + 500 %></p><br>
                             </div>
                     </div>
+                    
+                        <h1 class="box-title-last">お届け先</h1>
+                            <div class="Addressee-inbox">
+                        <%= form_for order ,url:user_orders_path(@user) do |o| %>
+			                <%= o.hidden_field :user_id, :value => @user.id %>
+			                <p>郵便番号</p>
+			                <%= o.text_field :post_num %>
+			                <p>送り先住所</p>
+			                <%= o.text_area :address,rows: 5, cols: 80 %>
+
+			               <% sum = 0 %>
+			                <% @carts.each do |cart| %>
+			                    <% sub_total = cart.product.price.to_i * cart.quantity.to_i %>
+			                     <% sub_total %>
+
+			                     <% sum += sub_total %>
+			                 <% end %>
+			                <% @sum = sum + 500 %>
+			                <%= @sum %>
+			                <%= o.hidden_field :order_price, :value => @sum %>
+			                <%= o.submit "登録" , method: :post%>
+			         <% end %>
+                                <br>
+                                <!-- <p class="address-text">郵便番号</p><br>
+                                	<p>〒<%= @order.post_num %></p><br>
+                                <p class="address-text" style="word-wrap:break-word;">住所</p><br>
+                                <p><%= @order.address %></p><br> -->
+                            </div>
+                    </div>
+
+                    
                 </div>
 
                 <div class="button-box">
-                    <div class="center-button"><%= link_to "注文する" ,class:"center-button" %></a></div>
+                    <a ><%= link_to "注文する", root_path ,method: :post ,class:"center-button" %></a></div>
                 </div>
             </div>
