@@ -10,33 +10,22 @@ class OrdersController < ApplicationController
   end
   
   def decision
-   
+    
+    @order = Order.new
     @user = User.find(current_user.id)
+
     @carts = current_user.carts
-    @orders = @user.orders
-    @order = @orders.last
-   
+    
 
-    # carts.each do |c|
-    #      order_product = OrderProduct.new
-    #      order_product.order_id = order.id 
-    #      order_product.quantity = c.quantity 
-    #      order_product.product_id = c.product_id
-    #      order_product.order_product_price = orders.order_price
-    #      order_product.save
-         
-    # end
+     
         
-
-   # @carts =  Cart.where(current_user.carts)
-    #@products = Product.where(@carts)
-    #@oderproduct = Oderproduct.new(@order.id)
-    #@orderproduct = @products.orderproduct.build
-    #こんな記述になるのではないかな？（あとはカートを消す記述）
+      
+   
 
   end
 
   def show
+
     @order = Order.find(params[:id])
     @orderproducts = @order.order_products
   end  
@@ -46,20 +35,19 @@ class OrdersController < ApplicationController
       order.user_id = current_user.id
       # binding.pry
       order.save
-      redirect_to user_order_decision_path(current_user.id)
+      redirect_to root_path
       carts = current_user.carts
       
-       # carts.each do |c|
-       #   order_product = OrderProduct.new
-       #   order_product.order_id = order.id 
-       #   order_product.quantity = c.quantity 
-       #   order_product.product_id = c.product_id
-       #   order_product.order_product_price = order.order_price
-       #   order_product.save
+        carts.each do |c|
+            order_product = OrderProduct.new
+            order_product.order_id = order.id 
+            order_product.quantity = c.quantity 
+            order_product.product_id = c.product_id
+            order_product.order_product_price = order.order_price
+            order_product.save
+        end
 
-       # end
-        
-
+        carts.delete_all        
         
   end
 
