@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   end
   
   def decision
-    order = Order.new(order_params)
+   
     @user = User.find(current_user.id)
     @carts = current_user.carts
     @orders = @user.orders
