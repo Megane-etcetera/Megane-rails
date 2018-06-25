@@ -10,11 +10,23 @@ class OrdersController < ApplicationController
   end
   
   def decision
+    order = Order.new(order_params)
     @user = User.find(current_user.id)
     @carts = current_user.carts
     @orders = @user.orders
     @order = @orders.last
-    
+   
+
+    # carts.each do |c|
+    #      order_product = OrderProduct.new
+    #      order_product.order_id = order.id 
+    #      order_product.quantity = c.quantity 
+    #      order_product.product_id = c.product_id
+    #      order_product.order_product_price = orders.order_price
+    #      order_product.save
+         
+    # end
+        
 
    # @carts =  Cart.where(current_user.carts)
     #@products = Product.where(@carts)
@@ -37,14 +49,15 @@ class OrdersController < ApplicationController
       redirect_to user_order_decision_path(current_user.id)
       carts = current_user.carts
       
-       carts.each do |c|
-         order_product = OrderProduct.new
-         order_product.order_id = order.id 
-         order_product.quantity = c.quantity 
-         order_product.product_id = c.product_id
-         order_product.order_product_price = order.order_price
-         order_product.save
-       end
+       # carts.each do |c|
+       #   order_product = OrderProduct.new
+       #   order_product.order_id = order.id 
+       #   order_product.quantity = c.quantity 
+       #   order_product.product_id = c.product_id
+       #   order_product.order_product_price = order.order_price
+       #   order_product.save
+
+       # end
         
 
         
