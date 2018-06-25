@@ -21,9 +21,6 @@ class ProductsController < ApplicationController
   end
 
   def stock
-    
-    
-    
     @products = Product.page(params[:page])
 
   end

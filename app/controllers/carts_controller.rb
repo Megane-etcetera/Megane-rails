@@ -15,10 +15,10 @@ class CartsController < ApplicationController
 
   def create
 
-  		@cart = Cart.new(cart_params)
-  		@cart.user_id = current_user.id
-  		@cart.save
-  		redirect_to root_path
+  	 @cart = Cart.new(cart_params)
+  	 @cart.user_id = current_user.id
+  	 @cart.save
+  	 redirect_to root_path
   end
 
   def update
