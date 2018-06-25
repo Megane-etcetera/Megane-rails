@@ -17,8 +17,12 @@ class CartsController < ApplicationController
 
   		@cart = Cart.new(cart_params)
   		@cart.user_id = current_user.id
-  		@cart.save
-  		redirect_to root_path
+		if @cart.quantity > @cart.product.stock
+			redirect_to product_path(@cart.product_id), notice:'＜error＞在庫不足につき、ご希望の枚数では購入できません'
+		else
+			@cart.save
+			redirect_to carts_path(current_user.id)
+		end
   end
 
   def update

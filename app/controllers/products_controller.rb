@@ -22,7 +22,8 @@ class ProductsController < ApplicationController
 
   def stock
     @product = Product.all
-    @orderproduct = OrderProduct.where(product_id)
+    # なんのために書いてあったかわからないのでコメントアウトします
+    # @orderproduct = OrderProduct.where(product_id)
 
     @products = Product.page(params[:page])
 
