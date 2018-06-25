@@ -32,6 +32,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @orders = @user.orders
       @product = @user.products
+      @reviews = Review.where(user_id: params[:id])
   end
 
   def unsubsc

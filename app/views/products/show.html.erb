@@ -196,7 +196,7 @@
                 <% end %>
             <div class="post-review">
                 <h3><%= r.review_title %></h3>
-                <h4>投稿者  <%= User.find(r.user_id).name %></h4>
+                <h3>投稿者  <%= User.find(r.user_id).name %></h3>
                 <p><%= simple_format(r.review_message) %></p>
             </div>
             <% end %>
