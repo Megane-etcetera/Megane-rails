@@ -1,8 +1,14 @@
 <div class="order_products_index_base">
     <h1>発送状況変更</h1>
     <div class="edit_order_product_form">
+        <h3><%= @order.order.user.name %></h3>
         <h3><%= @order.product.product_title %></h3>
         <p><%= @order.quantity %>点</p>
+        <p><%= @order.order_product_price %>円</p>
+        
+        <p><%= @order.created_at %></p>
+        
+        <p><%= @order.order.address %></p>
 
         <%= form_for(@order) do |f| %>
             <%= f.select :status, [["未発送", "未発送"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]] %>
