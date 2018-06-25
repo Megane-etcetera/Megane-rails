@@ -4,6 +4,7 @@
         
         <div class="body">
             <h1 class="page-title"> shopping cart</h1>
+            <p><%= notice %></p> 
             <div class="main-box">
                 <div class= "item-box">
                     <table class="cart-table">
@@ -77,8 +78,8 @@
                 
                     
             <div class="button-box">
-                <button class="left-button" ><a href="top.html">買い物を続ける</a></button>
-                <button class="right-button"><a href="address.html">決済へ進む</a></button>
+                <%= link_to "買い物を続ける",root_path,class: "left-button" %>
+                <%= link_to "決済へ進む",user_order_decision_path(@user),class: "right-button" %>
             </div>
             </div>
         </div>
