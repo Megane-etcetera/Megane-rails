@@ -1,11 +1,11 @@
 		
 
-		<%= form_for @order ,url:user_orders_path(@user) do |o| %>
+		<%= form_for @order ,url:user_orders_path(@user)  do |o| %>
                 <%= o.hidden_field :user_id, :value => @user.id %>
                 <p>郵便番号</p>
                 <%= o.text_field :post_num %>
                 <p>送り先住所</p>
-                <%= o.text_area :address,rows: 5, cols: 100 %>
+                <%= o.text_area :address,rows: 5, cols: 50 %>
 
                <% sum = 0 %>
                 <% @cart.each do |cart| %>

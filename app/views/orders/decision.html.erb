@@ -26,7 +26,7 @@
                                     <tr>
                                       <td class="settlement-td"><%= attachment_image_tag cart.product, :image, fallback: "img/no_image.jpg" %></td>    
                                         <td class="settlement-td">
-                                           title : <%= cart.product.product_title %>
+                                           <%= cart.product.product_title %>
                                         </td><% @discs = cart.product.discs %>
                                     <% @artists = @discs.joins(:tracks).pluck(:artist_name).uniq %>
 
@@ -56,12 +56,18 @@
                     <div class="Addressee-last">
                         <h1 class="box-title-last">お届け先</h1>
                             <div class="Addressee-inbox">
-                        
-                                <br>
+                        		<%= form_for @order ,url:user_orders_path(@user),method: :post do |o| %>
+				                <%= o.hidden_field :user_id, :value => @user.id %>
+				                <p>郵便番号</p>
+				                <%= o.text_field :post_num %>
+				                <p>送り先住所</p>
+				                <%= o.text_area :address,rows: 5, cols: 50 %>
+				                <%= o.submit "登録" %>
+                               <!--  <br>
                                 <p class="address-text">郵便番号</p><br>
                                 	<p>〒<%= @order.post_num %></p><br>
                                 <p class="address-text" style="word-wrap:break-word;">住所</p><br>
-                                <p><%= @order.address %></p><br>
+                                <p><%= @order.address %></p><br> -->
                             </div>
                     </div>
 
@@ -70,9 +76,21 @@
                             <div class="payment-info-box">
                                 <br>
 
-                              	<p>小計：¥<%= @order.order_price - 500%></p><br>
+                                <% sum = 0 %>
+				                <% @carts.each do |cart| %>
+				                    <% sub_total = cart.product.price.to_i * cart.quantity.to_i %>
+				                     <% sub_total %>
+
+				                     <% sum += sub_total %>
+				                 <% end %>
+				                
+				                <%= @sum %>
+				                <%= o.hidden_field :order_price, :value => @sum %>
+				                <% end %>
+
+                              	<p>小計：¥<%= sum %></p><br>
                                 <p>手数料：¥500</p><br>
-                                <p>合計：¥<%= @order.order_price %></p><br>
+                                <p>合計：¥<%= sum + 500 %></p><br>
                             </div>
                     </div>
                 </div>
