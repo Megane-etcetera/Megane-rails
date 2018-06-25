@@ -1,5 +1,8 @@
 class GenresController < ApplicationController
   def index
+    if admin_signed_in?
+    else redirect_to root_path
+    end
   	@genre = Genre.new
   	@genres = Genre.all
   end

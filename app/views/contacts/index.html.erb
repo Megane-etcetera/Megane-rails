@@ -18,7 +18,7 @@
                             </td>
                             <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
                             <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
-                            <td class="th_contact_view"><%= link_to 'show', admin_contact_path(@admin,cont.id)%></td>
+                            <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont.id)%></td>
                     </tr>
                 <% end %>
 
@@ -41,10 +41,10 @@
                             </td>
                             <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
                             <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
-                            <td class="th_contact_view"><%= link_to 'show', admin_contact_path(@admin,cont.id)%></td>
+                            <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont) %></td>
                     </tr>
                 <% end %>
                 </table>
             </div>
-    <%= link_to '対応済みお問い合わせ', contacts_finished_admin_path(@admin)%>
+    <%= link_to '対応済みお問い合わせ', contacts_finished_path %>
     </div>

@@ -50,7 +50,7 @@ end
 
 
   scope :admins do
-    resources :contacts, only: [:index,:show,:update]
+    resources :contacts, only: [:index,:edit,:update]
     get 'contacts_finished'=>'contacts#finished'
     resources :products, only: [:new, :create, :edit, :update, :index] do
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
