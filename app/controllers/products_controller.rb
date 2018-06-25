@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin!, except: [:index, :search, :show, :genre]
+  before_action :authenticate_admin!, except: [:index, :search, :show, :genre, :newrelease]
  
 
   def index
@@ -9,6 +9,15 @@ class ProductsController < ApplicationController
 
   def genre
     @products = Product.where(genre_id: params[:id])
+  end
+
+  def newrelease
+    # Dateクラスは標準では使えないものらしく、require "date"を書く必要があるらしい
+    require "date"
+    # @thismonthは今月のこと
+    @thismonth = Date.today.month
+    # Time.now.all_monthで今月の値が取れる様子。何故かは不明
+    @products = Product.where(release_date: Time.now.all_month)
   end
 
   def stock
