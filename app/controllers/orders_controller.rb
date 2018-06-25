@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
             order_product.order_id = order.id 
             order_product.quantity = c.quantity 
             order_product.product_id = c.product_id
-            order_product.order_product_price = order.order_price
+            order_product.order_product_price = c.sub_total
             order_product.save
         end
 
