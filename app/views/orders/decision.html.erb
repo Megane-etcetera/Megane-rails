@@ -70,14 +70,14 @@
                             <div class="payment-info-box">
                                 <br>
 
-                              	<p>小計：¥<%= @order.order_price%></p><br>
+                              	<p>小計：¥<%= @order.order_price - 500%></p><br>
                                 <p>手数料：¥500</p><br>
-                                <p>合計：¥<%= sum + 500%></p><br>
+                                <p>合計：¥<%= @order.order_price %></p><br>
                             </div>
                     </div>
                 </div>
 
                 <div class="button-box">
-                    <div class="center-button"><%= link_to "注文する" ,class:"center-button" %></a></div>
+                    <a ><%= link_to "注文する", root_path ,method: :post ,class:"center-button" %></a></div>
                 </div>
             </div>
