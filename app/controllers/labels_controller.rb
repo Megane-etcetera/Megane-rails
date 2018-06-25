@@ -1,5 +1,8 @@
 class LabelsController < ApplicationController
   def index
+    if admin_signed_in?
+    else redirect_to root_path
+    end
   	@label = Label.new
   	@labels = Label.all
   end

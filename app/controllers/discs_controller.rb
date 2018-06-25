@@ -1,5 +1,8 @@
 class DiscsController < ApplicationController
   def new
+    if admin_signed_in?
+    else redirect_to root_path
+    end
     @product = Product.find(params[:product_id])
     @disc = Disc.new
   end
@@ -13,6 +16,9 @@ class DiscsController < ApplicationController
   end
 
   def show
+    if admin_signed_in?
+    else redirect_to root_path
+    end
     @product = Product.find(params[:product_id])
     @disc = Disc.find(params[:id])
     @track = @disc.tracks.build
@@ -20,6 +26,9 @@ class DiscsController < ApplicationController
   end
 
   def edit
+    if admin_signed_in?
+    else redirect_to root_path
+    end
     @product = Product.find(params[:product_id])
     @disc = Disc.find(params[:id])
     @track = @disc.tracks.build
