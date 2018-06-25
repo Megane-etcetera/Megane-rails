@@ -62,12 +62,11 @@
 				                <%= o.text_field :post_num %>
 				                <p>送り先住所</p>
 				                <%= o.text_area :address,rows: 5, cols: 50 %>
-				                <%= o.submit "登録" %>
-                               <!--  <br>
-                                <p class="address-text">郵便番号</p><br>
+				                
+                                <!-- <p class="address-text">郵便番号</p><br>
                                 	<p>〒<%= @order.post_num %></p><br>
                                 <p class="address-text" style="word-wrap:break-word;">住所</p><br>
-                                <p><%= @order.address %></p><br> -->
+                                <p><%= @order.address %></p><br>  -->
                             </div>
                     </div>
 
@@ -86,7 +85,6 @@
 				                
 				                <%= @sum %>
 				                <%= o.hidden_field :order_price, :value => sum %>
-				                <% end %>
 
                               	<p>小計：¥<%= sum %></p><br>
                                 <p>手数料：¥500</p><br>
@@ -96,6 +94,9 @@
                 </div>
 
                 <div class="button-box">
-                    <a ><%= link_to "注文する", root_path ,method: :post ,class:"center-button" %></a></div>
+                    <a >
+                    	<%= o.submit "注文する" , class:"center-button"%></a></div>
+                    	<% end %>
+                               <!--  <br><%= link_to "注文する", root_path ,method: :post ,class:"center-button" %></a></div> -->
                 </div>
             </div>
