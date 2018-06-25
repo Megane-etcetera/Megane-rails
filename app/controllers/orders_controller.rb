@@ -45,6 +45,11 @@ class OrdersController < ApplicationController
             order_product.product_id = c.product_id
             order_product.order_product_price = order.order_price
             order_product.save
+
+            # product = Product.find_by(id: c.product_id)
+            c.product.stock -= c.quantity
+            #sold_num = c.product.stock
+            c.product.update(stock: c.product.stock)
         end
 
         carts.delete_all        
@@ -64,5 +69,9 @@ class OrdersController < ApplicationController
 
     def order_product_params
       params.require(:order_product).permit(:user_id,:product_id,:order_id,:quantity,:status)
+    end
+
+    def product_params
+       params.require(:product).permit( :stock)
     end
 end

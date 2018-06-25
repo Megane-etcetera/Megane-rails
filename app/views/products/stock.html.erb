@@ -1,5 +1,5 @@
-<div class="admin_back_to_menu"><%= link_to "管理者メニュー画面へ", admintops_top_path %></div>
 <div class="product_stock_base">
+    <%= link_to "管理者メニュー画面へ", admintops_top_path %>
     <div class="stock_table">
         <table border="1">
             <tr>
@@ -8,14 +8,19 @@
                 <th class="t_product_stock_stock">在庫</th>
                 <th class="t_product_stock_sell">売上数</th>
             </tr>
+
             <% @products.each do |product| %>
+            <% @num = product.order_products.pluck(:quantity)%>
+            
             <tr>
                 <td class="t_product_stock_id"><%= product.id %></td>
                 <td class="t_product_stock_name"><%= link_to product.product_title, edit_product_path(product) %></td>
                 <td class="t_product_stock_stock"><%= product.stock %></td>
-                <td class="t_product_stock_sell">777</td>
+               
+                <td class="t_product_stock_sell"><%= @num.inject(:+) %></td>
+               
             </tr>
-           <% end %>
+            <% end %>
         </table>
     </div>
 		<div class="kaminarin_no_div">
