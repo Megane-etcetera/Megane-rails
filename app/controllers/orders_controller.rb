@@ -10,18 +10,16 @@ class OrdersController < ApplicationController
   end
   
   def decision
-    
+    if params[:user_id] != current_user.id
+      redirect_to root_path
+    elsif
+     Cart.find_by(user_id: params[:user_id]).nil?
+      redirect_to root_path
+    end
+  
     @order = Order.new
     @user = User.find(current_user.id)
-
     @carts = current_user.carts
-    
-
-     
-        
-      
-   
-
   end
 
   def show
