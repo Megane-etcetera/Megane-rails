@@ -15,6 +15,7 @@ class CartsController < ApplicationController
 
   def create
 
+
   		@cart = Cart.new(cart_params)
   		@cart.user_id = current_user.id
 		if @cart.quantity > @cart.product.stock
@@ -23,6 +24,7 @@ class CartsController < ApplicationController
 			@cart.save
 			redirect_to carts_path(current_user.id)
 		end
+
   end
 
   def update
