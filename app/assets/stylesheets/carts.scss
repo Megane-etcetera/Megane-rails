@@ -82,7 +82,7 @@ margin: 0 auto;
 	background-color: grey;
 	text-align: center;
 }
-.left-button a{
+.left-button {
 	text-decoration: none;
 	line-height: 50px;
 	display: block;
@@ -104,9 +104,8 @@ margin: 0 auto;
     position: absolute;
 	right: 0;
 	bottom: 0px;
-	line-height: 3;
 }
-.right-button a{
+.right-button {
 	text-decoration: none;
 	display: block;
 	color: white;
