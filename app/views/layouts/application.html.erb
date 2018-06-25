@@ -91,7 +91,7 @@
 							<% end %>
 							</ul>
 						</li>
-						<li class="nav-list-item">新商品</li>
+						<li class="nav-list-item"><%= link_to "新商品", newrelease_path %></li>
 						<li class="nav-list-item">ランキング</li>
 						<%# userがログインしているかどうかで表示を変える %>
 						<% if user_signed_in? %>

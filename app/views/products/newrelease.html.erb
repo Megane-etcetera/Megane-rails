@@ -1,0 +1,20 @@
+<div class="product_index_base">
+	<div class="top_products_line">
+		<section class="top-new">
+			<h2><%= @thismonth %>月の新発売</h2>
+		</section>
+			<div class="product_index_box clearfix">
+				<% @products.each do |choice| %>
+					<div class="product-box">
+						<%= link_to "/products/#{choice.id}" do %>
+							<div class="p-image"><%= attachment_image_tag choice, :image, fallback: "img/no_image.jpg" %></div>
+							<div class="p-stat">
+								<%= choice.product_title %><br>
+								<%= choice.price %>円
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
+	</div>
+</div>

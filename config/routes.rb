@@ -43,6 +43,7 @@ end
   get "admins/products/stocks" =>"products#stock" ,as: "admins_product_stocks"
   get "/products/:id" => "products#show", as: "product"
   get "/genre/:id" => "products#genre", as: "products_genre"
+  get "/newrelease" => "products#newrelease", as: "newrelease"
   delete "/admins/products/:id" => "products#destroy",as: "destroy_product"
   delete "/admins/products/:product_id/discs/:id" => "discs#destroy",as: "destroy_disc"
 
@@ -56,8 +57,8 @@ end
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
        
           resources :tracks, only: [:new,:create,:edit,:update,:destroy,:show]
-  end
-  end
+      end
+    end
   end
 
 
