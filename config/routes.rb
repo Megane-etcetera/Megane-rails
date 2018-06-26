@@ -61,6 +61,7 @@ end
     end
   end
 
+  resources :regions, only: [:index, :edit, :update]
 
   scope :admins do
     resources :genres, only: [:create,:destroy, :index]
