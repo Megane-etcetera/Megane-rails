@@ -7,6 +7,7 @@ class CartsController < ApplicationController
   	   else
        @cart = Cart.where(user_id: params[:id])
      end
+   else
      redirect_to root_path,alert:"存在しないユーザーです"
    end
 
