@@ -116,6 +116,7 @@
 
                 <% @discs.each do |disc| %>
                     <h3>Disc<%= disc.disc_number %></h3>
+                    <h5><%= disc.disc_type %></h5>
                     <table>
                         <tbody>
                         <% disc.tracks.each do |track| %>
