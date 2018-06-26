@@ -20,12 +20,13 @@ class UsersController < ApplicationController
 
   def update
       @user = User.find(params[:id])
-      @user.id = current_user.id
+      if admin_signed_in? or @user == current_user
       if @user.update(user_params)
          redirect_to user_path(@user), notice:"ユーザー情報編集が完了しました"
       else
          redirect_to edit_user_path(@user), alert:"ユーザー情報編集に失敗しました"
       end
+    end
   end
 
   def show
