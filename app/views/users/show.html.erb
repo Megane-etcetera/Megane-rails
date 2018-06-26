@@ -6,7 +6,9 @@
 <% end %>
          <div class="body">
                 <div class="user-info">
-                    <h1 class="box-title">ユーザー情報</h1>
+        <h1 class="box-title">ユーザー情報</h1>
+        <% if @user == current_user or admin_signed_in? %>
+          
                         <div class="user-info-box">
                             <br>
                             <p>名前：<%= @user.name %></p><br>
@@ -96,8 +98,46 @@
             </div>
             <% end %>
         </div>
-        <% if @user.id == current_user.id %>
+        <% if @user == current_user %>
                       <%= link_to "退会はこちら", users_unsubsc_path(@user) %>
                        <% end %>
+    <% else %>
+    <h2>ユーザー名</h2>
+    <h3><%= @user.name %></h3>
+    <div class="other_review">
+            <section>
+                <h2>投稿したレビューの一覧</h2>
+            </section>
+    
 
+            <% @reviews.each do |r| %>
+            <div class="star-rating">
+                <%# 黄色い★ %>
+                <% if r.star == 5 %>
+                <div class="star-rating-front">★★★★★</div>
+                <% elsif r.star == 4 %>
+                <div class="star-rating-front" style="width: 80%">★★★★★</div>
+                <% elsif r.star == 3 %>
+                <div class="star-rating-front" style="width: 60%">★★★★★</div>
+                <% elsif r.star == 2 %>
+                <div class="star-rating-front" style="width: 40%">★★★★★</div>
+                <% else %>
+                <div class="star-rating-front" style="width: 20%">★★★★★</div>
+                <% end %>
+                <%# 黒い★ %>
+                <div class="star-rating-back">★★★★★</div>
+            </div>
+                <% if r.user == current_user %>
+                    <%= link_to "編集する", edit_product_review_path(r.product_id,r) %>
+                    <%= link_to "投稿を削除する", product_review_path(r.product_id,r), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                <% end %>
+            <div class="post-review">
+                <h3>商品名 <%= Product.find(r.product_id).product_title %></h3>
+                <h3>レビュータイトル<%= r.review_title %></h3>
+                <p><%= simple_format(r.review_message) %></p>
+            </div>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
         </div>
