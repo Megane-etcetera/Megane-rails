@@ -1,4 +1,7 @@
 class LabelsController < ApplicationController
+
+  before_action :authenticate_admin!
+  
   def index
     if admin_signed_in?
     else redirect_to root_path

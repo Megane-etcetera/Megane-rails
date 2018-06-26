@@ -1,18 +1,56 @@
 <div class="order_products_index_base">
-    <h1>発送状況変更</h1>
-    <div class="edit_order_product_form">
-        <h3><%= @order.order.user.name %></h3>
-        <h3><%= @order.product.product_title %></h3>
-        <p><%= @order.quantity %>点</p>
-        <p><%= @order.order_product_price %>円</p>
-        
-        <p><%= @order.created_at %></p>
-        
-        <p><%= @order.order.address %></p>
-
-        <%= form_for(@order) do |f| %>
-            <%= f.select :status, [["未発送", "未発送"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]] %>
-            <%= f.submit "変更" %>
+    注文日時<br><%= @order.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+    <br>
+    <% if @order.user.nil? %>
+        <p class="akamoji">退会済みのユーザー</p>
+    <% else %>
+        注文者<br><%= @order.user.name %>
+    <% end %>
+    <br>
+    送付先<br><%= @order.address %>
+    <table>
+            <tr>
+                <th>発送状況</th>
+                <th>商品名</th>
+                <th>数量</th>
+                <th>小計</th>
+            </tr>
+        <% @order.order_products.each do |thing| %>
+            <tr>
+                <td>
+                    <%= form_for(thing) do |f| %>
+                        <%= f.select :status, [["未発送", "未発送"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]] %>
+                        <%= f.submit "変更" %>
+                    <% end %>
+                </td>
+                <td><%= thing.product.product_title %></td>
+                <td><%= thing.quantity %> 枚</td>
+                <td><%= thing.order_product_price %> 円</td>
+            </tr>
         <% end %>
-    </div>
+            <tr>
+                <td></td>
+                <td>送料</td>
+                <td></td>
+                <td><%= @order.delivery_price %>円</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>手数料</td>
+                <td></td>
+                <td><%= @order.payment_price %>円</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>消費税</td>
+                <td></td>
+                <td><%= @order.tax %>円</td>
+            </tr>
+            <tr class="order_total_price_tr">
+                <td></td>
+                <td>総計</td>
+                <td></td>
+                <td><%= @order.order_price %>円</td>
+            </tr>
+    </table>
 </div>
