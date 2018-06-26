@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
     else
       @orders = Order.where(user_id: current_user.id).page(params[:page])
     end
+
   end
 
   def new
