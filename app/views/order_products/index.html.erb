@@ -1,19 +1,17 @@
 <div class="admin_back_to_menu"><%= link_to "管理者メニュー画面へ", admintops_top_path %></div>
 <div class="order_products_index_base">
-    <div class="order_products_table">
-        <table>
-                <tr>
-                    <th>注文番号</th>
-                    <th>品別注文ID</th>
-                    <th>発送状況</th>
-                </tr>
-            <% @orders.each do |order_product| %>
-                <tr>
-                    <td><%= link_to order_product.order_id, edit_order_product_path(order_product.id) %></td>
-                    <td><%= link_to "Order_Product_0#{order_product.id}", edit_order_product_path(order_product.id) %></td>
-                    <td><%= link_to order_product.status, edit_order_product_path(order_product.id) %></td>
-                </tr>
-            <% end %>
-        </table>
-    </div>
+    <h1>注文履歴</h1>
+    <% @orders.each do |order| %>
+        <%= link_to edit_order_product_path(order.id) do %>
+            <div class="order_index_box">
+                注文番号
+                <%= order.id %>
+                注文日時
+                <%= order.created_at.strftime('%Y年%m月%d日 %H:%M') %><br>
+            </div>
+        <% end %>
+    <% end %>
+	<div class="kaminarin_no_div">
+		<%= paginate @orders, class: "pagenate" %>
+	</div>
 </div>

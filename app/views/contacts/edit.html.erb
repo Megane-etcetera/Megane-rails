@@ -34,9 +34,10 @@
 	                    	<td class="td_contact_show">状況</td>
 
 	                    	<td class="td_contact_show_content">
-	                    		<%= c.select :situations,Contact.situations.keys.map {|k| [k,k]}
+	                    		<%#= c.select :situations,Contact.situations.keys.map {|k| [k,k]}%>
+	                    		<%= c.label :"対応状況" %><br>
+  <%= c.select :situations, [["未対応", "0"], ["対応中", "1"], ["対応済み", "2"]] ,class:"form-control" %>
 	                    		
-	                    			%>
 	                    	</td>
 
 	                    </tr> 

@@ -74,9 +74,11 @@
 	margin-bottom:40px;
 }
 .p-title{
-	width: 250px;
+	width: 230px;
 	background-color: whitesmoke;
 	margin-bottom: 10px;
+	border-right: gray 1px solid;
+	border-bottom: gray 1px solid;
 }
 .top_products_line{
 	border: solid 1px lightskyblue;
@@ -256,4 +258,12 @@ margin-bottom: 40px;
 	float: left;
 	height: 50px;
 	border-left: 2px solid #000000;
+}
+
+.discs_and_tracks h5{
+	background-color: bisque;
+	padding: 0 3px;
+	display: inline;
+	border-bottom: #ffcc00 solid;
+	border-right: #ffcc00 solid;
 }
