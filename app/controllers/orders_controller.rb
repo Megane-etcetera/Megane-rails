@@ -50,8 +50,9 @@ class OrdersController < ApplicationController
 
             # product = Product.find_by(id: c.product_id)
             c.product.stock -= c.quantity
+            c.product.sales_total += c.quantity
             #sold_num = c.product.stock
-            c.product.update(stock: c.product.stock)
+            c.product.update(sales_total: c.product.sales_total,stock: c.product.stock)
         end
 
         carts.delete_all        
@@ -74,6 +75,6 @@ class OrdersController < ApplicationController
     end
 
     def product_params
-       params.require(:product).permit( :stock)
+       params.require(:product).permit( :stock,:sales_total)
     end
 end

@@ -12,19 +12,24 @@
                     </tr>
                 <% @contact.each do |cont| %>
                     <tr>
-                            <td class="th_contact_user"><%= cont.user.name %>
-                            
-                            </td>
-                            <td class="th_contact_category"><%= cont.category %>
-                            </td>
-                            <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
-                            <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
-                            <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont.id)%></td>
+                        <td class="th_contact_user"><%= cont.user.name %>
+                        
+                        </td>
+                        <td class="th_contact_category"><%= cont.category %>
+                        </td>
+                        <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
+                        <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
+                        <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont.id)%></td>
+                        <% end %>
+                    
 
                     </tr>
-                <% end %>
-
+                
+                
                 </table>
+                    <div class="kaminarin_no_div">
+                        <%= paginate @contact, class: "pagenate" %>
+                    </div>
         </div>
             <div class="processing_contacts">
                 <h1 class="box-title">対応中</h1>
@@ -38,16 +43,18 @@
                     </tr>
                     <% @contacts.each do |cont| %>
                     <tr>
-                            <td class="th_contact_user"><%= cont.user.name%></td>
-                            <td class="th_contact_category"><%= cont.category %>
-                            </td>
-                            <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
-                            <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
-                            <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont) %></td>
-
+                        <td class="th_contact_user"><%= cont.user.name%></td>
+                        <td class="th_contact_category"><%= cont.category %></td>
+                        <td class="th_contact_date"><%= cont.created_at.strftime("%Y/%m/%d %H時%M分") %></td>
+                        <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
+                        <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont) %></td>
                     </tr>
                 <% end %>
+
                 </table>
+                    <div class="kaminarin_no_div">
+                        <%= paginate @contacts, class: "pagenate" %>
+                    </div>
             </div>
     <%= link_to '対応済みお問い合わせ', contacts_finished_path %>
     </div>

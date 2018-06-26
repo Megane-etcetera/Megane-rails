@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     # .pluck(:artist_name)　⇒　artist_nameというカラムを配列にする
     # .uniq ⇒　配列内の重複している要素を一つにする
     @review = Review.new
-    @reviews = Review.where(product_id: @product.id)
+    @reviews = Review.where(product_id: @product.id).page(params[:page])
     @cart = Cart.new
   end
 
@@ -77,11 +77,15 @@ class ProductsController < ApplicationController
   end
 
   def ranking
+    # @products = Product.order(sales_total: "DESC")
+    # binding.pry
+    @products = Product.all.sort_by{|p| p.sales_total}.reverse.page(params[:page]).per(10)
+  
   end
 
   private
     def product_params
-      params.require(:product).permit( :admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date)
+      params.require(:product).permit( :admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date,:sales_total)
     end
 
     def search_params

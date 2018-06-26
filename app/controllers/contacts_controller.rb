@@ -16,8 +16,8 @@ class ContactsController < ApplicationController
   def index 
 
       
-      @contact = Contact.where(situations: params[:situations],situations: 0)
-      @contacts = Contact.where(situations: params[:situations],situations: 1)
+      @contact = Contact.where(situations: params[:situations],situations: 0).page(params[:page]).per(10)
+      @contacts = Contact.where(situations: params[:situations],situations: 1).page(params[:page]).per(10)
       
 
 
@@ -26,7 +26,7 @@ class ContactsController < ApplicationController
 
   def finished
 
-      @contact = Contact.where(situations: params[:situations],situations: 2).page(params[:page])
+      @contact = Contact.where(situations: params[:situations],situations: 2).page(params[:page]).per(10)
       
   end
 
