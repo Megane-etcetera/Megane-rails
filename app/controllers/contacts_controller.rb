@@ -19,6 +19,9 @@ class ContactsController < ApplicationController
       @contact = Contact.where(situations: params[:situations],situations: 0)
       @contacts = Contact.where(situations: params[:situations],situations: 1)
       
+
+
+      
   end
 
   def finished
