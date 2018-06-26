@@ -14,7 +14,7 @@
                 <td><%= thing.status %></td>
                 <td><%= thing.product.product_title %></td>
                 <td><%= thing.quantity %> 枚</td>
-                <td><%= thing.order_product_price %> 円</td>
+                <td><%= thing.order_product_price*thing.quantity %> 円</td>
             </tr>
         <% end %>
             <tr>

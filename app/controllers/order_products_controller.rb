@@ -1,19 +1,22 @@
 class OrderProductsController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def create
   end
 
   def index
-    @orders = OrderProduct.all
+    @orders = Order.page(params[:page])
   end
 
   def edit
-    @order = OrderProduct.find(params[:id])
+    @order = Order.find(params[:id])
   end
 
   def update
-    @order = OrderProduct.find(params[:id])
-    @order.update(order_product_params)
-    redirect_to order_products_path
+    @orderproduct = OrderProduct.find(params[:id])
+    @orderproduct.update(order_product_params)
+    redirect_to edit_order_product_path(@orderproduct.order.id)
   end
 
   private
