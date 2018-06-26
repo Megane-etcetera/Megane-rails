@@ -10,18 +10,18 @@ class OrdersController < ApplicationController
   end
   
   def decision
-    
+    @users = User.find(params[:user_id])
+      if @users.id != current_user.id
+        redirect_to root_path, alert: "ほかのユーザーの決済を行うことはできません"
+      end
+      if Cart.find_by(user_id: params[:user_id]).nil?
+      redirect_to root_path, alert: "カートが空です"
+      end
+
     @order = Order.new
     @user = User.find(current_user.id)
 
     @carts = current_user.carts
-
-    
-
-     
-        
-      
-   
 
   end
 
