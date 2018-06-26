@@ -2,10 +2,11 @@ class OrdersController < ApplicationController
   def index
       @user = User.find(params[:user_id])
     if @user != current_user
-　     redirect_to root_path
+       redirect_to root_path, alert:"他のユーザーの決済情報を見る事はできません"
+    else
+      @orders = Order.where(user_id: current_user.id).page(params[:page])
+    end
   end
-      @orders = Order.where(user_id: current_user.id)
-end
 
   def new
       @order = Order.new
