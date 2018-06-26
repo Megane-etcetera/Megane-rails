@@ -42,10 +42,9 @@ class OrdersController < ApplicationController
       order = Order.new(order_params)
       order.user_id = current_user.id
       # binding.pry
-      order.save
-      redirect_to root_path
-      carts = current_user.carts
-      
+
+      if order.save     # もし発注に成功したらカート情報を送ってカート削除
+        carts = current_user.carts
         carts.each do |c|
             order_product = OrderProduct.new
             order_product.order_id = order.id 
@@ -59,10 +58,15 @@ class OrdersController < ApplicationController
             c.product.stock -= c.quantity
             #sold_num = c.product.stock
             c.product.update(stock: c.product.stock)
+            carts.delete_all
         end
+        redirect_to root_path
+      else            #発注に失敗したらカート情報を維持したままrootへ
+        redirect_to root_path,alert: "決済に失敗しました入力情報を確認してください"
+      end
 
-        carts.delete_all        
         
+
   end
 
   def address
