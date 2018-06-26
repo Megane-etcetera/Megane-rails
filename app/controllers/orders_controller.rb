@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
   def index
+
+    if params[:user_id] != current_user.id
+　     redirect_to root_path,alert:"他のユーザーの決済履歴を見る事はできません"
     @orders = Order.where(user_id: current_user.id).page(params[:page])
   end
 
@@ -22,6 +25,7 @@ class OrdersController < ApplicationController
     @user = User.find(current_user.id)
 
     @carts = current_user.carts
+
 
   end
 

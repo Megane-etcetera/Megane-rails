@@ -1,8 +1,14 @@
 class CartsController < ApplicationController
   def index
-  	
-  	@user = current_user.id
-  	@cart = current_user.carts
+  	if @user = User.exists?(params[:id])
+  	   @user = User.find(params[:id])
+       if @user != current_user
+        redirect_to user_path(@user),alert:"他のユーザーのカートを見る事はできません"
+  	   else
+       @cart = Cart.where(user_id: params[:id])
+     end
+     redirect_to root_path,alert:"存在しないユーザーです"
+   end
 
 
     
