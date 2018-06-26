@@ -1,0 +1,18 @@
+<div class="destinations_base">
+    <table>
+        <tr>
+            <th>地方名</th>
+            <th>県名</th>
+            <th>送料</th>
+        </tr>
+        <% @regions.each do |region| %>
+            <% region.prefectures.each do |prefecture| %>
+                <tr>
+                    <td><%= prefecture.region.region_name %></td>
+                    <td><%= prefecture.prefecture_name %></td>
+                    <td><%= prefecture.region.delivary_price %></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </table>
+</div>

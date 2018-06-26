@@ -1,2 +1,10 @@
-<h1>Regions#edit</h1>
-<p>Find me in app/views/regions/edit.html.erb</p>
+<div class="regions_base">
+    <h1>送料編集画面</h1>
+    <h2><%= @region.region_name %>地方</h2>
+    
+    <%= form_for([@region]) do |r| %>
+            <p>送料</p> 
+            <%= r.text_field :delivery_price %>円
+            <%= r.submit '編集完了' %>
+    <% end %>
+</div>
