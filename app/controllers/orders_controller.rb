@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.where(user_id: current_user.id).page(params[:page])
+    @orders = Order.where(user_id: current_user.id)
   end
 
   def new
@@ -10,16 +10,19 @@ class OrdersController < ApplicationController
   end
   
   def decision
-    @users = User.find(params[:user_id])
-    if @users.id != current_user.id
-      redirect_to root_path
-      if Cart.find_by(user_id: params[:user_id]).nil?
-        redirect_to root_path
-    end
-  end
+    
     @order = Order.new
     @user = User.find(current_user.id)
+
     @carts = current_user.carts
+
+    
+
+     
+        
+      
+   
+
   end
 
   def show
