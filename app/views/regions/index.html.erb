@@ -3,13 +3,12 @@
         <%= link_to edit_region_path(region.id) do %>
             <table class="region_table">
                 <tr>
-                    <th class="region_th1"><%= region.region_name %>地方</th>
-                    <th class="region_th2"><%= region.delivery_price %>円</th>
+                    <th class="region_th"><%= region.region_name %>地方</th>
+                    <th class="region_th"><%= region.delivery_price %>円</th>
                 </tr>
                 <% region.prefectures.each do |prefecture| %>
                     <tr>
-                        <td><%= prefecture.prefecture_name %></td>
-                        <td></td>
+                        <td colspan="2"><%= prefecture.prefecture_name %></td>
                     </tr>
                 <% end %>
             </table>

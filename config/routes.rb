@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'contacts/finished'
 
   get "/users/:id/unsubsc" => "users#unsubsc", as: "users_unsubsc"
+  post "/users/:id/destinationselect" => "users#destinationselect", as: "destinationselect"
   
 
 
@@ -62,6 +63,7 @@ end
   end
 
   resources :regions, only: [:index, :edit, :update]
+  resources :destinations, only: [:create]
 
   scope :admins do
     resources :genres, only: [:create,:destroy, :index]

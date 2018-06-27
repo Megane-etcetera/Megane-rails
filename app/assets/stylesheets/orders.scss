@@ -55,9 +55,13 @@
 }
 
 .addressee-payment-box{
-    height: 410px;
+    margin-bottom: 50px;
 }
-
+.genzai_no_otodoke{
+    background-color: powderblue;
+    border: solid skyblue 1px;
+    padding: 5px;
+}
 .Addressee-last{
     float: left;
     width: 40%;
@@ -242,4 +246,7 @@
     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*下に動く*/
     border-bottom: none;/*線を消す*/
+}
+#add_destination_form{
+    display: none;
 }
