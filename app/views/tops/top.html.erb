@@ -59,46 +59,20 @@
 			<h2>ランキング</h2>
 		</section>
 		<div class="new-box clearfix">
-			<div class="product-box">
-				<a href="product.html">
-					<div class="p-image"><img src="/assets/img/live.jpg" alt="cdimage"></div>
-					<div class="p-stat">
-						<p>タイトル</p>
-						<p>値段</p>
-						<p>星</p>
-					</div>
-				</a>
-			</div>
-			<div class="product-box">
-				<a href="product.html">
-					<div class="p-image"><img src="/assets/img/test3.jpg" alt="cdimage"></div>
-					<div class="p-stat">
-						<p>タイトル</p>
-						<p>値段</p>
-						<p>星</p>
-					</div>
-				</a>
-			</div>
-			<div class="product-box">
-				<a href="product.html">
-					<div class="p-image"><img src="/assets/img/test2.jpg" alt="cdimage"></div>
-					<div class="p-stat">
-						<p>タイトル</p>
-						<p>値段</p>
-						<p>星</p>
-					</div>
-				</a>
-			</div>
-			<div class="product-box">
-				<a href="product.html">
-					<div class="p-image"><img src="/assets/img/neko.jpg" alt="cdimage"></div>
-					<div class="p-stat">
-						<p>タイトル</p>
-						<p>値段</p>
-						<p>星</p>
-					</div>
-				</a>
-			</div>
+			<% sum = 0%>
+			<% @products.first(4).each do |prod| %>
+				
+				<div class="product-box">
+					<p>第<%= sum += 1 %>位</p>
+					<%= link_to "/products/#{prod.id}" do %>
+						<div class="p-image"><%= attachment_image_tag prod, :image, fallback: "img/no_image.jpg" %></div>
+						<div class="p-stat">
+							<%= prod.product_title %><br>
+							<%= prod.price %>円
+						</div>
+					<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 	<div class="top_products_line">

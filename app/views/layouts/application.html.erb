@@ -92,7 +92,7 @@
 							</ul>
 						</li>
 						<li class="nav-list-item"><%= link_to "新商品", newrelease_path %></li>
-						<li class="nav-list-item">ランキング</li>
+						<li class="nav-list-item"><%= link_to "ランキング", products_ranking_path %></li>
 						<%# userがログインしているかどうかで表示を変える %>
 						<% if user_signed_in? %>
 						<li class="nav-list-item nav_list_user">
@@ -139,7 +139,7 @@
 						<li class="f-nav-list-item"><%= link_to "マイページ", new_user_session_path %></li>
 						<li class="f-nav-list-item"><%= link_to "カート", new_user_session_path %></li>
 							<% end %>
-						<li class="f-nav-list-item">ランキング</li>
+						<li class="f-nav-list-item"><%= link_to "ランキング", products_ranking_path %></li>
 						<li class="f-nav-list-item">適当何か</li>
 					</ul>
 				</div>

@@ -87,10 +87,11 @@ class ProductsController < ApplicationController
   end
 
   def ranking
-    # @products = Product.order(sales_total: "DESC")
+
+     #@products = Product.order("products.sales_total DESC")
     # binding.pry
     @products = Product.all.sort_by{|p| p.sales_total}.reverse
-  
+    
   end
 
   private
