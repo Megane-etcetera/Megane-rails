@@ -19,9 +19,15 @@
                             <td class="th_contact_text" style="word-wrap:break-word;"><%= cont.message %></td>
                             <td class="th_contact_view"><%= link_to 'show', edit_contact_path(cont)%></td>
                     </tr>
-                <% end %>
 
+                <% end %>
                 </table> 
+                
+                    <div class="pagenate_no_div">
+                        <%= paginate @contact, class: "pagenate" %>
+                    </div>
+
+
             
       </div>
     </div>

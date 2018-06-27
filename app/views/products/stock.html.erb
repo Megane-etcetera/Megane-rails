@@ -17,7 +17,7 @@
                 <td class="t_product_stock_name"><%= link_to product.product_title, edit_product_path(product) %></td>
                 <td class="t_product_stock_stock"><%= product.stock %></td>
                
-                <td class="t_product_stock_sell"><%= @num.inject(:+) %></td>
+                <td class="t_product_stock_sell"><%= product.sales_total %></td>
                
             </tr>
             <% end %>
