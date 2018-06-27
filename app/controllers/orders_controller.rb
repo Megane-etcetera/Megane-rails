@@ -16,7 +16,9 @@ class OrdersController < ApplicationController
   end
   
   def decision
+    @destination = Destination.new
     @users = User.find(params[:user_id])
+    @destinations = @users.destinations
       if @users.id != current_user.id
         redirect_to root_path, alert: "ほかのユーザーの決済を行うことはできません"
       end
@@ -41,6 +43,10 @@ class OrdersController < ApplicationController
   def create
       order = Order.new(order_params)
       order.user_id = current_user.id
+      order.post_num = Destination.find(order.user.destinationnumber).post_nember
+      order.address = Destination.find(order.user.destinationnumber).prefecture.prefecture_name + Destination.find(order.user.destinationnumber).address
+      order.delivery_price = Destination.find(order.user.destinationnumber).prefecture.region.delivery_price
+      order.order_price += order.delivery_price
       # binding.pry
 
       if order.save     # もし発注に成功したらカート情報を送ってカート削除

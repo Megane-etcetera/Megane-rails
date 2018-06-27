@@ -50,16 +50,72 @@
                             </table>
                         </div>
                     </div>
-                <div class="addressee-payment-box">
+                <div class="addressee-payment-box clearfix">
                     <div class="Addressee-last">
                         <h1 class="box-title-last">お届け先</h1>
+
+                        
+                        <% if @user.destinations.nil? %>
+                            <p>お届け先を追加してください</p>
+                            <div class="add_destination_form">
+                                <%= form_for(@destination) do |d| %>
+				                    <%= d.hidden_field :user_id, :value => @user.id %>
+                                    <p>郵便番号</p>
+				                    <%= d.text_field :post_nember %>
+				                    <p>都道府県</p>
+				                    <%= d.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name %>
+				                    <p>送り先住所</p>
+				                    <%= d.text_area :address,rows: 5, cols: 50 %>
+                                    <%= d.submit "住所登録" %>
+                                <% end %>
+                            </div>
+                        <% else %>
+                            <% if @user.destinationnumber.nil? %>
+                            <%# 未選択なら何も出ない %>
+                            <% else %>
+                                <div class="genzai_no_otodoke">
+                                    <p>現在選択中のお届け先</p><br>
+                                    <%= Destination.find(@user.destinationnumber).post_nember %>
+                                    <%= Destination.find(@user.destinationnumber).prefecture.prefecture_name %>
+                                    <%= Destination.find(@user.destinationnumber).address %>
+                                </div>
+                            <% end %>
+
+                            <p>お届け先を選択してください</p>
+                            <% @destinations.each do |item| %>
+                                <div class="destination_check_box">
+                                    <%= item.post_nember %><br>
+                                    <%= item.prefecture.prefecture_name %>
+                                    <%= item.address %>
+                                    送料<%= item.prefecture.region.delivery_price %>円
+                                    <%= form_for @user, url:destinationselect_path(@user), method: :post do |df| %>
+                                        <%= df.hidden_field :destinationnumber, :value => item.id %>
+                                        <%= df.submit "この住所にする" %>
+                                    <% end %>
+                                      
+                              </div>
+                            <% end %>
+
+                            <div class="add_destination center-button">お届け先を追加する</div>
+                            <div id="add_destination_form">
+                                <%= form_for(@destination) do |d| %>
+				                    <%= d.hidden_field :user_id, :value => @user.id %>
+                                    <p>郵便番号</p>
+				                    <%= d.text_field :post_nember %>
+				                    <p>都道府県</p>
+				                    <%= d.collection_select :prefecture_id, Prefecture.all, :id, :prefecture_name %>
+				                    <p>送り先住所</p>
+				                    <%= d.text_area :address,rows: 5, cols: 50 %>
+                                    <%= d.submit "住所登録" %>
+                                <% end %>
+                            </div>
+
+                        <% end %>
+                        
+
                             <div class="Addressee-inbox">
                         		<%= form_for @order ,url:user_orders_path(@user),method: :post do |o| %>
 				                <%= o.hidden_field :user_id, :value => @user.id %>
-				                <p>郵便番号</p>
-				                <%= o.text_field :post_num %>
-				                <p>送り先住所</p>
-				                <%= o.text_area :address,rows: 5, cols: 50 %>
 				                
                                 <!-- <p class="address-text">郵便番号</p><br>
                                 	<p>〒<%= @order.post_num %></p><br>
@@ -93,9 +149,14 @@
 
                 <div class="button-box">
 
-                    
-
                     	<%= o.submit "注文する" , class: "center-button" %>
                     	<% end %>
                 </div>
             </div>
+
+<%# なぜかmain.jsに書いてもスクリプトが動かないのでここに書きます %>
+            <script>
+                $('.add_destination').on('click', function () {
+                    $('#add_destination_form').slideToggle();
+                });
+            </script>

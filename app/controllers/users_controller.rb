@@ -31,6 +31,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destinationselect
+    user = User.find(params[:id])
+    user.update(user_params)
+    redirect_to user_order_decision_path(user)
+  end
+
   def show
       if @user = User.exists?(params[:id])
          @user = User.find(params[:id])
@@ -72,7 +78,7 @@ class UsersController < ApplicationController
   private
     def user_params
 
-      params.require(:user).permit(:name,:kana,:post_number,:address,:tell,:email)
+      params.require(:user).permit(:name,:kana,:post_number,:address,:tell,:email, :destinationnumber)
 
     end
     

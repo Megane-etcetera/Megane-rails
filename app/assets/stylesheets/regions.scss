@@ -8,18 +8,15 @@
     padding-bottom: 20px;
 }
 
-a{
+.regions_base a{
     text-decoration: none;
     color: black;
 }
 
-.region_th1{
-    width: 50%;
-}
-.region_th2{
+.region_th{
     width: 50%;
 }
 
-table:hover{
+.regions_table:hover{
     background-color: aquamarine;
 }
