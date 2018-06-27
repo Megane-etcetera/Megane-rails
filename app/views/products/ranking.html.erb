@@ -4,8 +4,11 @@
 			<h2>ランキング</h2>
 		</section>
 		<div class="product_index_box clearfix">
-			<% @products.each do |prod| %>
+			<% sum = 0%>
+			<% @products.first(10).each do |prod| %>
+				
 				<div class="product-box">
+					<p>第<%= sum += 1 %>位</p>
 					<%= link_to "/products/#{prod.id}" do %>
 						<div class="p-image"><%= attachment_image_tag prod, :image, fallback: "img/no_image.jpg" %></div>
 						<div class="p-stat">

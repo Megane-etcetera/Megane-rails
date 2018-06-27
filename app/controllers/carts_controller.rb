@@ -19,7 +19,7 @@ class CartsController < ApplicationController
     # @discs = @product.discs
     # @artists = @discs.joins(:tracks).pluck(:artist_name).uniq
     # binding.pry
-	end
+
   end
 
   def create
