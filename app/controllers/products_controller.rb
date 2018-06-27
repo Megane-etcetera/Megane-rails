@@ -29,17 +29,23 @@ class ProductsController < ApplicationController
     if user_signed_in?
       @user = User.find(current_user.id)
     end
-    @product = Product.find(params[:id])
-    @average = Review.where(product_id: @product.id).average(:star)
-    @discs = @product.discs
-    @artists = @discs.joins(:tracks).pluck(:artist_name).uniq
-    # 備忘録
-    # .joins(:tracks)　⇒　Discテーブル（今回は@discs）とTrackテーブルでidが重なってる物を合体
-    # .pluck(:artist_name)　⇒　artist_nameというカラムを配列にする
-    # .uniq ⇒　配列内の重複している要素を一つにする
-    @review = Review.new
-    @reviews = Review.where(product_id: @product.id).page(params[:page])
-    @cart = Cart.new
+
+    if @product = Product.exists?(params[:id])
+       @product = Product.find(params[:id])
+       @average = Review.where(product_id: @product.id).average(:star)
+       @discs = @product.discs
+       @artists = @discs.joins(:tracks).pluck(:artist_name).uniq
+       # 備忘録
+       # .joins(:tracks)　⇒　Discテーブル（今回は@discs）とTrackテーブルでidが重なってる物を合体
+       # .pluck(:artist_name)　⇒　artist_nameというカラムを配列にする
+       # .uniq ⇒　配列内の重複している要素を一つにする
+       @review = Review.new
+       @reviews = Review.where(product_id: @product.id)
+       @cart = Cart.new
+     else
+      redirect_to root_path,alert:"存在しない商品です"
+    end
+
   end
 
   def new
@@ -58,10 +64,14 @@ class ProductsController < ApplicationController
 
   def edit
     if admin_signed_in?
-    else redirect_to root_path
+    else redirect_to root_path,alert:"管理者専用ページです"
     end
-    @product = Product.find(params[:id])
-    @discs = @product.discs
+    if @product = Product.exists?(params[:id])
+       @product = Product.find(params[:id])
+       @discs = @product.discs
+     else
+      redirect_to admintops_top_path,alert:"存在しない商品を編集する事はできません"
+    end
   end
 
   def update
@@ -79,7 +89,7 @@ class ProductsController < ApplicationController
   def ranking
     # @products = Product.order(sales_total: "DESC")
     # binding.pry
-    @products = Product.all.sort_by{|p| p.sales_total}.reverse.page(params[:page]).per(10)
+    @products = Product.all.sort_by{|p| p.sales_total}.reverse
   
   end
 

@@ -114,7 +114,15 @@
 				</nav>
 			</div>
 		</header>
+		<!--フラッシュメッセージ用 -->
+							<% if flash[:notice] %>
+								<p><%= flash[:notice] %></p>
+							<% end %>
+								<% if flash[:alert] %>
+							<p><%= flash[:alert] %></p>
+								<% end %>
 
+		<!--ここまで-->
 		    <%= yield %>
 
 		<footer>
@@ -139,7 +147,7 @@
 				<div class="kabusiki">
 					<p>株式会社 Smile eyes</p><br>
 					<p>TEL 000-0000-0000</p><br>
-					<p>住所　福井県鯖江市メガネ2丁目5-3</p>
+					<p>住所 福井県鯖江市メガネ2丁目5-3</p>
 				</div>
 
 				<div class="f-icon-box">
@@ -154,8 +162,10 @@
 						<%= link_to "お問い合わせ", new_user_session_path %>
 					<% end %>
 				</div>
-				<div class="aaa"><p>©️メガネ</p></div>
 			</div>
+			<div class="aaa">
+					<p>©️メガネ</p>
+				</div>
 		</footer>
   </body>
 </html>

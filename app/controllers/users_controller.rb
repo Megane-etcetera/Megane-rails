@@ -9,11 +9,13 @@ class UsersController < ApplicationController
       if admin_signed_in?
         @user = User.find(params[:id])
       else
-        @user = User.find(params[:id])
-        if @user == nil
+      if @user = User.exists?(params[:id])
+         @user = User.find(params[:id])
+        if @user != current_user
+          redirect_to user_path(@user),alert:"他のユーザーを編集する事はできません"
+        end
+      else
           redirect_to user_path(current_user), alert:"存在しないユーザーです"
-        elsif @user != current_user
-          redirect_to user_path(@user), alert:"他のユーザー情報を編集する事はできません"
         end
       end
   end
@@ -30,21 +32,28 @@ class UsersController < ApplicationController
   end
 
   def show
-      @user = User.find(params[:id])
-      @orders = @user.orders
-      @product = @user.products
-      @reviews = Review.where(user_id: params[:id])
+      if @user = User.exists?(params[:id])
+         @user = User.find(params[:id])
+         @orders = @user.orders
+         @product = @user.products
+         @reviews = Review.where(user_id: params[:id])
+      else
+         redirect_to user_path(current_user),alert:"存在しないユーザーです"
+      end
+      
   end
 
   def unsubsc
     if admin_signed_in?
         @user = User.find(params[:id])
       else
-        @user = User.find(params[:id])
-        if @user == nil
+        if @user = User.exists?(params[:id])
+           @user = User.find(params[:id])
+        if @user != current_user
+           redirect_to user_path(@user), alert:"他のユーザーを退会する事はできません"
+        end
+      else
           redirect_to user_path(current_user), alert:"存在しないユーザーです"
-        elsif @user != current_user
-          redirect_to user_path(@user), alert:"他のユーザーを退会する事はできません"
         end
       end
 

@@ -1,6 +1,12 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.where(user_id: current_user.id).page(params[:page])
+      @user = User.find(params[:user_id])
+    if @user != current_user
+       redirect_to root_path, alert:"他のユーザーの決済情報を見る事はできません"
+    else
+      @orders = Order.where(user_id: current_user.id).page(params[:page])
+    end
+
   end
 
   def new
@@ -23,6 +29,7 @@ class OrdersController < ApplicationController
 
     @carts = current_user.carts
 
+
   end
 
   def show
@@ -35,10 +42,9 @@ class OrdersController < ApplicationController
       order = Order.new(order_params)
       order.user_id = current_user.id
       # binding.pry
-      order.save
-      redirect_to root_path
-      carts = current_user.carts
-      
+
+      if order.save     # もし発注に成功したらカート情報を送ってカート削除
+        carts = current_user.carts
         carts.each do |c|
             order_product = OrderProduct.new
             order_product.order_id = order.id 
@@ -52,11 +58,18 @@ class OrdersController < ApplicationController
             c.product.stock -= c.quantity
             c.product.sales_total += c.quantity
             #sold_num = c.product.stock
-            c.product.update(sales_total: c.product.sales_total,stock: c.product.stock)
-        end
 
-        carts.delete_all        
+            c.product.update(sales_total: c.product.sales_total,stock: c.product.stock)
+           
+            carts.delete_all
+        end
+        redirect_to root_path
+      else            #発注に失敗したらカート情報を維持したままrootへ
+        redirect_to root_path,alert: "決済に失敗しました入力情報を確認してください"
+      end
+
         
+
   end
 
   def address
