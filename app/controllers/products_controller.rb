@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
     if user_signed_in?
       @user = User.find(current_user.id)
     end
+
     if @product = Product.exists?(params[:id])
        @product = Product.find(params[:id])
        @average = Review.where(product_id: @product.id).average(:star)
@@ -86,11 +87,15 @@ class ProductsController < ApplicationController
   end
 
   def ranking
+    # @products = Product.order(sales_total: "DESC")
+    # binding.pry
+    @products = Product.all.sort_by{|p| p.sales_total}.reverse
+  
   end
 
   private
     def product_params
-      params.require(:product).permit( :admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date)
+      params.require(:product).permit( :admin_id, :product_title, :product_title_kana, :price,:genre_id, :label_id, :stock, :item_number, :image, :release_date,:sales_total)
     end
 
     def search_params

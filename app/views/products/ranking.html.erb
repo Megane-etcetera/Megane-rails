@@ -1,2 +1,21 @@
-<h1>Products#ranking</h1>
-<p>Find me in app/views/products/ranking.html.erb</p>
+<div class="product_index_base">
+	<div class="top_products_line">
+		<section class="top-new">
+			<h2>ランキング</h2>
+		</section>
+		<div class="product_index_box clearfix">
+			<% @products.each do |prod| %>
+				<div class="product-box">
+					<%= link_to "/products/#{prod.id}" do %>
+						<div class="p-image"><%= attachment_image_tag prod, :image, fallback: "img/no_image.jpg" %></div>
+						<div class="p-stat">
+							<%= prod.product_title %><br>
+							<%= prod.price %>円
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		
+	</div>
+</div>
