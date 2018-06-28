@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_admin!, except: [:index, :search, :show, :genre, :newrelease]
+  before_action :authenticate_admin!, except: [:index, :search, :show, :genre, :newrelease, :ranking]
  
 
   def index
