@@ -102,6 +102,14 @@
 								<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 							</ul>
 						</li>
+						<% elsif admin_signed_in? %>
+						<li class="nav-list-item nav_list_user">
+							<p>管理者<%= current_admin.id %></p>
+							<ul id="header_user" class="notdisp">
+								<li><%= link_to "管理者トップページ", admintops_top_path %></li>
+								<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+							</ul>
+						</li>
 						<% else %>
 						<li class="nav-list-item nav_list_user">
 							<p><%= link_to "ログイン", new_user_session_path %></p>
