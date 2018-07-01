@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   
 
 
+  
+
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -54,6 +56,7 @@ end
   scope :admins do
     resources :contacts, only: [:index,:edit,:update]
     get 'contacts_finished'=>'contacts#finished'
+    resources :recommends, only: [:index,:destroy,:create]
     resources :products, only: [:new, :create, :edit, :update, :index] do
        resources :discs, only: [:new,:create,:edit,:update,:destroy,:show] do
   
